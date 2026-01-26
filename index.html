@@ -55,38 +55,95 @@
                 <p class="hero-note">No videos. No trends. Just decisions, discussions, and clarity.</p>
             </div>
             <div class="hero-visual">
-                <!-- Phone mockup with app screenshot placeholder -->
+                <!-- Phone mockup with app screenshot carousel -->
                 <div class="phone-mockup">
                     <div class="phone-frame">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="app-preview">
-                                <div class="preview-header">
-                                    <div class="preview-time">9:41</div>
-                                    <div class="preview-status">
-                                        <span>📶</span>
-                                        <span>📶</span>
-                                        <span>🔋</span>
+                            <div class="carousel-container">
+                                <div class="carousel-slides">
+                                    <!-- Slide 1: Orria App Screenshot -->
+                                    <div class="carousel-slide active">
+                                        <div class="app-preview app-preview-orria">
+                                            <div class="preview-header">
+                                                <div class="preview-time">6:15</div>
+                                                <div class="preview-status">
+                                                    <span style="font-size: 0.7rem">····</span>
+                                                    <span style="font-size: 0.8rem">📶</span>
+                                                    <span style="font-size: 0.8rem">🔋</span>
+                                                </div>
+                                            </div>
+                                            <div class="preview-content">
+                                                <div class="app-header">
+                                                    <h2 class="app-title">Orria</h2>
+                                                    <div class="user-avatar">HO</div>
+                                                </div>
+                                                <div class="spark-card">
+                                                    <div class="spark-icon">✨</div>
+                                                    <h3>Spark a new insight?</h3>
+                                                    <p class="spark-subtitle">The best decisions are made with multiple perspectives. Start yours now.</p>
+                                                    <button class="create-button">+ Create Decision</button>
+                                                </div>
+                                                <div class="activity-section">
+                                                    <h4>Your Activity</h4>
+                                                    <div class="activity-grid">
+                                                        <div class="activity-card">
+                                                            <div class="activity-icon">✓</div>
+                                                            <div class="activity-number">0</div>
+                                                            <div class="activity-label">Finalized</div>
+                                                        </div>
+                                                        <div class="activity-card">
+                                                            <div class="activity-icon">👍</div>
+                                                            <div class="activity-number">0</div>
+                                                            <div class="activity-label">Votes</div>
+                                                        </div>
+                                                        <div class="activity-card">
+                                                            <div class="activity-icon">⏱</div>
+                                                            <div class="activity-number">4</div>
+                                                            <div class="activity-label">Pending</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Slide 2: Decision View -->
+                                    <div class="carousel-slide">
+                                        <div class="app-preview app-preview-decision">
+                                            <div class="preview-header">
+                                                <div class="preview-time">9:41</div>
+                                                <div class="preview-status">
+                                                    <span style="font-size: 0.7rem">····</span>
+                                                    <span style="font-size: 0.8rem">📶</span>
+                                                    <span style="font-size: 0.8rem">🔋</span>
+                                                </div>
+                                            </div>
+                                            <div class="preview-content">
+                                                <h3 class="decision-title">Should I take the startup job offer?</h3>
+                                                <div class="preview-options">
+                                                    <div class="preview-option">
+                                                        <div class="option-image gradient-purple"></div>
+                                                        <p>Take the job</p>
+                                                        <span class="vote-count">67%</span>
+                                                    </div>
+                                                    <div class="preview-option">
+                                                        <div class="option-image gradient-blue"></div>
+                                                        <p>Stay current role</p>
+                                                        <span class="vote-count">33%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="preview-ai">
+                                                    <span class="ai-badge">✨ AI Insight</span>
+                                                    <p>This decision balances immediate financial security against long-term growth potential...</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="preview-content">
-                                    <h3>Should I take the startup job offer?</h3>
-                                    <div class="preview-options">
-                                        <div class="preview-option">
-                                            <div class="option-image gradient-purple"></div>
-                                            <p>Take the job</p>
-                                            <span class="vote-count">67%</span>
-                                        </div>
-                                        <div class="preview-option">
-                                            <div class="option-image gradient-blue"></div>
-                                            <p>Stay current role</p>
-                                            <span class="vote-count">33%</span>
-                                        </div>
-                                    </div>
-                                    <div class="preview-ai">
-                                        <span class="ai-badge">✨ AI Insight</span>
-                                        <p>This decision balances immediate financial security against long-term growth potential...</p>
-                                    </div>
+                                <!-- Carousel Indicators -->
+                                <div class="carousel-indicators">
+                                    <span class="indicator active" data-slide="0"></span>
+                                    <span class="indicator" data-slide="1"></span>
                                 </div>
                             </div>
                         </div>
