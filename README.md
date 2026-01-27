@@ -29,8 +29,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is configured to deploy to GitHub Pages using GitHub Actions.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Setup Instructions
+
+1. Push your changes to GitHub.
+2. Go to your repository settings on GitHub.
+3. Scroll down to the "Pages" section (or "Actions" -> "General" -> "Workflow permissions" to ensure GITHUB_TOKEN has write permissions).
+4. In "Pages" settings, under "Build and deployment", select **GitHub Actions** as the source.
+5. The `Deploy Next.js site to Pages` workflow will run automatically on push to `main`.
+
+### Local Development
+
+Since we are using `basePath: "/Orria-website"` for production deployment, you might need to access the site at `http://localhost:3000/Orria-website` locally, or temporarily disable `basePath` in `next.config.ts`.
