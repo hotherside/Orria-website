@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Brand Colors */
+  --color-primary-purple: #6B5CE7;
+  --color-primary-indigo: #5B4FDB;
+  --color-accent-coral: #FF6B6B;
+  --color-accent-amber: #FFB84D;
+  
+  /* Backgrounds */
+  --color-bg-light: #FAFBFC;
+  --color-bg-white: #FFFFFF;
+  
+  /* Text */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B7280;
+  
+  /* Border */
+  --color-border-light: #E5E7EB;
+
+  /* Gradients - Defined as background images usually, but for colors we might need utilities */
+  --background-image-gradient-purple: linear-gradient(135deg, #6B5CE7 0%, #9333EA 100%);
+  --background-image-gradient-blue: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
+  --background-image-gradient-green: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  --background-image-gradient-orange: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  --background-image-gradient-pink: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
