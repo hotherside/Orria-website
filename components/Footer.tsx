@@ -37,19 +37,19 @@ export function Footer() {
                     </div>
 
                     <div className="col-span-1">
-                        <h4 className="font-bold text-gray-900 mb-6">Company</h4>
+                        <h4 className="font-bold text-gray-900 mb-6">Support</h4>
                         <ul className="space-y-4">
-                            <FooterLink href="#about">About</FooterLink>
-                            <FooterLink href="#blog">Blog</FooterLink>
-                            <FooterLink href="mailto:hojae.hotherside@gmail.com">Contact</FooterLink>
+                            <FooterLink href="/support">Help Center</FooterLink>
+                            <FooterLink href="mailto:support@orria.app">Contact Us</FooterLink>
+                            <FooterLink href="#download">Download App</FooterLink>
                         </ul>
                     </div>
 
                     <div className="col-span-1">
                         <h4 className="font-bold text-gray-900 mb-6">Legal</h4>
                         <ul className="space-y-4">
-                            <FooterLink href="#privacy">Privacy Policy</FooterLink>
-                            <FooterLink href="#terms">Terms of Service</FooterLink>
+                            <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                            <FooterLink href="/support">Support</FooterLink>
                         </ul>
                     </div>
                 </div>
