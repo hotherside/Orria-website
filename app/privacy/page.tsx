@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="text-lg text-gray-600">
-            Last Updated: January 30, 2026
+            Last Updated: January 31, 2026
           </p>
         </div>
 
@@ -59,6 +59,8 @@ export default function PrivacyPolicy() {
               <li>Votes you cast</li>
               <li>Comments you post</li>
               <li>Topics and categories you follow</li>
+              <li>Reports you submit for inappropriate content</li>
+              <li>Content moderation actions taken on your account</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">
@@ -92,6 +94,9 @@ export default function PrivacyPolicy() {
               <li>Communicate with you about updates and features</li>
               <li>Analyze usage patterns to improve the app</li>
               <li>Prevent fraud and ensure security</li>
+              <li>Enforce our Community Guidelines and moderate content</li>
+              <li>Process and respond to user reports of inappropriate content</li>
+              <li>Track and manage content moderation actions</li>
               <li>Comply with legal obligations</li>
             </ul>
           </section>
@@ -192,20 +197,75 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
+          {/* Content Moderation */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              8. Content Moderation and Safety
+            </h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Orria is committed to maintaining a safe and respectful community. Our content moderation system includes:
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">
+              Automated Content Filtering
+            </h3>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              We use automated systems to detect and prevent:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
+              <li>Explicit or inappropriate content (violence, hate speech, harassment)</li>
+              <li>Personal information exposure (emails, phone numbers)</li>
+              <li>Spam and scam attempts</li>
+              <li>Excessive link sharing</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">
+              User Reporting
+            </h3>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Users can report inappropriate content. When you submit a report:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
+              <li>Your report is stored for moderation review</li>
+              <li>You can view the status of your submitted reports</li>
+              <li>Your identity as a reporter is protected</li>
+              <li>We track report history to prevent abuse</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">
+              Moderation Actions
+            </h3>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              If your content violates our Community Guidelines, we may:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
+              <li>Issue a warning</li>
+              <li>Remove the violating content</li>
+              <li>Temporarily suspend your account</li>
+              <li>Permanently ban repeat offenders</li>
+            </ul>
+            <p className="text-gray-700 leading-relaxed mt-4">
+              All moderation actions are logged and you can view your account status in the app. Removed content is archived for 90 days to support the appeals process.
+            </p>
+          </section>
+
           {/* Data Retention */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              8. Data Retention
+              9. Data Retention
             </h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed mb-4">
               We retain your personal information for as long as your account is active or as needed to provide you services. If you delete your account, we will delete your personal information within 30 days, except where we are required to retain it for legal purposes.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              <strong>Moderation Data:</strong> Reports and moderation actions are retained for 90 days after resolution to support appeals and prevent abuse. Deleted content is archived for 90 days before permanent removal.
             </p>
           </section>
 
           {/* International Users */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              9. International Data Transfers
+              10. International Data Transfers
             </h2>
             <p className="text-gray-700 leading-relaxed">
               Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data in accordance with this privacy policy.
@@ -215,7 +275,7 @@ export default function PrivacyPolicy() {
           {/* Changes to Privacy Policy */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              10. Changes to This Privacy Policy
+              11. Changes to This Privacy Policy
             </h2>
             <p className="text-gray-700 leading-relaxed">
               We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. We encourage you to review this Privacy Policy periodically.
@@ -246,7 +306,7 @@ export default function PrivacyPolicy() {
           {/* Effective Date */}
           <section className="text-center pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              This Privacy Policy is effective as of January 30, 2026
+              This Privacy Policy is effective as of January 31, 2026
             </p>
           </section>
 
