@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020617;
+  --foreground: #f8fafc;
 }
 
 @theme inline {
@@ -12,39 +12,76 @@
   --font-mono: var(--font-geist-mono);
 
   /* Brand Colors */
-  --color-primary-purple: #6B5CE7;
-  --color-primary-indigo: #5B4FDB;
-  --color-accent-coral: #FF6B6B;
-  --color-accent-amber: #FFB84D;
-  
-  /* Backgrounds */
-  --color-bg-light: #FAFBFC;
-  --color-bg-white: #FFFFFF;
-  
-  /* Text */
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #6B7280;
-  
-  /* Border */
-  --color-border-light: #E5E7EB;
+  --color-primary-purple: #8B5CF6;
+  --color-primary-indigo: #6366F1;
+  --color-accent-pink: #EC4899;
+  --color-accent-blue: #3B82F6;
 
-  /* Gradients - Defined as background images usually, but for colors we might need utilities */
-  --background-image-gradient-purple: linear-gradient(135deg, #6B5CE7 0%, #9333EA 100%);
-  --background-image-gradient-blue: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
-  --background-image-gradient-green: linear-gradient(135deg, #10B981 0%, #059669 100%);
-  --background-image-gradient-orange: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  --background-image-gradient-pink: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  /* Dark Theme */
+  --color-bg-dark: #020617;
+  --color-bg-dark-secondary: #0F172A;
+
+  /* Text */
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  /* Border */
+  --color-border-dark: rgba(255, 255, 255, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #f8fafc;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Gradient text animation */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 6s ease infinite;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #F8FAFC;
 }

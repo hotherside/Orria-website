@@ -1,15 +1,21 @@
 import { Hero } from "@/components/Hero";
-import { Features } from "@/components/Features";
-import { HowItWorks } from "@/components/HowItWorks";
+import { Philosophy } from "@/components/Philosophy";
+import { FourPillars } from "@/components/FourPillars";
+import { WhoIsItFor } from "@/components/WhoIsItFor";
+import { AIAgents } from "@/components/AIAgents";
 import { Pricing } from "@/components/Pricing";
+import { Download } from "@/components/Download";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Features />
-      <HowItWorks />
+      <Philosophy />
+      <FourPillars />
+      <WhoIsItFor />
+      <AIAgents />
       <Pricing />
+      <Download />
     </main>
   );
 }
