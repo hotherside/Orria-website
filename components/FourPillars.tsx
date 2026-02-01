@@ -1,190 +1,245 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
 import { BookOpen, Sparkles, Timer, RefreshCw } from "lucide-react";
-import { FadeIn } from "@/components/animation/FadeIn";
 
 const pillars = [
   {
-    number: "01",
-    icon: <BookOpen className="w-7 h-7" />,
+    id: "capture",
+    icon: <BookOpen className="w-6 h-6" />,
     title: "Capture",
     tagline: "Log the crossroads moments",
     description: "Every choice you make shapes who you become. Log your decisions — minor or critical. Create a living record of your journey.",
-    color: "coral",
-    iconBg: "bg-[#E07B5B]/10",
-    iconColor: "text-[#E07B5B]",
-    accentColor: "text-[#E07B5B]",
-    bullets: [
-      "Document decisions big and small",
-      "Add context and options",
-      "Private by default",
-    ],
+    color: "#E07B5B",
+    lightColor: "#E07B5B20",
   },
   {
-    number: "02",
-    icon: <Sparkles className="w-7 h-7" />,
+    id: "clarity",
+    icon: <Sparkles className="w-6 h-6" />,
     title: "Clarity",
     tagline: "See what you can't see alone",
     description: "4 AI perspectives show you angles you never considered. Community wisdom from people who've been exactly where you are.",
-    color: "sage",
-    iconBg: "bg-[#7B9E87]/10",
-    iconColor: "text-[#7B9E87]",
-    accentColor: "text-[#7B9E87]",
-    bullets: [
-      "The Optimist sees opportunities",
-      "The Analyst weighs the logic",
-      "The Skeptic spots the risks",
-    ],
+    color: "#7B9E87",
+    lightColor: "#7B9E8720",
   },
   {
-    number: "03",
-    icon: <Timer className="w-7 h-7" />,
+    id: "commit",
+    icon: <Timer className="w-6 h-6" />,
     title: "Commit",
     tagline: "Break the indecision cycle",
     description: "Set a deadline. Get gentle nudges. Stop letting choices linger for weeks. Make the decision and move forward.",
-    color: "terracotta",
-    iconBg: "bg-[#C4826D]/10",
-    iconColor: "text-[#C4826D]",
-    accentColor: "text-[#C4826D]",
-    bullets: [
-      "Set decision deadlines",
-      "Receive smart reminders",
-      "End analysis paralysis",
-    ],
+    color: "#C4826D",
+    lightColor: "#C4826D20",
   },
   {
-    number: "04",
-    icon: <RefreshCw className="w-7 h-7" />,
+    id: "close",
+    icon: <RefreshCw className="w-6 h-6" />,
     title: "Close the Loop",
     tagline: "Watch your story build",
     description: "Record what happened. Rate your satisfaction. Discover patterns over time. Your decisions become your autobiography.",
-    color: "dusty-rose",
-    iconBg: "bg-[#C4919B]/10",
-    iconColor: "text-[#C4919B]",
-    accentColor: "text-[#C4919B]",
-    bullets: [
-      "Track outcomes and satisfaction",
-      "Discover your patterns",
-      "Build decision-making wisdom",
-    ],
+    color: "#9B8AA8",
+    lightColor: "#9B8AA820",
   },
 ];
 
 export function FourPillars() {
-  return (
-    <section id="pillars" className="relative py-24 md:py-32 bg-[#F5F1E8] overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <FadeIn className="text-center mb-16 md:mb-20">
-          <span className="inline-block px-4 py-2 rounded-full bg-[#7B9E87]/10 text-[#7B9E87] text-sm font-medium mb-6">
-            The Decision Journey
-          </span>
-          <h2
-            className="text-3xl md:text-5xl text-[#3D3833] mb-6 tracking-tight"
-            style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 500 }}
-          >
-            From crossroads to clarity
-          </h2>
-          <p className="text-lg md:text-xl text-[#5C554C] max-w-2xl mx-auto">
-            Every decision follows the same path. Orria guides you through each step.
-          </p>
-        </FadeIn>
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-        {/* Pillars - Alternating Timeline Layout */}
-        <div className="space-y-8 md:space-y-0">
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="pillars"
+      className="relative py-32 md:py-48 overflow-hidden bg-[#F8F4ED]"
+    >
+      {/* Subtle moving background gradient */}
+      <motion.div
+        style={{ y: bgY }}
+        className="absolute inset-0 opacity-50"
+      >
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] rounded-full bg-[#E07B5B]/10 blur-[150px]" />
+        <div className="absolute bottom-0 left-0 w-[50%] h-[50%] rounded-full bg-[#7B9E87]/10 blur-[120px]" />
+      </motion.div>
+
+      <div className="relative max-w-6xl mx-auto px-6">
+        {/* Section Header - microsoft.ai style */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-20"
+        >
+          <h2
+            className="text-[#3D3833] mb-6"
+            style={{
+              fontFamily: 'var(--font-playfair), Playfair Display, serif',
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              fontWeight: 400,
+              lineHeight: 1.1,
+            }}
+          >
+            Core products and
+            <br />
+            <span className="italic">experiences</span>
+          </h2>
+          <p className="text-lg md:text-xl text-[#5C554C] max-w-2xl mx-auto leading-relaxed">
+            Every decision follows the same path. Orria guides you through each step,
+            from initial crossroads to meaningful reflection.
+          </p>
+        </motion.div>
+
+        {/* Tab Navigation - microsoft.ai style */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex justify-center mb-16"
+        >
+          <div className="inline-flex bg-[#F0EBE1] rounded-full p-1.5">
+            {pillars.map((pillar, index) => (
+              <button
+                key={pillar.id}
+                onClick={() => setActiveIndex(index)}
+                className={`relative px-6 py-3 rounded-full font-medium text-sm md:text-base transition-all duration-300 ${
+                  activeIndex === index
+                    ? "text-[#3D3833]"
+                    : "text-[#8C857A] hover:text-[#5C554C]"
+                }`}
+              >
+                {activeIndex === index && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-white rounded-full shadow-sm"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{pillar.title}</span>
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Content Area */}
+        <div className="relative min-h-[400px]">
           {pillars.map((pillar, index) => (
-            <PillarCard key={index} pillar={pillar} index={index} isEven={index % 2 === 0} />
+            <motion.div
+              key={pillar.id}
+              initial={false}
+              animate={{
+                opacity: activeIndex === index ? 1 : 0,
+                y: activeIndex === index ? 0 : 20,
+                pointerEvents: activeIndex === index ? "auto" : "none",
+              }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className={`absolute inset-0 ${activeIndex === index ? "" : "pointer-events-none"}`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                {/* Left - Visual placeholder */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{
+                    opacity: activeIndex === index ? 1 : 0,
+                    scale: activeIndex === index ? 1 : 0.95,
+                  }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl"
+                >
+                  {/* Placeholder gradient that represents the feature */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(135deg, ${pillar.lightColor} 0%, ${pillar.color}40 100%)`,
+                    }}
+                  />
+                  {/* Icon overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                      className="w-24 h-24 rounded-2xl flex items-center justify-center"
+                      style={{ backgroundColor: pillar.color + "30" }}
+                    >
+                      <div style={{ color: pillar.color }} className="scale-[2]">
+                        {pillar.icon}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Right - Content */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{
+                    opacity: activeIndex === index ? 1 : 0,
+                    x: activeIndex === index ? 0 : 20,
+                  }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                    style={{ backgroundColor: pillar.lightColor }}
+                  >
+                    <span style={{ color: pillar.color }}>{pillar.icon}</span>
+                    <span style={{ color: pillar.color }} className="font-medium text-sm">
+                      Step {index + 1}
+                    </span>
+                  </div>
+
+                  <h3
+                    className="text-[#3D3833] mb-3"
+                    style={{
+                      fontFamily: 'var(--font-playfair), Playfair Display, serif',
+                      fontSize: 'clamp(2rem, 4vw, 3rem)',
+                      fontWeight: 400,
+                    }}
+                  >
+                    {pillar.title}
+                  </h3>
+
+                  <p
+                    className="text-xl mb-4 italic"
+                    style={{
+                      fontFamily: 'var(--font-playfair), Playfair Display, serif',
+                      color: pillar.color,
+                    }}
+                  >
+                    {pillar.tagline}
+                  </p>
+
+                  <p className="text-lg text-[#5C554C] leading-relaxed mb-8">
+                    {pillar.description}
+                  </p>
+
+                  <a
+                    href="#download"
+                    className="inline-flex items-center gap-2 font-medium group"
+                    style={{ color: pillar.color }}
+                  >
+                    <span className="relative">
+                      Learn more
+                      <span
+                        className="absolute bottom-0 left-0 w-full h-px transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                        style={{ backgroundColor: pillar.color }}
+                      />
+                    </span>
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+                      →
+                    </span>
+                  </a>
+                </motion.div>
+              </div>
+            </motion.div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <FadeIn delay={0.4} className="text-center mt-16">
-          <p className="text-[#8C857A] mb-4">
-            Ready to start capturing your story?
-          </p>
-          <a
-            href="#download"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#E07B5B] text-white rounded-xl font-semibold hover:bg-[#D16A4A] hover:-translate-y-1 transition-all duration-300 shadow-md hover:shadow-lg"
-          >
-            Get Orria Free
-          </a>
-        </FadeIn>
       </div>
     </section>
-  );
-}
-
-function PillarCard({
-  pillar,
-  index,
-  isEven,
-}: {
-  pillar: typeof pillars[0];
-  index: number;
-  isEven: boolean;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 py-8 md:py-12 ${
-        !isEven ? "md:flex-row-reverse" : ""
-      }`}
-    >
-      {/* Visual side */}
-      <div className="w-full md:w-1/2 flex justify-center">
-        <div className="relative">
-          {/* Background shape */}
-          <div className={`absolute inset-0 ${pillar.iconBg} rounded-3xl blur-2xl scale-110 opacity-50`} />
-
-          {/* Card */}
-          <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-soft max-w-md">
-            {/* Number */}
-            <span
-              className="absolute -top-4 -left-4 text-7xl font-bold text-[#F5F1E8]"
-              style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }}
-            >
-              {pillar.number}
-            </span>
-
-            {/* Icon */}
-            <div
-              className={`relative w-14 h-14 rounded-xl ${pillar.iconBg} ${pillar.iconColor} flex items-center justify-center mb-6`}
-            >
-              {pillar.icon}
-            </div>
-
-            {/* Bullets */}
-            <ul className="space-y-3 relative">
-              {pillar.bullets.map((bullet, i) => (
-                <li key={i} className="flex items-start gap-3 text-[#5C554C]">
-                  <span className={`w-1.5 h-1.5 rounded-full ${pillar.iconBg.replace('/10', '')} mt-2 flex-shrink-0`} />
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Content side */}
-      <div className={`w-full md:w-1/2 text-center ${isEven ? "md:text-left" : "md:text-right"}`}>
-        <h3
-          className="text-2xl md:text-3xl text-[#3D3833] mb-2"
-          style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 500 }}
-        >
-          {pillar.title}
-        </h3>
-        <p className={`text-lg font-medium ${pillar.accentColor} mb-4 italic`}>
-          {pillar.tagline}
-        </p>
-        <p className="text-[#5C554C] leading-relaxed max-w-md mx-auto md:mx-0">
-          {pillar.description}
-        </p>
-      </div>
-    </motion.div>
   );
 }

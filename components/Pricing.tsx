@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Check, Sparkles } from "lucide-react";
-import { FadeIn } from "@/components/animation/FadeIn";
 
 const pricingPlans = [
   {
@@ -60,36 +59,55 @@ const pricingPlans = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <FadeIn className="text-center mb-16">
-          <span className="inline-block px-4 py-2 rounded-full bg-[#F5F1E8] text-[#5C554C] text-sm font-medium mb-6">
+    <section id="pricing" className="py-32 md:py-48 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-20"
+        >
+          <p className="text-sm uppercase tracking-[0.3em] text-[#8C857A] mb-6">
             Pricing
-          </span>
+          </p>
           <h2
-            className="text-3xl md:text-5xl text-[#3D3833] mb-6 tracking-tight"
-            style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 500 }}
+            className="text-[#3D3833] mb-6"
+            style={{
+              fontFamily: 'var(--font-playfair), Playfair Display, serif',
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontWeight: 400,
+              lineHeight: 1.1,
+            }}
           >
             Start free.
             <br />
-            <span className="text-[#E07B5B] italic">Upgrade when you&apos;re ready.</span>
+            <span className="italic">Upgrade when you&apos;re ready.</span>
           </h2>
-          <p className="text-lg md:text-xl text-[#5C554C] max-w-2xl mx-auto">
-            Your story doesn&apos;t cost anything to start. Premium unlocks deeper insights when decisions really matter.
+          <p className="text-lg md:text-xl text-[#5C554C] max-w-2xl mx-auto leading-relaxed">
+            Your story doesn&apos;t cost anything to start. Premium unlocks deeper
+            insights when decisions really matter.
           </p>
-        </FadeIn>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pricingPlans.map((plan, index) => (
             <PricingCard key={index} plan={plan} index={index} />
           ))}
         </div>
 
-        <FadeIn delay={0.4} className="text-center mt-12">
-          <p className="text-[#8C857A]">
-            All prices in AUD. Cancel anytime.
-          </p>
-        </FadeIn>
+        {/* Footer note */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center text-[#8C857A] mt-12"
+        >
+          All prices in AUD. Cancel anytime.
+        </motion.p>
       </div>
     </section>
   );
@@ -104,10 +122,10 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`relative rounded-3xl overflow-hidden ${isPro ? 'md:scale-105 z-10' : ''}`}
+      className={`relative rounded-2xl overflow-hidden ${isPro ? 'md:-mt-4 md:mb-4' : ''}`}
     >
       {isPro && (
-        <div className="absolute top-0 left-0 right-0 bg-[#E07B5B] text-white text-center py-2 text-sm font-semibold flex items-center justify-center gap-2">
+        <div className="absolute top-0 left-0 right-0 bg-[#E07B5B] text-white text-center py-2.5 text-sm font-medium flex items-center justify-center gap-2">
           <Sparkles size={16} />
           Most Popular
         </div>
@@ -116,28 +134,28 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
       <div
         className={`h-full p-8 ${
           isPro
-            ? 'pt-14 bg-[#3D3833]'
+            ? 'pt-16 bg-[#3D3833]'
             : 'bg-[#FAF8F3] border border-[#EDE8DC]'
-        } shadow-soft`}
+        }`}
       >
         <div className="mb-8">
           <h3
-            className={`text-2xl font-semibold ${isPro ? 'text-white' : 'text-[#3D3833]'} mb-1`}
-            style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }}
+            className={`text-2xl ${isPro ? 'text-white' : 'text-[#3D3833]'} mb-1`}
+            style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 500 }}
           >
             {plan.name}
           </h3>
-          <p className={`text-sm ${isPro ? 'text-[#A8C4B2]' : 'text-[#5C554C]'} mb-4`}>
+          <p className={`text-sm ${isPro ? 'text-white/60' : 'text-[#5C554C]'} mb-4`}>
             {plan.tagline}
           </p>
           <div className="flex items-baseline gap-1">
             <span
-              className={`text-5xl font-bold ${isPro ? 'text-white' : 'text-[#3D3833]'}`}
-              style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }}
+              className={`text-5xl ${isPro ? 'text-white' : 'text-[#3D3833]'}`}
+              style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 500 }}
             >
               {plan.price}
             </span>
-            <span className={`${isPro ? 'text-[#A8C4B2]' : 'text-[#8C857A]'} font-medium`}>
+            <span className={`${isPro ? 'text-white/60' : 'text-[#8C857A]'} font-medium`}>
               {plan.period}
             </span>
           </div>
@@ -146,13 +164,13 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
           )}
         </div>
 
-        <p className={`text-sm ${isPro ? 'text-gray-300' : 'text-[#5C554C]'} mb-6`}>
+        <p className={`text-sm ${isPro ? 'text-white/70' : 'text-[#5C554C]'} mb-6 leading-relaxed`}>
           {plan.description}
         </p>
 
         <ul className="space-y-3 mb-8">
           {plan.features.map((feature, i) => (
-            <li key={i} className={`flex items-start gap-3 ${isPro ? 'text-white' : 'text-[#5C554C]'}`}>
+            <li key={i} className={`flex items-start gap-3 ${isPro ? 'text-white/90' : 'text-[#5C554C]'}`}>
               <Check
                 className={`w-5 h-5 ${isPro ? 'text-[#7B9E87]' : 'text-[#7B9E87]'} shrink-0 mt-0.5`}
               />
@@ -161,15 +179,17 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
           ))}
         </ul>
 
-        <button
-          className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 ${
+        <motion.button
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className={`w-full py-4 rounded-full font-semibold transition-all duration-300 ${
             isPro
-              ? 'bg-[#E07B5B] text-white hover:bg-[#D16A4A] shadow-md hover:shadow-lg'
-              : 'bg-white text-[#3D3833] border border-[#EDE8DC] hover:border-[#E07B5B]/30 shadow-sm hover:shadow-md'
+              ? 'bg-[#E07B5B] text-white hover:bg-[#D16A4A]'
+              : 'bg-white text-[#3D3833] border border-[#EDE8DC] hover:border-[#E07B5B]/30 hover:shadow-md'
           }`}
         >
           {plan.cta}
-        </button>
+        </motion.button>
       </div>
     </motion.div>
   );

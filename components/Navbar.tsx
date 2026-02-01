@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Menu, X, Search, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,41 +21,51 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500",
         isScrolled
-          ? "bg-[#FAF8F3]/95 backdrop-blur-xl border-b border-[#EDE8DC] py-3"
-          : "bg-transparent py-5"
+          ? "w-[calc(100%-2rem)] max-w-5xl"
+          : "w-[calc(100%-3rem)] max-w-6xl"
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      {/* Floating pill navbar - microsoft.ai style */}
+      <div
+        className={cn(
+          "flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500",
+          isScrolled
+            ? "bg-[#FAF8F3]/95 backdrop-blur-xl shadow-lg border border-[#EDE8DC]/50"
+            : "bg-[#FAF8F3]/80 backdrop-blur-md shadow-md"
+        )}
+      >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <span className="text-2xl font-bold text-[#3D3833] font-[var(--font-playfair)]" style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }}>
+        <Link href="/" className="flex items-center gap-2">
+          <span
+            className="text-xl text-[#3D3833]"
+            style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 600 }}
+          >
             Orria
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           <NavLink href="#pillars">How It Works</NavLink>
           <NavLink href="#who">Who It&apos;s For</NavLink>
           <NavLink href="#pricing">Pricing</NavLink>
           <Link
             href="#download"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#E07B5B] text-white rounded-xl font-semibold hover:bg-[#D16A4A] hover:-translate-y-0.5 transition-all duration-300 shadow-md hover:shadow-lg"
+            className="ml-2 px-5 py-2 bg-[#3D3833] text-white rounded-full text-sm font-medium hover:bg-[#2a2520] transition-colors duration-300"
           >
-            <Download size={18} />
             Download
           </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 text-[#3D3833]/80 hover:text-[#3D3833]"
+          className="md:hidden p-2 text-[#3D3833]/80 hover:text-[#3D3833] transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -63,11 +73,11 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-[#FAF8F3]/98 backdrop-blur-xl border-b border-[#EDE8DC] p-6 flex flex-col gap-4"
+            className="md:hidden mt-2 bg-[#FAF8F3]/98 backdrop-blur-xl rounded-2xl border border-[#EDE8DC]/50 shadow-xl p-4 flex flex-col gap-1"
           >
             <MobileNavLink onClick={() => setIsMobileMenuOpen(false)} href="#pillars">
               How It Works
@@ -81,9 +91,8 @@ export function Navbar() {
             <Link
               href="#download"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full text-center inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#E07B5B] text-white rounded-xl font-semibold hover:bg-[#D16A4A] transition-colors"
+              className="mt-2 w-full text-center py-3 bg-[#3D3833] text-white rounded-xl font-medium hover:bg-[#2a2520] transition-colors"
             >
-              <Download size={18} />
               Download
             </Link>
           </motion.div>
@@ -97,10 +106,9 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="text-[#5C554C] hover:text-[#3D3833] font-medium transition-colors relative group"
+      className="px-4 py-2 text-sm text-[#5C554C] hover:text-[#3D3833] font-medium transition-colors rounded-full hover:bg-[#EDE8DC]/50"
     >
       {children}
-      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E07B5B] transition-all duration-300 group-hover:w-full" />
     </Link>
   );
 }
@@ -118,7 +126,7 @@ function MobileNavLink({
     <Link
       href={href}
       onClick={onClick}
-      className="text-lg font-medium text-[#5C554C] hover:text-[#3D3833] py-2 border-b border-[#EDE8DC] last:border-0 transition-colors"
+      className="px-4 py-3 text-[#5C554C] hover:text-[#3D3833] hover:bg-[#EDE8DC]/50 font-medium rounded-xl transition-colors"
     >
       {children}
     </Link>

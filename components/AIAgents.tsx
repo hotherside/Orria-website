@@ -1,118 +1,150 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Sun, BarChart3, Wrench, AlertTriangle } from "lucide-react";
-import { FadeIn } from "@/components/animation/FadeIn";
 
 const agents = [
   {
-    icon: <Sun className="w-6 h-6" />,
+    icon: <Sun className="w-7 h-7" />,
     name: "The Optimist",
     description: "Sees the opportunities and potential. Helps you envision the best possible outcomes.",
-    color: "text-[#C4826D]",
-    bgColor: "bg-[#C4826D]/5",
-    iconBg: "bg-white",
+    color: "#C4826D",
     quote: "What could go right?",
   },
   {
-    icon: <BarChart3 className="w-6 h-6" />,
+    icon: <BarChart3 className="w-7 h-7" />,
     name: "The Analyst",
     description: "Weighs the logic and data. Breaks down the decision with structured frameworks.",
-    color: "text-[#7B9E87]",
-    bgColor: "bg-[#7B9E87]/5",
-    iconBg: "bg-white",
+    color: "#7B9E87",
     quote: "What do the facts say?",
   },
   {
-    icon: <Wrench className="w-6 h-6" />,
+    icon: <Wrench className="w-7 h-7" />,
     name: "The Pragmatist",
     description: "Considers feasibility and implementation. Focuses on what actually works.",
-    color: "text-[#9B8AA8]",
-    bgColor: "bg-[#9B8AA8]/5",
-    iconBg: "bg-white",
+    color: "#9B8AA8",
     quote: "What's realistic?",
   },
   {
-    icon: <AlertTriangle className="w-6 h-6" />,
+    icon: <AlertTriangle className="w-7 h-7" />,
     name: "The Skeptic",
     description: "Spots the risks and hidden costs. The devil's advocate you need but don't always want.",
-    color: "text-[#C4919B]",
-    bgColor: "bg-[#C4919B]/5",
-    iconBg: "bg-white",
+    color: "#C4919B",
     quote: "What could go wrong?",
   },
 ];
 
 export function AIAgents() {
-  return (
-    <section className="py-24 md:py-32 bg-[#FAF8F3] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <FadeIn direction="left">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#9B8AA8]/10 text-[#9B8AA8] text-sm font-medium mb-6">
-              AI Perspectives
-            </span>
-            <h2
-              className="text-3xl md:text-5xl text-[#3D3833] mb-6 tracking-tight"
-              style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 500 }}
-            >
-              4 minds are better
-              <br />
-              <span className="text-[#E07B5B] italic">than one</span>
-            </h2>
-            <p className="text-lg md:text-xl text-[#5C554C] mb-8 leading-relaxed">
-              Every major decision deserves multiple perspectives. Our AI agents think about your choice from angles you might never consider.
-            </p>
-            <p className="text-[#5C554C] leading-relaxed">
-              Free users get instant AI summaries on every decision. Premium unlocks all 4 agent perspectives for deep analysis — the optimist, the analyst, the pragmatist, and the skeptic.
-            </p>
-          </FadeIn>
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
 
-          {/* Agents Grid */}
-          <FadeIn direction="right" delay={0.2}>
-            <div className="grid grid-cols-2 gap-4">
-              {agents.map((agent, index) => (
-                <AgentCard key={index} agent={agent} index={index} />
-              ))}
-            </div>
-          </FadeIn>
+  const decorY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative py-32 md:py-48 overflow-hidden"
+      style={{
+        background: "linear-gradient(180deg, #F8F4ED 0%, #EDE8DC 100%)"
+      }}
+    >
+      {/* Floating decorative element */}
+      <motion.div
+        style={{ y: decorY }}
+        className="absolute -left-20 top-1/4 w-72 h-96 rounded-2xl overflow-hidden shadow-2xl hidden lg:block"
+      >
+        <div className="w-full h-full bg-gradient-to-br from-[#9B8AA8]/40 to-[#C4919B]/40" />
+      </motion.div>
+
+      <div className="relative max-w-6xl mx-auto px-6">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-20"
+        >
+          <p className="text-sm uppercase tracking-[0.3em] text-[#8C857A] mb-6">
+            AI Perspectives
+          </p>
+          <h2
+            className="text-[#3D3833] mb-6"
+            style={{
+              fontFamily: 'var(--font-playfair), Playfair Display, serif',
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontWeight: 400,
+              lineHeight: 1.1,
+            }}
+          >
+            4 minds are better
+            <br />
+            <span className="italic">than one</span>
+          </h2>
+          <p className="text-lg md:text-xl text-[#5C554C] max-w-2xl mx-auto leading-relaxed">
+            Every major decision deserves multiple perspectives. Our AI agents
+            think about your choice from angles you might never consider.
+          </p>
+        </motion.div>
+
+        {/* Agents Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {agents.map((agent, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-white hover:shadow-xl transition-all duration-500"
+            >
+              {/* Icon */}
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                style={{ backgroundColor: agent.color + "15", color: agent.color }}
+              >
+                {agent.icon}
+              </div>
+
+              {/* Content */}
+              <h4
+                className="text-xl text-[#3D3833] mb-2"
+                style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 500 }}
+              >
+                {agent.name}
+              </h4>
+              <p className="text-[#5C554C] leading-relaxed mb-4">
+                {agent.description}
+              </p>
+              <p
+                className="text-lg italic"
+                style={{
+                  fontFamily: 'var(--font-playfair), Playfair Display, serif',
+                  color: agent.color,
+                }}
+              >
+                &ldquo;{agent.quote}&rdquo;
+              </p>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center text-[#8C857A] mt-12 max-w-xl mx-auto"
+        >
+          Free users get instant AI summaries. Premium unlocks all 4 agent
+          perspectives for deep analysis.
+        </motion.p>
       </div>
     </section>
-  );
-}
-
-function AgentCard({
-  agent,
-  index,
-}: {
-  agent: typeof agents[0];
-  index: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className={`group p-6 rounded-2xl ${agent.bgColor} border border-[#EDE8DC] hover:border-[#E07B5B]/20 hover:shadow-soft transition-all duration-300`}
-    >
-      <div
-        className={`w-12 h-12 rounded-xl ${agent.iconBg} flex items-center justify-center ${agent.color} mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300`}
-      >
-        {agent.icon}
-      </div>
-      <h4
-        className="text-lg font-semibold text-[#3D3833] mb-2"
-        style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }}
-      >
-        {agent.name}
-      </h4>
-      <p className="text-sm text-[#5C554C] mb-3 leading-relaxed">{agent.description}</p>
-      <p className={`text-sm font-medium ${agent.color} italic`}>
-        &ldquo;{agent.quote}&rdquo;
-      </p>
-    </motion.div>
   );
 }
