@@ -278,8 +278,8 @@ export default function CommunityGuidelines() {
             <div className="bg-purple-50 rounded-lg p-6">
               <p className="text-gray-800">
                 <strong>Email:</strong>{" "}
-                <a href="mailto:support@orria.app" className="text-purple-600 hover:text-purple-700 underline">
-                  support@orria.app
+                <a href="mailto:hello@orria.app" className="text-purple-600 hover:text-purple-700 underline">
+                  hello@orria.app
                 </a>
               </p>
               <p className="text-gray-600 text-sm mt-2">

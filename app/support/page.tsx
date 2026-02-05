@@ -27,7 +27,7 @@ export default function Support() {
               Have a question? We're here to help!
             </p>
             <a
-              href="mailto:support@orria.app"
+              href="mailto:hello@orria.app"
               className="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Email Support
@@ -98,7 +98,7 @@ export default function Support() {
                 How do I delete my account?
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                Go to your Profile → Settings → Account → Delete Account. Your data will be permanently removed within 30 days. If you need help, contact us at support@orria.app.
+                Go to your Profile tab → Settings (gear icon) → scroll to the bottom → Delete Account. Your account and all data will be permanently removed. This action cannot be undone. If you need help, contact us at hello@orria.app.
               </p>
             </div>
 
@@ -118,7 +118,7 @@ export default function Support() {
                 The app isn't working properly. What should I do?
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                Try these steps: 1) Make sure you have the latest version of the app from the App Store, 2) Close and reopen the app, 3) Restart your device, 4) Check your internet connection. If the problem persists, contact us at support@orria.app with details about the issue.
+                Try these steps: 1) Make sure you have the latest version of the app from the App Store, 2) Close and reopen the app, 3) Restart your device, 4) Check your internet connection. If the problem persists, contact us at hello@orria.app with details about the issue.
               </p>
             </div>
 
@@ -138,7 +138,7 @@ export default function Support() {
                 I have a feature suggestion. Where can I share it?
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                We love hearing from our users! Email your suggestions to support@orria.app. We read every message and many of our best features come from user feedback.
+                We love hearing from our users! Email your suggestions to hello@orria.app. We read every message and many of our best features come from user feedback.
               </p>
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function Support() {
             Can't find what you're looking for?
           </p>
           <a
-            href="mailto:support@orria.app"
+            href="mailto:hello@orria.app"
             className="text-purple-600 hover:text-purple-700 font-semibold underline"
           >
             Contact our support team
