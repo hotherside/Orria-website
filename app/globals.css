@@ -144,6 +144,112 @@ html {
   outline-offset: 2px;
 }
 
+/* ═══════════════════════════════════════════
+   Fluid Hero Background System
+   ═══════════════════════════════════════════ */
+
+/* Base mesh gradient — rich, warm, multi-stop */
+.hero-mesh-base {
+  background:
+    radial-gradient(ellipse 120% 80% at 15% 20%, rgba(232,180,160,0.9) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 80% 25%, rgba(212,151,138,0.8) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 120% at 50% 85%, rgba(196,130,109,0.7) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 80% at 35% 55%, rgba(212,169,116,0.5) 0%, transparent 50%),
+    linear-gradient(160deg, #DFA492 0%, #C4826D 40%, #B07060 100%);
+}
+
+/* Shared blob style — soft radial with heavy blur */
+.hero-blob {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Individual blob colors & animations */
+.hero-blob-1 {
+  background: radial-gradient(circle, rgba(232,180,160,0.55) 0%, rgba(232,180,160,0) 70%);
+  filter: blur(60px);
+  animation: fluidBlob1 25s ease-in-out infinite;
+}
+.hero-blob-2 {
+  background: radial-gradient(circle, rgba(196,130,109,0.45) 0%, rgba(196,130,109,0) 70%);
+  filter: blur(80px);
+  animation: fluidBlob2 30s ease-in-out infinite;
+}
+.hero-blob-3 {
+  background: radial-gradient(circle, rgba(212,169,116,0.4) 0%, rgba(212,169,116,0) 70%);
+  filter: blur(70px);
+  animation: fluidBlob3 28s ease-in-out infinite;
+}
+.hero-blob-4 {
+  background: radial-gradient(circle, rgba(224,123,91,0.3) 0%, rgba(224,123,91,0) 70%);
+  filter: blur(50px);
+  animation: fluidBlob4 22s ease-in-out infinite;
+}
+.hero-blob-5 {
+  background: radial-gradient(circle, rgba(196,145,155,0.35) 0%, rgba(196,145,155,0) 70%);
+  filter: blur(60px);
+  animation: fluidBlob5 26s ease-in-out infinite;
+}
+
+/* Fluid blob keyframes — organic multi-axis drift */
+@keyframes fluidBlob1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+  25%      { transform: translate(10%, 15%) scale(1.1) rotate(5deg); }
+  50%      { transform: translate(-5%, 10%) scale(0.95) rotate(-3deg); }
+  75%      { transform: translate(8%, -5%) scale(1.05) rotate(2deg); }
+}
+@keyframes fluidBlob2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+  25%      { transform: translate(-12%, 8%) scale(1.08) rotate(-4deg); }
+  50%      { transform: translate(8%, -10%) scale(1.12) rotate(6deg); }
+  75%      { transform: translate(-6%, 12%) scale(0.96) rotate(-2deg); }
+}
+@keyframes fluidBlob3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+  33%      { transform: translate(15%, -8%) scale(1.15) rotate(8deg); }
+  66%      { transform: translate(-10%, 5%) scale(0.9) rotate(-5deg); }
+}
+@keyframes fluidBlob4 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  25%      { transform: translate(-8%, 12%) scale(1.1); }
+  50%      { transform: translate(12%, 8%) scale(0.92); }
+  75%      { transform: translate(-5%, -10%) scale(1.08); }
+}
+@keyframes fluidBlob5 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  30%      { transform: translate(10%, -12%) scale(1.12); }
+  60%      { transform: translate(-15%, 6%) scale(0.95); }
+}
+
+/* Shimmer — sweeping light across the hero */
+.hero-shimmer {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.07) 20%,
+    transparent 40%,
+    rgba(255,255,255,0.05) 60%,
+    transparent 80%,
+    rgba(255,255,255,0.03) 100%
+  );
+  background-size: 300% 300%;
+  animation: shimmerSweep 12s ease-in-out infinite;
+}
+@keyframes shimmerSweep {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Noise overlay — fine grain texture via SVG filter */
+.hero-noise {
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* ═══════════════════════════════════════════ */
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
