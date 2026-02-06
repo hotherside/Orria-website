@@ -5,8 +5,8 @@
 I've added two new pages to your Orria website:
 
 ### 1. Privacy Policy Page
-- **URL**: `https://[your-github-pages-url]/Orria-website/privacy`
-- **Path**: `orria_website/app/privacy/page.tsx`
+- **URL**: `https://orria.app/privacy`
+- **Path**: `app/privacy/page.tsx`
 - Complete, professional privacy policy covering:
   - Information collection (email, name, user content)
   - How data is used
@@ -18,12 +18,12 @@ I've added two new pages to your Orria website:
   - Contact information
 
 ### 2. Support Page
-- **URL**: `https://[your-github-pages-url]/Orria-website/support`
-- **Path**: `orria_website/app/support/page.tsx`
+- **URL**: `https://orria.app/support`
+- **Path**: `app/support/page.tsx`
 - Comprehensive FAQ covering:
   - What is Orria
   - Account creation
-  - Pricing information
+  - Pricing: Free tier and Pro ($9.99 USD/month)
   - AI features
   - Privacy settings
   - Account deletion
@@ -42,13 +42,13 @@ I've added two new pages to your Orria website:
 Use this Privacy Policy URL in App Store Connect:
 
 ```
-https://[your-github-username].github.io/Orria-website/privacy
+https://orria.app/privacy
 ```
 
 Use this Support URL:
 
 ```
-https://[your-github-username].github.io/Orria-website/support
+https://orria.app/support
 ```
 
 Or use the email directly:
@@ -82,8 +82,8 @@ Make sure GitHub Pages is enabled in your repo settings.
 ### 2. Verify URLs Work
 
 After deploying, test these URLs:
-- Privacy: `https://[username].github.io/Orria-website/privacy`
-- Support: `https://[username].github.io/Orria-website/support`
+- Privacy: `https://orria.app/privacy`
+- Support: `https://orria.app/support`
 
 ### 3. Update App Store Connect
 
@@ -101,25 +101,32 @@ You can either:
 
 ```
 Created:
-- orria_website/app/privacy/page.tsx
-- orria_website/app/support/page.tsx
+- app/privacy/page.tsx
+- app/support/page.tsx
 
 Modified:
-- orria_website/components/Footer.tsx (updated links)
+- components/Footer.tsx (updated links)
+- components/Pricing.tsx (simplified to Free + Pro tiers, removed Pay as You Go, prices in USD)
 
 Built:
-- orria_website/out/ (static site ready for deployment)
+- out/ (static site ready for deployment)
 ```
+
+## Pricing
+
+Two tiers only:
+- **Free**: $0/forever — Unlimited private decisions, free AI summaries, 3 premium AI insights, community access, deadline reminders, outcome tracking
+- **Pro**: $9.99 USD/month — Everything in Free plus unlimited premium AI insights, all 4 AI agent perspectives, anonymous posting, priority visibility boosts, advanced pattern analytics
 
 ## Privacy Policy Summary
 
 The privacy policy is comprehensive and covers:
-- ✅ Data collection transparency
-- ✅ Third-party services (Supabase, OpenAI, RevenueCat)
-- ✅ User rights under GDPR/CCPA
-- ✅ Children's privacy (COPPA compliance)
-- ✅ AI data processing disclosure
-- ✅ Contact information for data requests
+- Data collection transparency
+- Third-party services (Supabase, OpenAI, RevenueCat)
+- User rights under GDPR/CCPA
+- Children's privacy (COPPA compliance)
+- AI data processing disclosure
+- Contact information for data requests
 
 This meets Apple's App Store requirements and privacy regulations.
 

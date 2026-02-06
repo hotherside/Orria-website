@@ -37,23 +37,6 @@ const pricingPlans = [
     ],
     cta: "Upgrade to Pro",
     popular: true,
-    note: "Or $99.99/year (save 17%)",
-  },
-  {
-    name: "Pay as You Go",
-    tagline: "Try before you commit",
-    price: "$0.99",
-    period: "/each",
-    description: "Buy individual premium features when you need them.",
-    features: [
-      "AI Insight Pack",
-      "One premium analysis with all 4 agents",
-      "Priority Boost Pack",
-      "48-hour visibility boost",
-      "No subscription required",
-    ],
-    cta: "Buy When Needed",
-    popular: false,
   },
 ];
 
@@ -92,7 +75,7 @@ export function Pricing() {
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <PricingCard key={index} plan={plan} index={index} />
           ))}
@@ -106,7 +89,7 @@ export function Pricing() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center text-[#8C857A] mt-12"
         >
-          All prices in AUD. Cancel anytime.
+          All prices in USD. Cancel anytime.
         </motion.p>
       </div>
     </section>
