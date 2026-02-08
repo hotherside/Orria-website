@@ -155,8 +155,7 @@ export default function PrivacyPolicy() {
             <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
               <li>Supabase (database and authentication)</li>
               <li>OpenAI (AI insights)</li>
-              <li>RevenueCat (subscription management)</li>
-              <li>Apple (payments and analytics)</li>
+              <li>Apple (payments, subscriptions, and analytics)</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">
