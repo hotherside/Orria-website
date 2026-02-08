@@ -142,9 +142,6 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
               {plan.period}
             </span>
           </div>
-          {plan.note && (
-            <p className="text-sm text-[#7B9E87] mt-2">{plan.note}</p>
-          )}
         </div>
 
         <p className={`text-sm ${isPro ? 'text-white/70' : 'text-[#5C554C]'} mb-6 leading-relaxed`}>
