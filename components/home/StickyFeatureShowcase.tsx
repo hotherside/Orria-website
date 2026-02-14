@@ -127,7 +127,7 @@ export function StickyFeatureShowcase() {
   };
 
   return (
-    <section className="bg-cream-50 py-24 md:py-32">
+    <section id="product" className="bg-cream-50 py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header — Introducing Orria + How It Works merged */}
         <motion.div
@@ -135,7 +135,7 @@ export function StickyFeatureShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="text-cyan-500 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Introducing

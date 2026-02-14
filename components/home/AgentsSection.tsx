@@ -65,7 +65,7 @@ export function AgentsSection() {
   const [hoveredAgent, setHoveredAgent] = useState<string | null>(null);
 
   return (
-    <section className="py-24 md:py-32 bg-cream-100">
+    <section id="agents" className="py-14 md:py-20 bg-cream-100">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -73,7 +73,7 @@ export function AgentsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportSettings}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
             Your Roundtable

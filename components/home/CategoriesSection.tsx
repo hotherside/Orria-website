@@ -98,9 +98,9 @@ function InfinityPill() {
 
 export function CategoriesSection() {
   return (
-    <section className="pt-4 md:pt-8 pb-24 md:pb-32 bg-cream-100 overflow-hidden">
+    <section className="pt-2 md:pt-4 pb-14 md:pb-20 bg-cream-100 overflow-hidden">
       {/* Header */}
-      <div className="max-w-4xl mx-auto px-6 text-center mb-14">
+      <div className="max-w-4xl mx-auto px-6 text-center mb-10">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -154,7 +154,7 @@ export function CategoriesSection() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportSettings}
-        className="max-w-4xl mx-auto px-6 text-center mt-16"
+        className="max-w-4xl mx-auto px-6 text-center mt-10"
       >
         <p className="text-text-secondary text-base">
           <span className="text-text-primary font-semibold">~35,000 decisions a day.</span>{" "}

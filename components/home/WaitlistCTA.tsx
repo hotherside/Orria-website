@@ -8,7 +8,7 @@ export function WaitlistCTA() {
   return (
     <section
       id="waitlist"
-      className="py-24 md:py-32 bg-gradient-to-b from-cream-100 to-cream-200"
+      className="py-14 md:py-20 bg-gradient-to-b from-cream-100 to-cream-200"
     >
       <div className="max-w-3xl mx-auto px-6 text-center">
         <motion.div
