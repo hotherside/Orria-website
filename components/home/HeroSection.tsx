@@ -333,24 +333,10 @@ export function HeroSection() {
                 delay: 0.4,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-base md:text-lg text-text-primary font-medium mb-3 max-w-lg"
+              className="text-base md:text-lg text-text-primary font-medium mb-6 max-w-lg"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
               One place to think through every decision that matters — with multiple AI perspectives, real human feedback, and a living journal that grows wiser with you.
-            </motion.p>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 0.5,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="text-sm md:text-base text-text-secondary mb-6 max-w-lg leading-relaxed"
-            >
-              AI perspectives that challenge your blind spots. Community feedback from people who&apos;ve been there. A journal that remembers what shaped you.
             </motion.p>
 
             {/* Waitlist — directly under text */}
