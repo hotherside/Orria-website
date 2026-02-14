@@ -23,51 +23,63 @@ import {
   Rocket,
   Target,
   Calendar,
+  Building2,
+  Landmark,
+  Shield,
+  FileText,
+  BarChart3,
+  Eye,
+  ArrowRight,
+  Zap,
+  Lock,
+  BookOpen,
+  Briefcase,
 } from "lucide-react";
 
 /* ── Data ─────────────────────────────────────────── */
 
 const opportunityStats = [
-  { value: 400, prefix: "$", suffix: "B", label: "Lost annually to decision fatigue", source: "World Economic Forum" },
+  { value: 400, prefix: "$", suffix: "B", label: "Lost annually to decision fatigue in organizations", source: "World Economic Forum" },
   { value: 35, suffix: "K", label: "Decisions made per person per day", source: "Various studies" },
   { value: 85, suffix: "%", label: "Adults report anxiety about major life decisions", source: "APA Research" },
+  { value: 61, suffix: "%", label: "Executives say poor decisions are as frequent as good ones", source: "McKinsey" },
 ];
 
 const howItWorks = [
   {
     icon: Mic,
     step: "01",
-    title: "Speak",
-    description: "Tap the mic, say what\u2019s on your mind. AI structures your messy thoughts into a clear decision framework.",
+    title: "Speak or Type",
+    description: "No forms, no templates. Just say what\u2019s on your mind. AI structures the mess into a clear decision framework in seconds.",
     color: "#0891B2",
   },
   {
     icon: Users,
     step: "02",
-    title: "Explore",
-    description: "Four AI personalities challenge your blind spots. Share with the community for real human perspectives.",
+    title: "Get Perspectives",
+    description: "Four distinct AI personalities challenge your blind spots from every angle. Then share with real humans who\u2019ve been there.",
     color: "#6366F1",
   },
   {
     icon: Sparkles,
     step: "03",
     title: "Decide & Remember",
-    description: "Make the call. Journal the outcome. Build a personal record of wisdom that compounds over time.",
+    description: "Make the call. Set a deadline. Journal the outcome. Build a living record of wisdom that compounds over time.",
     color: "#E5A53D",
   },
 ];
 
 const traction = [
-  { icon: Target, label: "App built end-to-end", detail: "Beta-ready, full feature set" },
-  { icon: Calendar, label: "Launching 2026", detail: "Final testing phase" },
-  { icon: Rocket, label: "Growing waitlist", detail: "Early adopters signing up daily" },
+  { icon: Zap, label: "Built in 28 days", detail: "3 major versions, 162-item QA sweep" },
+  { icon: Calendar, label: "Beta: Late Feb 2026", detail: "Closed beta with early adopters" },
+  { icon: Rocket, label: "Launch: March 2026", detail: "App Store public release" },
 ];
 
 const markets = [
   { title: "Decision Intelligence", current: "$16.3B", future: "$50.1B", year: "2030", cagr: "24.7%", source: "MarketsandMarkets", barWidth: "60%" },
-  { title: "AI Companion", current: "$37.1B", future: "$552.5B", year: "2035", cagr: "31%", source: "Precedence Research", barWidth: "100%" },
+  { title: "AI Companion & Copilot", current: "$37.1B", future: "$552.5B", year: "2035", cagr: "31%", source: "Precedence Research", barWidth: "100%" },
   { title: "Mental Wellness Apps", current: "$7.2B", future: "$22.5B", year: "2033", cagr: "15.2%", source: "Industry Research", barWidth: "35%" },
-  { title: "AI Assistant", current: "$3.4B", future: "$21.1B", year: "2030", cagr: "44.5%", source: "Industry Research", barWidth: "30%" },
+  { title: "AI Virtual Assistant", current: "$3.4B", future: "$21.1B", year: "2030", cagr: "44.5%", source: "Industry Research", barWidth: "30%" },
 ];
 
 const competitors = [
@@ -84,17 +96,96 @@ const whyNow = [
   {
     icon: Brain,
     title: "AI is conversational now",
-    description: "Multi-turn facilitation at ~$0.005/session. Before: too shallow. Now: genuinely helpful.",
+    description: "Multi-turn facilitation at ~$0.005/session. GPT-4o makes genuine, nuanced thinking partners possible at scale for the first time.",
   },
   {
     icon: SmartphoneNfc,
-    title: "Social media fatigue",
-    description: "Usage down 10% since 2022. Two-thirds experience platform fatigue. People want substance.",
+    title: "Social media fatigue is real",
+    description: "Usage down 10% since 2022. Two-thirds of users report platform fatigue. People are craving substance, depth, and tools that respect their time.",
   },
   {
     icon: Globe,
-    title: "Decision anxiety epidemic",
-    description: "Gen Z reports 2x more decision anxiety than previous generations. The need is urgent and growing.",
+    title: "Decision anxiety is an epidemic",
+    description: "Gen Z reports 2\u00D7 more decision anxiety than previous generations. The need is urgent, growing, and completely unmet by existing tools.",
+  },
+];
+
+/* B2B + Public Sector use cases */
+const b2bUseCases = [
+  {
+    icon: Building2,
+    title: "Enterprise Decision Logs",
+    accent: "#0891B2",
+    description: "Organizations log key strategic decisions \u2014 from hiring and M&A to product pivots \u2014 creating a living institutional memory. Teams can search, learn from, and build on the decisions that shaped the company.",
+    features: [
+      "Private team-wide decision journals",
+      "Searchable institutional decision history",
+      "AI-assisted post-mortem and retrospectives",
+      "Decision quality analytics for leadership",
+    ],
+  },
+  {
+    icon: Landmark,
+    title: "Government & Public Sector Transparency",
+    accent: "#6366F1",
+    description: "Departments and agencies log policy decisions, budget allocations, and administrative choices \u2014 optionally shared with the public. A verifiable record of how and why decisions were made, building trust at every level of governance.",
+    features: [
+      "Public-facing decision transparency portals",
+      "Inter-department decision visibility",
+      "Audit-ready decision trails with reasoning",
+      "Administration change documentation",
+    ],
+  },
+  {
+    icon: Shield,
+    title: "Compliance & Risk Management",
+    accent: "#E5A53D",
+    description: "Regulated industries need to show their work. Orria\u2019s decision logs with AI-generated reasoning summaries create a defensible audit trail \u2014 reducing liability and improving governance.",
+    features: [
+      "Timestamped, immutable decision records",
+      "AI-generated reasoning documentation",
+      "Risk assessment perspectives built-in",
+      "Exportable compliance reports",
+    ],
+  },
+  {
+    icon: BookOpen,
+    title: "Education & Leadership Development",
+    accent: "#9333EA",
+    description: "Universities, business schools, and corporate training programs use decision journals to develop critical thinking. Students and emerging leaders learn to structure decisions, consider multiple perspectives, and reflect on outcomes.",
+    features: [
+      "Structured decision-making curriculum tool",
+      "Cohort-based reflection and peer feedback",
+      "Leadership pattern analytics over time",
+      "Case study generation from real decisions",
+    ],
+  },
+];
+
+const expansionPaths = [
+  {
+    phase: "Now",
+    title: "Consumer \u2014 D2C",
+    description: "Personal decision companion for individuals navigating life\u2019s crossroads.",
+    color: "#0891B2",
+  },
+  {
+    phase: "Next",
+    title: "Teams & Organizations",
+    description: "Private team decision journals. Shared institutional wisdom. Decision quality dashboards.",
+    color: "#6366F1",
+  },
+  {
+    phase: "Then",
+    title: "Public Sector & Governance",
+    description: "Transparency portals. Department decision logs. Audit-ready governance records.",
+    color: "#E5A53D",
+  },
+  {
+    phase: "Beyond",
+    title: "Platform & API",
+    description: "Decision intelligence infrastructure. Embeddable thinking tools. Decision data insights.",
+    color: "#9333EA",
   },
 ];
 
@@ -104,7 +195,7 @@ export default function PotentialsPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-cream-100" />
         <FloatingElements count={10} colors={["#0891B2", "#6366F1", "#E5A53D"]} className="opacity-40" />
 
@@ -121,22 +212,25 @@ export default function PotentialsPage() {
               <br />
               <span className="italic text-cyan-600">Intelligence Platform.</span>
             </h1>
-            <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-              Helping people think through life&apos;s crossroads — with AI perspectives and real community. A new category, a massive market, and perfect timing.
+            <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed mb-2">
+              Orria starts as a personal thinking partner. But the platform is built to scale into enterprise decision logs, government transparency, and institutional wisdom.
+            </p>
+            <p className="text-text-muted text-base max-w-xl mx-auto">
+              A new category. A massive market. Perfect timing. And a path from consumer to platform.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* ── The Opportunity ── */}
-      <section className="py-20 md:py-28 bg-cream-100">
+      <section className="py-16 md:py-24 bg-cream-100">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
               The Opportunity
@@ -145,28 +239,27 @@ export default function PotentialsPage() {
               className="text-heading text-text-primary"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
-              A problem everyone has.
+              Everyone makes decisions.
               <br />
-              <span className="italic">No one has solved.</span>
+              <span className="italic">No one does it well.</span>
             </h2>
           </motion.div>
 
-          {/* Stat boxes */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
           >
             {opportunityStats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={staggerItem}
-                className="bg-white rounded-2xl p-8 border border-cream-300/50 shadow-soft text-center"
+                className="bg-white rounded-2xl p-7 border border-cream-300/50 shadow-soft text-center"
               >
                 <p
-                  className="text-4xl md:text-5xl font-bold text-cyan-600 mb-3"
+                  className="text-3xl md:text-4xl font-bold text-cyan-600 mb-2"
                   style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
                 >
                   <AnimatedCounter target={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix || ""} />
@@ -180,17 +273,17 @@ export default function PotentialsPage() {
       </section>
 
       {/* ── How It Works ── */}
-      <section className="py-20 md:py-28 bg-cream-50">
+      <section className="py-16 md:py-24 bg-cream-50">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
-              How It Works
+              The Product
             </p>
             <h2
               className="text-heading text-text-primary"
@@ -198,9 +291,6 @@ export default function PotentialsPage() {
             >
               Three steps. <span className="italic">That&apos;s it.</span>
             </h2>
-            <p className="text-text-secondary mt-3">
-              From messy thought to confident decision in minutes.
-            </p>
           </motion.div>
 
           <motion.div
@@ -208,15 +298,15 @@ export default function PotentialsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-7"
           >
-            {howItWorks.map((step) => (
+            {howItWorks.map((step, i) => (
               <motion.div
                 key={step.title}
                 variants={staggerItem}
                 className="relative bg-white rounded-2xl p-8 border border-cream-300/50 shadow-soft text-center"
               >
-                <span className="text-xs font-mono text-text-muted/40 font-bold absolute top-4 left-5">
+                <span className="text-xs font-mono text-text-muted/30 font-bold absolute top-4 left-5">
                   {step.step}
                 </span>
                 <motion.div
@@ -230,6 +320,167 @@ export default function PotentialsPage() {
                 </motion.div>
                 <h3 className="text-text-primary font-semibold text-lg mb-3">{step.title}</h3>
                 <p className="text-text-secondary text-sm leading-relaxed">{step.description}</p>
+
+                {/* Connecting arrow */}
+                {i < howItWorks.length - 1 && (
+                  <div className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 items-center justify-center">
+                    <ArrowRight size={16} className="text-cream-400" />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Beyond Consumer — B2B & Public Sector ── */}
+      <section className="py-16 md:py-24 bg-cream-100 relative overflow-hidden">
+        <FloatingElements count={5} colors={["#6366F1", "#E5A53D", "#9333EA"]} className="opacity-20" />
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="text-center mb-6"
+          >
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
+              Beyond Consumer
+            </p>
+            <h2
+              className="text-heading text-text-primary mb-4"
+              style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+            >
+              Decisions don&apos;t just shape people.
+              <br />
+              <span className="italic text-cyan-600">They shape organizations and nations.</span>
+            </h2>
+            <p className="text-text-secondary max-w-2xl mx-auto text-base leading-relaxed">
+              Every company, government department, and institution makes thousands of consequential decisions — and almost none of them are captured, searchable, or learnable. Orria changes that.
+            </p>
+          </motion.div>
+
+          {/* Use case cards */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12"
+          >
+            {b2bUseCases.map((useCase) => (
+              <motion.div
+                key={useCase.title}
+                variants={staggerItem}
+                className="bg-white rounded-2xl p-8 border border-cream-300/50 shadow-soft hover:shadow-lg transition-shadow duration-300 group"
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${useCase.accent}12` }}
+                  >
+                    <useCase.icon size={24} style={{ color: useCase.accent }} />
+                  </div>
+                  <h3
+                    className="text-text-primary font-semibold text-lg"
+                    style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+                  >
+                    {useCase.title}
+                  </h3>
+                </div>
+                <p className="text-text-secondary text-sm leading-relaxed mb-5">
+                  {useCase.description}
+                </p>
+                <div className="grid grid-cols-1 gap-2">
+                  {useCase.features.map((feature) => (
+                    <div key={feature} className="flex items-center gap-2.5">
+                      <Check size={14} style={{ color: useCase.accent }} className="flex-shrink-0" />
+                      <span className="text-text-secondary text-xs">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Transparency callout */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="mt-10 bg-white rounded-2xl border border-cyan-500/15 p-8 max-w-3xl mx-auto"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center flex-shrink-0 mt-1">
+                <Eye size={20} className="text-cyan-600" />
+              </div>
+              <div>
+                <h4 className="text-text-primary font-semibold mb-2">The Transparency Thesis</h4>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  Imagine a world where a government department shares its key policy decisions publicly — not just the outcome, but the reasoning, the perspectives considered, and the trade-offs weighed. Where a company&apos;s leadership logs show not just what was decided, but <span className="font-semibold text-text-primary">how they think</span>. Orria makes this possible: structured, searchable, and verifiable decision records that build institutional trust over time.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Expansion Path ── */}
+      <section className="py-16 md:py-24 bg-cream-50">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="text-center mb-14"
+          >
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
+              Growth Path
+            </p>
+            <h2
+              className="text-heading text-text-primary"
+              style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+            >
+              Consumer first.
+              <br />
+              <span className="italic">Platform eventually.</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="grid grid-cols-1 md:grid-cols-4 gap-5"
+          >
+            {expansionPaths.map((path, i) => (
+              <motion.div
+                key={path.phase}
+                variants={staggerItem}
+                className="relative bg-white rounded-2xl p-6 border border-cream-300/50 shadow-soft"
+              >
+                <div
+                  className="text-[10px] font-bold uppercase tracking-widest mb-3 px-2.5 py-1 rounded-full inline-block"
+                  style={{ backgroundColor: `${path.color}12`, color: path.color }}
+                >
+                  {path.phase}
+                </div>
+                <h3
+                  className="text-text-primary font-semibold text-base mb-2"
+                  style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+                >
+                  {path.title}
+                </h3>
+                <p className="text-text-secondary text-xs leading-relaxed">{path.description}</p>
+
+                {i < expansionPaths.length - 1 && (
+                  <div className="hidden md:block absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 text-cream-400">
+                    <ArrowRight size={14} />
+                  </div>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -237,27 +488,8 @@ export default function PotentialsPage() {
       </section>
 
       {/* ── Traction ── */}
-      <section className="py-20 md:py-28 bg-cream-100">
+      <section className="py-16 md:py-24 bg-cream-100">
         <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="text-center mb-12"
-          >
-            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
-              Traction
-            </p>
-            <h2
-              className="text-heading text-text-primary"
-              style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
-            >
-              Building in public. <span className="italic">Moving fast.</span>
-            </h2>
-          </motion.div>
-
-          {/* Live waitlist counter */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -265,7 +497,18 @@ export default function PotentialsPage() {
             viewport={viewportSettings}
             className="text-center mb-10"
           >
-            <WaitlistForm variant="section" />
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
+              Traction & Speed
+            </p>
+            <h2
+              className="text-heading text-text-primary mb-3"
+              style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+            >
+              Built in public. <span className="italic">Moving fast.</span>
+            </h2>
+            <p className="text-text-secondary max-w-lg mx-auto text-sm">
+              From first commit to beta-ready in under a month. Three major versions. Over 150 QA items resolved. Solo-built.
+            </p>
           </motion.div>
 
           {/* Milestones */}
@@ -274,7 +517,7 @@ export default function PotentialsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10"
           >
             {traction.map((item) => (
               <motion.div
@@ -292,20 +535,30 @@ export default function PotentialsPage() {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Waitlist */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="text-center"
+          >
+            <WaitlistForm variant="section" />
+          </motion.div>
         </div>
       </section>
 
-      {/* ── Market Size — now LIGHT ── */}
-      <section className="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
+      {/* ── Market Size ── */}
+      <section className="py-16 md:py-24 bg-cream-50 relative overflow-hidden">
         <FloatingElements count={5} colors={["#0891B2", "#6366F1", "#E5A53D"]} className="opacity-30" />
-
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
               Market Size
@@ -314,20 +567,19 @@ export default function PotentialsPage() {
               className="text-heading text-text-primary mb-4"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
-              Four converging <span className="italic text-cyan-600">B$+ markets</span>
+              Four converging <span className="italic text-cyan-600">billion-dollar markets</span>
             </h2>
             <p className="text-text-secondary max-w-xl mx-auto">
-              Orria sits at the intersection of four massive, fast-growing market categories.
+              Orria sits at the intersection of four massive, fast-growing categories — each independently a compelling opportunity.
             </p>
           </motion.div>
 
-          {/* Market bars */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="space-y-5 mb-12"
+            className="space-y-4 mb-10"
           >
             {markets.map((market) => (
               <motion.div
@@ -344,7 +596,6 @@ export default function PotentialsPage() {
                     <span className="text-text-muted text-xs">by {market.year}</span>
                   </div>
                 </div>
-                {/* Animated bar */}
                 <div className="h-2 bg-cream-200 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
@@ -364,7 +615,7 @@ export default function PotentialsPage() {
             ))}
           </motion.div>
 
-          {/* Total */}
+          {/* Combined TAM */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -379,31 +630,34 @@ export default function PotentialsPage() {
               >
                 <AnimatedCounter target={600} prefix="$" suffix="B+" />
               </p>
-              <p className="text-text-secondary text-sm">Combined addressable market</p>
+              <p className="text-text-secondary text-sm">Combined addressable market by 2035</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ── Competitive Edge ── */}
-      <section className="py-20 md:py-28 bg-cream-100">
+      <section className="py-16 md:py-24 bg-cream-100">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
               Competitive Edge
             </p>
             <h2
-              className="text-heading text-text-primary"
+              className="text-heading text-text-primary mb-3"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
               Nothing else <span className="italic">does this.</span>
             </h2>
+            <p className="text-text-secondary max-w-lg mx-auto text-sm">
+              People use ChatGPT, therapists, friends, and pro/con lists. None combine structured thinking, multiple perspectives, decision memory, community, and voice.
+            </p>
           </motion.div>
 
           {/* Comparison table */}
@@ -414,7 +668,6 @@ export default function PotentialsPage() {
             viewport={viewportSettings}
             className="bg-white rounded-2xl border border-cream-300/50 shadow-soft overflow-hidden"
           >
-            {/* Header */}
             <div className="grid grid-cols-6 gap-0 border-b border-cream-200 bg-cream-50">
               <div className="p-4" />
               {competitorCriteria.map((c) => (
@@ -423,7 +676,6 @@ export default function PotentialsPage() {
                 </div>
               ))}
             </div>
-            {/* Rows */}
             {competitors.map((comp, rowIdx) => (
               <motion.div
                 key={comp.name}
@@ -459,16 +711,19 @@ export default function PotentialsPage() {
       </section>
 
       {/* ── Why Now ── */}
-      <section className="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
-        <FloatingElements count={5} colors={["#0891B2", "#6366F1", "#E5A53D"]} className="opacity-30" />
+      <section className="py-16 md:py-24 bg-cream-50 relative overflow-hidden">
+        <FloatingElements count={4} colors={["#0891B2", "#6366F1", "#E5A53D"]} className="opacity-25" />
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
+              Timing
+            </p>
             <h2
               className="text-heading text-text-primary"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
@@ -501,8 +756,72 @@ export default function PotentialsPage() {
         </div>
       </section>
 
-      {/* ── Vision — now LIGHT ── */}
-      <section className="py-20 md:py-28 bg-cream-100 relative overflow-hidden">
+      {/* ── Revenue Model ── */}
+      <section className="py-16 md:py-24 bg-cream-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="text-center mb-14"
+          >
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
+              Business Model
+            </p>
+            <h2
+              className="text-heading text-text-primary"
+              style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+            >
+              Multiple revenue streams. <span className="italic">Clear path to scale.</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            <motion.div variants={staggerItem} className="bg-white rounded-2xl p-7 border border-cream-300/50 shadow-soft">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
+                <Briefcase size={20} className="text-cyan-600" />
+              </div>
+              <h3 className="text-text-primary font-semibold mb-2">Consumer Subscription</h3>
+              <p className="text-text-secondary text-sm leading-relaxed mb-3">
+                Freemium with Orria Pro at $4.99/mo or $39.99/yr. Unlimited AI conversations, advanced insights, extended journal history.
+              </p>
+              <p className="text-xs font-semibold text-cyan-600">$4.99 \u2013 $39.99/yr per user</p>
+            </motion.div>
+
+            <motion.div variants={staggerItem} className="bg-white rounded-2xl p-7 border border-cream-300/50 shadow-soft">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-4">
+                <Building2 size={20} style={{ color: "#6366F1" }} />
+              </div>
+              <h3 className="text-text-primary font-semibold mb-2">Enterprise Licenses</h3>
+              <p className="text-text-secondary text-sm leading-relaxed mb-3">
+                Per-seat pricing for organizations. Team decision journals, admin dashboards, SSO, and data residency controls.
+              </p>
+              <p className="text-xs font-semibold" style={{ color: "#6366F1" }}>Per-seat SaaS pricing</p>
+            </motion.div>
+
+            <motion.div variants={staggerItem} className="bg-white rounded-2xl p-7 border border-cream-300/50 shadow-soft">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                <Landmark size={20} style={{ color: "#E5A53D" }} />
+              </div>
+              <h3 className="text-text-primary font-semibold mb-2">Public Sector Contracts</h3>
+              <p className="text-text-secondary text-sm leading-relaxed mb-3">
+                Government and institutional licensing for transparency portals, department-wide decision logs, and compliance tooling.
+              </p>
+              <p className="text-xs font-semibold" style={{ color: "#E5A53D" }}>Contract-based</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Vision ── */}
+      <section className="py-16 md:py-24 bg-cream-50 relative overflow-hidden">
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <motion.div
             variants={fadeUp}
@@ -521,18 +840,18 @@ export default function PotentialsPage() {
               <br />
               <span className="italic text-cyan-600">their biggest decisions alone.</span>
             </h2>
-            <p className="text-text-secondary max-w-xl mx-auto leading-relaxed mb-3">
-              Built by a founder who&apos;s lived the problem across 3 continents.
+            <p className="text-text-secondary max-w-xl mx-auto leading-relaxed mb-4">
+              We started building Orria on January 18th, 2026. In under a month, we shipped three major versions, resolved 162 QA items, and built a platform that works across the full decision lifecycle.
             </p>
             <p className="text-text-muted text-sm max-w-xl mx-auto leading-relaxed">
-              Every career pivot, every relocation, every relationship crossroad — these aren&apos;t just features we built. They&apos;re decisions we&apos;ve wrestled with. Orria exists because we needed it first.
+              Every career pivot, every relocation, every relationship crossroad, every policy debate, every strategic bet — these aren&apos;t just features we built. They&apos;re decisions we&apos;ve wrestled with. Orria exists because the world needs a better way to think.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-cream-100 to-cream-200">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-cream-100 to-cream-200">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <motion.div
             variants={fadeUp}
@@ -559,7 +878,7 @@ export default function PotentialsPage() {
             </a>
             <div className="pt-8 border-t border-cream-300">
               <p className="text-text-muted text-sm mb-4">
-                Or join the waitlist for the personal app
+                Or join the waitlist for early access
               </p>
               <WaitlistForm variant="section" />
             </div>
