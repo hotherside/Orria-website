@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import {
   fadeUp,
   staggerContainer,
@@ -16,7 +17,6 @@ import {
   Clock,
   RefreshCw,
   Users,
-  Heart,
 } from "lucide-react";
 
 const beliefs = [
@@ -67,6 +67,14 @@ const framework = [
     description: "Record outcomes. Reflect. Learn. Your decisions become your autobiography.",
     color: "var(--amber-500)",
   },
+];
+
+const timeline = [
+  { year: "2024", label: "The idea", detail: "Born from a personal crossroad that had no good tool" },
+  { year: "Early 2025", label: "Design & build", detail: "Full iOS app designed and engineered end-to-end" },
+  { year: "Mid 2025", label: "AI agents ship", detail: "Four AI personalities + facilitator go live" },
+  { year: "Late 2025", label: "Community & beta", detail: "Real human perspectives layer + beta testing" },
+  { year: "2026", label: "Launch", detail: "Public release on the App Store" },
 ];
 
 /* Animated pull-quote border that draws itself */
@@ -183,28 +191,164 @@ function FrameworkCard({
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      {/* ── Founder Hero — top of page ── */}
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-cream-100" />
-        <FloatingElements count={6} className="opacity-60" />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible">
-            <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
+        <FloatingElements count={4} className="opacity-40" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" className="text-center mb-12">
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
               About Orria
             </p>
             <h1
-              className="text-display text-text-primary mb-6"
-              style={{
-                fontFamily: "var(--font-playfair), Playfair Display, serif",
-              }}
+              className="text-display text-text-primary mb-4"
+              style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
-              Why Orria Exists
+              Built by someone who&apos;s
+              <br />
+              <span className="italic">lived the crossroads.</span>
             </h1>
-            <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-              Born from a frustration everyone shares — and the belief that
-              everyone deserves a thinking partner at life&apos;s crossroads.
-            </p>
           </motion.div>
+
+          {/* Two-column: Founder left, Timeline right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            {/* Left: Founder */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="bg-white rounded-2xl border border-cream-300/50 shadow-soft overflow-hidden">
+                {/* Photo */}
+                <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-cyan-500/10 to-amber-500/10 overflow-hidden">
+                  <Image
+                    src="/founder.jpg"
+                    alt="Hojae Jung, Founder of Orria"
+                    fill
+                    className="object-cover object-top"
+                    priority
+                    unoptimized
+                  />
+                </div>
+
+                {/* Bio */}
+                <div className="p-8">
+                  <h3
+                    className="text-text-primary text-xl font-semibold mb-1"
+                    style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+                  >
+                    Hojae Jung
+                  </h3>
+                  <p className="text-text-muted text-sm mb-5">Founder &amp; Builder</p>
+
+                  <div className="space-y-4 text-text-secondary text-sm leading-relaxed">
+                    <p>
+                      A product builder with an uncommon path — from the Apple Genius Bar to leading platform teams, from the front lines of the Republic of Korea and United States armies to shaping digital experiences used by thousands.
+                    </p>
+                    <p>
+                      Hojae started where great product people often do: closest to the customer. Years of solving real problems at Apple and SafetyCulture sharpened an instinct for what users actually need — not just what they ask for. That foundation evolved into leading product strategy at CoverGenius, where he built 0-to-1 platforms and rallied cross-functional teams around a shared vision.
+                    </p>
+                    <p>
+                      Between those chapters, he served in two armies — earning early promotions at every rank, leading 60+ soldiers, and developing the discipline and bias for action that defines how Orria is built: with relentless standards and zero shortcuts.
+                    </p>
+                    <p>
+                      Orria is the product of all of it — a designer&apos;s eye, a soldier&apos;s discipline, and a product leader&apos;s conviction that the tools for life&apos;s biggest decisions deserve to be extraordinary.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right: Orria Timeline */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="mb-8">
+                <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-3">
+                  Orria&apos;s Journey
+                </p>
+                <h2
+                  className="text-heading text-text-primary"
+                  style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+                >
+                  From idea to reality
+                </h2>
+              </div>
+
+              {/* Timeline */}
+              <div className="relative pl-8">
+                {/* Vertical line */}
+                <div className="absolute left-[11px] top-2 bottom-2 w-[2px] bg-cream-300" />
+
+                <div className="space-y-8">
+                  {timeline.map((item, i) => {
+                    const isLast = i === timeline.length - 1;
+                    return (
+                      <motion.div
+                        key={item.year}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 + i * 0.12 }}
+                        className="relative"
+                      >
+                        {/* Dot */}
+                        <div
+                          className={`absolute -left-8 top-1 w-[10px] h-[10px] rounded-full border-2 ${
+                            isLast
+                              ? "bg-cyan-500 border-cyan-500"
+                              : "bg-white border-cyan-400"
+                          }`}
+                        />
+                        {/* Pulse on last */}
+                        {isLast && (
+                          <motion.div
+                            className="absolute -left-8 top-1 w-[10px] h-[10px] rounded-full bg-cyan-500/40"
+                            animate={{ scale: [1, 2.5, 1], opacity: [0.6, 0, 0.6] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          />
+                        )}
+
+                        <div className="bg-white rounded-xl p-5 border border-cream-300/50 shadow-soft">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-xs font-semibold text-cyan-600 bg-cyan-500/10 px-2.5 py-0.5 rounded-full">
+                              {item.year}
+                            </span>
+                            <span className="text-sm font-semibold text-text-primary">
+                              {item.label}
+                            </span>
+                          </div>
+                          <p className="text-text-secondary text-sm leading-relaxed">
+                            {item.detail}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Current status */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className="mt-8 bg-cyan-500/5 border border-cyan-500/15 rounded-2xl p-6 text-center"
+              >
+                <p
+                  className="text-cyan-600 text-lg font-semibold mb-1"
+                  style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+                >
+                  We&apos;re almost there.
+                </p>
+                <p className="text-text-secondary text-sm">
+                  Beta testing underway. Public launch coming 2026.
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -262,7 +406,7 @@ export default function AboutPage() {
                 So we built one.&rdquo;
               </p>
               <cite className="text-text-muted text-sm not-italic mt-3 block">
-                — Founder, Orria
+                — Hojae Jung, Founder
               </cite>
             </blockquote>
           </AnimatedQuoteBorder>
@@ -410,98 +554,6 @@ export default function AboutPage() {
               <span className="text-text-secondary text-sm">
                 Plus real community perspectives from people who&apos;ve faced similar decisions
               </span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* The Founder */}
-      <section className="py-20 md:py-28 bg-cream-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="text-center mb-16"
-          >
-            <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
-              The Founder
-            </p>
-            <h2
-              className="text-heading text-text-primary"
-              style={{
-                fontFamily: "var(--font-playfair), Playfair Display, serif",
-              }}
-            >
-              Built by someone who&apos;s lived it
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="bg-white rounded-2xl border border-cream-300/50 shadow-soft p-8 md:p-10">
-              {/* Name & role */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center shadow-md">
-                  <span className="text-white text-xl font-semibold" style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}>H</span>
-                </div>
-                <div>
-                  <h3 className="text-text-primary text-lg font-semibold" style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}>
-                    Hojae Jung
-                  </h3>
-                  <p className="text-text-muted text-sm">Founder &amp; Builder</p>
-                </div>
-              </div>
-
-              {/* Bio */}
-              <div className="space-y-4 text-text-secondary leading-relaxed">
-                <p>
-                  A deep appreciation for great products, shaped across a career spanning design, technology, and leadership.
-                </p>
-                <p>
-                  With a background in design and a trained eye for craft, Hojae brings a rare intersection of aesthetic sensibility and technical depth to everything he builds. Orria isn&apos;t just functional — it&apos;s designed to feel as considered as the decisions it helps you make.
-                </p>
-                <p>
-                  Before building products, Hojae served in both the Republic of Korea Army and the United States Army — earning early promotions at every rank through Sergeant, winning multiple awards for excellence, and leading 60+ soldiers in the 2nd Infantry Division. That experience forged a discipline and willpower that carries into how Orria is built: with relentless standards, no shortcuts, and a refusal to ship anything less than exceptional.
-                </p>
-              </div>
-
-              {/* Highlights */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="rounded-xl p-4" style={{ backgroundColor: "#0891B208", border: "1px solid #0891B215" }}>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Sparkles size={14} className="text-cyan-500" />
-                    <span className="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Design</span>
-                  </div>
-                  <p className="text-text-secondary text-sm">
-                    Design degree &amp; trained eye for craft
-                  </p>
-                </div>
-                <div className="rounded-xl p-4" style={{ backgroundColor: "#C4704B08", border: "1px solid #C4704B15" }}>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Heart size={14} style={{ color: "#C4704B" }} />
-                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#C4704B" }}>Service</span>
-                  </div>
-                  <p className="text-text-secondary text-sm">
-                    ROK Army &amp; U.S. Army veteran, 2ID
-                  </p>
-                </div>
-                <div className="rounded-xl p-4" style={{ backgroundColor: "#E5A53D08", border: "1px solid #E5A53D15" }}>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Users size={14} style={{ color: "#E5A53D" }} />
-                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#E5A53D" }}>Leadership</span>
-                  </div>
-                  <p className="text-text-secondary text-sm">
-                    Led 60+ soldiers, early promotion every rank
-                  </p>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>

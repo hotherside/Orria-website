@@ -104,25 +104,24 @@ export default function PotentialsPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-dark-900 overflow-hidden">
-        <div className="absolute inset-0 hero-mesh-dark opacity-50" />
-        <div className="absolute inset-0 hero-noise pointer-events-none" />
-        <FloatingElements count={10} colors={["#22D3EE", "#6366F1", "#E5A53D"]} />
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-cream-100" />
+        <FloatingElements count={10} colors={["#0891B2", "#6366F1", "#E5A53D"]} className="opacity-40" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div variants={fadeUp} initial="hidden" animate="visible">
-            <p className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
               Potentials & Research
             </p>
             <h1
-              className="text-display text-white mb-6"
+              className="text-display text-text-primary mb-6"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
               The Decision
               <br />
-              <span className="italic text-cyan-400">Intelligence Platform.</span>
+              <span className="italic text-cyan-600">Intelligence Platform.</span>
             </h1>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
               Helping people think through life&apos;s crossroads — with AI perspectives and real community. A new category, a massive market, and perfect timing.
             </p>
           </motion.div>
@@ -296,10 +295,9 @@ export default function PotentialsPage() {
         </div>
       </section>
 
-      {/* ── Market Size ── */}
-      <section className="py-20 md:py-28 bg-dark-900 relative overflow-hidden">
-        <div className="absolute inset-0 hero-mesh-dark opacity-30" />
-        <div className="absolute inset-0 hero-noise pointer-events-none" />
+      {/* ── Market Size — now LIGHT ── */}
+      <section className="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
+        <FloatingElements count={5} colors={["#0891B2", "#6366F1", "#E5A53D"]} className="opacity-30" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <motion.div
@@ -309,16 +307,16 @@ export default function PotentialsPage() {
             viewport={viewportSettings}
             className="text-center mb-16"
           >
-            <p className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
               Market Size
             </p>
             <h2
-              className="text-heading text-white mb-4"
+              className="text-heading text-text-primary mb-4"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
-              Four converging <span className="italic text-cyan-400">B$+ markets</span>
+              Four converging <span className="italic text-cyan-600">B$+ markets</span>
             </h2>
-            <p className="text-white/50 max-w-xl mx-auto">
+            <p className="text-text-secondary max-w-xl mx-auto">
               Orria sits at the intersection of four massive, fast-growing market categories.
             </p>
           </motion.div>
@@ -335,19 +333,19 @@ export default function PotentialsPage() {
               <motion.div
                 key={market.title}
                 variants={staggerItem}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm"
+                className="bg-white rounded-2xl p-6 border border-cream-300/50 shadow-soft"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                  <h3 className="text-white font-semibold text-base">{market.title}</h3>
+                  <h3 className="text-text-primary font-semibold text-base">{market.title}</h3>
                   <div className="flex items-center gap-2 mt-1 md:mt-0">
-                    <span className="text-white/40 text-sm">{market.current}</span>
-                    <TrendingUp size={14} className="text-cyan-400" />
-                    <span className="text-cyan-400 font-semibold">{market.future}</span>
-                    <span className="text-white/30 text-xs">by {market.year}</span>
+                    <span className="text-text-muted text-sm">{market.current}</span>
+                    <TrendingUp size={14} className="text-cyan-500" />
+                    <span className="text-cyan-600 font-semibold">{market.future}</span>
+                    <span className="text-text-muted text-xs">by {market.year}</span>
                   </div>
                 </div>
                 {/* Animated bar */}
-                <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                <div className="h-2 bg-cream-200 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: market.barWidth }}
@@ -357,10 +355,10 @@ export default function PotentialsPage() {
                   />
                 </div>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 text-xs font-semibold">
+                  <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 text-xs font-semibold">
                     {market.cagr} CAGR
                   </span>
-                  <span className="text-white/30 text-xs">{market.source}</span>
+                  <span className="text-text-muted text-xs">{market.source}</span>
                 </div>
               </motion.div>
             ))}
@@ -374,14 +372,14 @@ export default function PotentialsPage() {
             viewport={viewportSettings}
             className="text-center"
           >
-            <div className="inline-block bg-white/5 border border-white/10 rounded-2xl px-10 py-8 backdrop-blur-sm">
+            <div className="inline-block bg-white rounded-2xl px-10 py-8 border border-cream-300/50 shadow-soft">
               <p
-                className="text-4xl md:text-5xl font-bold text-white mb-2"
+                className="text-4xl md:text-5xl font-bold text-cyan-600 mb-2"
                 style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
               >
                 <AnimatedCounter target={600} prefix="$" suffix="B+" />
               </p>
-              <p className="text-white/60 text-sm">Combined addressable market</p>
+              <p className="text-text-secondary text-sm">Combined addressable market</p>
             </div>
           </motion.div>
         </div>
@@ -462,7 +460,7 @@ export default function PotentialsPage() {
 
       {/* ── Why Now ── */}
       <section className="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
-        <FloatingElements count={5} colors={["#0891B2", "#6366F1", "#E5A53D"]} />
+        <FloatingElements count={5} colors={["#0891B2", "#6366F1", "#E5A53D"]} className="opacity-30" />
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
@@ -503,9 +501,8 @@ export default function PotentialsPage() {
         </div>
       </section>
 
-      {/* ── Vision ── */}
-      <section className="py-20 md:py-28 bg-dark-900 relative overflow-hidden">
-        <div className="absolute inset-0 hero-mesh-dark opacity-30" />
+      {/* ── Vision — now LIGHT ── */}
+      <section className="py-20 md:py-28 bg-cream-100 relative overflow-hidden">
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <motion.div
             variants={fadeUp}
@@ -513,21 +510,21 @@ export default function PotentialsPage() {
             whileInView="visible"
             viewport={viewportSettings}
           >
-            <p className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-6">
+            <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-6">
               The Vision
             </p>
             <h2
-              className="text-heading text-white mb-6"
+              className="text-heading text-text-primary mb-6"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
               A world where no one faces
               <br />
-              <span className="italic text-cyan-400">their biggest decisions alone.</span>
+              <span className="italic text-cyan-600">their biggest decisions alone.</span>
             </h2>
-            <p className="text-white/50 max-w-xl mx-auto leading-relaxed mb-3">
+            <p className="text-text-secondary max-w-xl mx-auto leading-relaxed mb-3">
               Built by a founder who&apos;s lived the problem across 3 continents.
             </p>
-            <p className="text-white/30 text-sm max-w-xl mx-auto leading-relaxed">
+            <p className="text-text-muted text-sm max-w-xl mx-auto leading-relaxed">
               Every career pivot, every relocation, every relationship crossroad — these aren&apos;t just features we built. They&apos;re decisions we&apos;ve wrestled with. Orria exists because we needed it first.
             </p>
           </motion.div>
