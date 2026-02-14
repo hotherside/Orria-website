@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Sparkles, Link2, Heart } from "lucide-react";
 
@@ -12,6 +13,22 @@ interface WaitlistSuccessModalProps {
 
 export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccessModalProps) {
   const [copied, setCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Wait for client mount so createPortal has a target
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
 
   const handleCopyLink = async () => {
     try {
@@ -23,7 +40,9 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
     }
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -33,17 +52,20 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999]"
           />
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-auto px-4"
+          {/* Modal — centered with flexbox to avoid transform containment issues */}
+          <div
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 pointer-events-none"
           >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="w-full max-w-md pointer-events-auto"
+            >
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
               {/* Top accent bar */}
               <div className="h-1.5 bg-gradient-to-r from-cyan-500 via-cyan-400 to-amber-400" />
@@ -164,10 +186,12 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
                 </motion.button>
               </div>
             </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
 
