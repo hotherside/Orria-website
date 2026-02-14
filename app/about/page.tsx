@@ -415,44 +415,93 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Building Approach */}
-      <section className="py-20 md:py-28 bg-dark-900 relative overflow-hidden">
-        <div className="absolute inset-0 hero-mesh-dark opacity-30" />
-        <FloatingElements
-          count={6}
-          colors={["#22D3EE", "#0891B2", "#155E75"]}
-          className="opacity-30"
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      {/* The Founder */}
+      <section className="py-20 md:py-28 bg-cream-50">
+        <div className="max-w-4xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
+            className="text-center mb-16"
           >
-            <p className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">
-              How We Build
+            <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
+              The Founder
             </p>
             <h2
-              className="text-heading text-white mb-6"
+              className="text-heading text-text-primary"
               style={{
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              Small team.
-              <br />
-              <span className="italic text-cyan-400">
-                Deep empathy.
-              </span>
+              Built by someone who&apos;s lived it
             </h2>
-            <p className="text-white/60 max-w-xl mx-auto leading-relaxed mb-8">
-              Orria is built with care by a small team using AI as a development
-              partner. We believe great products come from deeply understanding
-              the problem — not from large teams or long timelines.
-            </p>
-            <div className="flex items-center justify-center gap-2 text-white/40">
-              <Heart size={14} className="text-terracotta-400" />
-              <span className="text-sm">Made with purpose</span>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="bg-white rounded-2xl border border-cream-300/50 shadow-soft p-8 md:p-10">
+              {/* Name & role */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center shadow-md">
+                  <span className="text-white text-xl font-semibold" style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}>H</span>
+                </div>
+                <div>
+                  <h3 className="text-text-primary text-lg font-semibold" style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}>
+                    Hojae Jung
+                  </h3>
+                  <p className="text-text-muted text-sm">Founder &amp; Builder</p>
+                </div>
+              </div>
+
+              {/* Bio */}
+              <div className="space-y-4 text-text-secondary leading-relaxed">
+                <p>
+                  A deep appreciation for great products, shaped across a career spanning design, technology, and leadership.
+                </p>
+                <p>
+                  With a background in design and a trained eye for craft, Hojae brings a rare intersection of aesthetic sensibility and technical depth to everything he builds. Orria isn&apos;t just functional — it&apos;s designed to feel as considered as the decisions it helps you make.
+                </p>
+                <p>
+                  Before building products, Hojae served in both the Republic of Korea Army and the United States Army — earning early promotions at every rank through Sergeant, winning multiple awards for excellence, and leading 60+ soldiers in the 2nd Infantry Division. That experience forged a discipline and willpower that carries into how Orria is built: with relentless standards, no shortcuts, and a refusal to ship anything less than exceptional.
+                </p>
+              </div>
+
+              {/* Highlights */}
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="rounded-xl p-4" style={{ backgroundColor: "#0891B208", border: "1px solid #0891B215" }}>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <Sparkles size={14} className="text-cyan-500" />
+                    <span className="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Design</span>
+                  </div>
+                  <p className="text-text-secondary text-sm">
+                    Design degree &amp; trained eye for craft
+                  </p>
+                </div>
+                <div className="rounded-xl p-4" style={{ backgroundColor: "#C4704B08", border: "1px solid #C4704B15" }}>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <Heart size={14} style={{ color: "#C4704B" }} />
+                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#C4704B" }}>Service</span>
+                  </div>
+                  <p className="text-text-secondary text-sm">
+                    ROK Army &amp; U.S. Army veteran, 2ID
+                  </p>
+                </div>
+                <div className="rounded-xl p-4" style={{ backgroundColor: "#E5A53D08", border: "1px solid #E5A53D15" }}>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <Users size={14} style={{ color: "#E5A53D" }} />
+                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#E5A53D" }}>Leadership</span>
+                  </div>
+                  <p className="text-text-secondary text-sm">
+                    Led 60+ soldiers, early promotion every rank
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

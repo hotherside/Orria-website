@@ -96,7 +96,7 @@ export function Footer() {
         <div className="pt-6 border-t border-cream-300 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-text-muted">
           <p>&copy; {currentYear} Orria. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            Built with care in Melbourne by{" "}
+            Built with care in Sydney by{" "}
             <a
               href="mailto:hello@orria.app"
               className="text-cyan-500 hover:text-cyan-600 font-medium transition-colors"
