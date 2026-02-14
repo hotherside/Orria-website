@@ -10,11 +10,11 @@ interface SectionProps {
 }
 
 const backgroundStyles = {
-  cream: "bg-[#FAF8F3]",
+  cream: "bg-cream-100",
   white: "bg-white",
-  "cream-dark": "bg-[#F5F1E8]",
-  "sage-tint": "bg-gradient-to-b from-[rgba(123,158,135,0.05)] to-[rgba(123,158,135,0.02)]",
-  "warm-gradient": "bg-gradient-to-b from-[#FDFCFA] to-[#FAF8F3]",
+  "cream-dark": "bg-cream-200",
+  "sage-tint": "bg-gradient-to-b from-cyan-500/5 to-cyan-500/2",
+  "warm-gradient": "bg-gradient-to-b from-cream-50 to-cream-100",
 };
 
 const paddingStyles = {

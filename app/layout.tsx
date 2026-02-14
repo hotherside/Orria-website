@@ -18,19 +18,26 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Orria - Your Decisions. Your Story.",
-  description: "Your life is a story of choices. Orria is the decision journal that helps you capture, clarify, and close the loop on the decisions that shape who you become.",
-  keywords: "decision journal, AI decisions, life choices, decision tracker, decision making app",
+  title: "Orria — Think it through. Remember what shaped you.",
+  description:
+    "Your AI decision companion. Talk through dilemmas, get perspectives from 4 distinct AI personalities, and build a journal of the choices that define your journey.",
+  keywords:
+    "decision making, AI companion, decision journal, life choices, decision fatigue, AI perspectives, career decisions",
   openGraph: {
-    title: "Orria - Your Decisions. Your Story.",
-    description: "Your life is a story of choices. Capture decisions, get AI perspectives, close the loop, and watch your story build.",
+    title: "Orria — Think it through. Remember what shaped you.",
+    description:
+      "Your AI decision companion. Talk through dilemmas, get perspectives from 4 distinct AI personalities, and build a journal of the choices that define your journey.",
     type: "website",
+    url: "https://orria.app",
+    siteName: "Orria",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Orria - Your Decisions. Your Story.",
-    description: "Your life is a story of choices. Capture decisions, get AI perspectives, close the loop, and watch your story build.",
+    title: "Orria — Think it through. Remember what shaped you.",
+    description:
+      "Your AI decision companion. Talk through dilemmas, get perspectives from 4 distinct AI personalities, and build a journal of the choices that define your journey.",
   },
+  metadataBase: new URL("https://orria.app"),
 };
 
 export default function RootLayout({
@@ -39,12 +46,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
-      <body className="antialiased bg-[#FAF8F3] text-[#3D3833]">
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} scroll-smooth`}
+    >
+      <body className="antialiased bg-cream-100 text-text-primary">
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

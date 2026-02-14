@@ -21,8 +21,8 @@ const paddingStyles = {
 
 const backgroundStyles = {
   white: "bg-white",
-  cream: "bg-[#FAF8F3]",
-  "cream-dark": "bg-[#F5F1E8]",
+  cream: "bg-cream-100",
+  "cream-dark": "bg-cream-200",
   transparent: "bg-transparent",
 };
 
@@ -77,23 +77,23 @@ interface FeatureCardProps {
   icon: ReactNode;
   title: string;
   description: string;
-  accentColor?: "coral" | "sage" | "terracotta" | "dusty-rose" | "soft-purple";
+  accentColor?: "cyan" | "terracotta" | "amber" | "indigo" | "purple";
   className?: string;
 }
 
 const accentColors = {
-  coral: "bg-[#E07B5B]/10 text-[#E07B5B]",
-  sage: "bg-[#7B9E87]/10 text-[#7B9E87]",
-  terracotta: "bg-[#C4826D]/10 text-[#C4826D]",
-  "dusty-rose": "bg-[#C4919B]/10 text-[#C4919B]",
-  "soft-purple": "bg-[#9B8AA8]/10 text-[#9B8AA8]",
+  cyan: "bg-cyan-500/10 text-cyan-500",
+  terracotta: "bg-terracotta-500/10 text-terracotta-500",
+  amber: "bg-amber-500/10 text-amber-500",
+  indigo: "bg-agent-liam/10 text-agent-liam",
+  purple: "bg-agent-sara/10 text-agent-sara",
 };
 
 export function FeatureCard({
   icon,
   title,
   description,
-  accentColor = "coral",
+  accentColor = "cyan",
   className,
 }: FeatureCardProps) {
   return (
@@ -106,8 +106,8 @@ export function FeatureCard({
       >
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-[#3D3833] mb-3">{title}</h3>
-      <p className="text-[#5C554C] leading-relaxed">{description}</p>
+      <h3 className="text-xl font-semibold text-text-primary mb-3">{title}</h3>
+      <p className="text-text-secondary leading-relaxed">{description}</p>
     </Card>
   );
 }

@@ -2,18 +2,24 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/potentials", label: "Potentials & Research" },
+];
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -27,20 +33,22 @@ export function Navbar() {
           : "w-[calc(100%-3rem)] max-w-6xl"
       )}
     >
-      {/* Floating pill navbar - microsoft.ai style */}
       <div
         className={cn(
           "flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500",
           isScrolled
-            ? "bg-[#FAF8F3]/95 backdrop-blur-xl shadow-lg border border-[#EDE8DC]/50"
-            : "bg-[#FAF8F3]/80 backdrop-blur-md shadow-md"
+            ? "bg-cream-50/95 backdrop-blur-xl shadow-lg border border-cream-300/50"
+            : "bg-cream-50/80 backdrop-blur-md shadow-md"
         )}
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <span
-            className="text-xl text-[#3D3833]"
-            style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif', fontWeight: 600 }}
+            className="text-xl text-text-primary"
+            style={{
+              fontFamily: "var(--font-playfair), Playfair Display, serif",
+              fontWeight: 600,
+            }}
           >
             Orria
           </span>
@@ -48,20 +56,31 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-1">
-          <NavLink href="#pillars">How It Works</NavLink>
-          <NavLink href="#who">Who It&apos;s For</NavLink>
-          <NavLink href="#pricing">Pricing</NavLink>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "px-4 py-2 text-sm font-medium transition-colors rounded-full",
+                pathname === link.href
+                  ? "text-cyan-600 bg-cyan-500/10"
+                  : "text-text-secondary hover:text-text-primary hover:bg-cream-300/50"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
           <Link
-            href="#download"
-            className="ml-2 px-5 py-2 bg-[#3D3833] text-white rounded-full text-sm font-medium hover:bg-[#2a2520] transition-colors duration-300"
+            href="#waitlist"
+            className="ml-2 px-5 py-2 bg-cyan-500 text-white rounded-full text-sm font-medium hover:bg-cyan-600 transition-colors duration-300 shadow-sm"
           >
-            Download
+            Join Waitlist
           </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 text-[#3D3833]/80 hover:text-[#3D3833] transition-colors"
+          className="md:hidden p-2 text-text-secondary hover:text-text-primary transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -77,58 +96,33 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden mt-2 bg-[#FAF8F3]/98 backdrop-blur-xl rounded-2xl border border-[#EDE8DC]/50 shadow-xl p-4 flex flex-col gap-1"
+            className="md:hidden mt-2 bg-cream-50/98 backdrop-blur-xl rounded-2xl border border-cream-300/50 shadow-xl p-4 flex flex-col gap-1"
           >
-            <MobileNavLink onClick={() => setIsMobileMenuOpen(false)} href="#pillars">
-              How It Works
-            </MobileNavLink>
-            <MobileNavLink onClick={() => setIsMobileMenuOpen(false)} href="#who">
-              Who It&apos;s For
-            </MobileNavLink>
-            <MobileNavLink onClick={() => setIsMobileMenuOpen(false)} href="#pricing">
-              Pricing
-            </MobileNavLink>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={cn(
+                  "px-4 py-3 font-medium rounded-xl transition-colors",
+                  pathname === link.href
+                    ? "text-cyan-600 bg-cyan-500/10"
+                    : "text-text-secondary hover:text-text-primary hover:bg-cream-300/50"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link
-              href="#download"
+              href="#waitlist"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="mt-2 w-full text-center py-3 bg-[#3D3833] text-white rounded-xl font-medium hover:bg-[#2a2520] transition-colors"
+              className="mt-2 w-full text-center py-3 bg-cyan-500 text-white rounded-xl font-medium hover:bg-cyan-600 transition-colors"
             >
-              Download
+              Join Waitlist
             </Link>
           </motion.div>
         )}
       </AnimatePresence>
     </nav>
-  );
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="px-4 py-2 text-sm text-[#5C554C] hover:text-[#3D3833] font-medium transition-colors rounded-full hover:bg-[#EDE8DC]/50"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function MobileNavLink({
-  href,
-  onClick,
-  children,
-}: {
-  href: string;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className="px-4 py-3 text-[#5C554C] hover:text-[#3D3833] hover:bg-[#EDE8DC]/50 font-medium rounded-xl transition-colors"
-    >
-      {children}
-    </Link>
   );
 }

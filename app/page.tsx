@@ -1,21 +1,23 @@
-import { Hero } from "@/components/Hero";
-import { Philosophy } from "@/components/Philosophy";
-import { FourPillars } from "@/components/FourPillars";
-import { WhoIsItFor } from "@/components/WhoIsItFor";
-import { AIAgents } from "@/components/AIAgents";
-import { Pricing } from "@/components/Pricing";
-import { Download } from "@/components/Download";
+import { HeroSection } from "@/components/home/HeroSection";
+import { ProblemSection } from "@/components/home/ProblemSection";
+import { SolutionSection } from "@/components/home/SolutionSection";
+import { PillarsSection } from "@/components/home/PillarsSection";
+import { AgentsSection } from "@/components/home/AgentsSection";
+import { HowItWorksSection } from "@/components/home/HowItWorksSection";
+import { StatsSection } from "@/components/home/StatsSection";
+import { WaitlistCTA } from "@/components/home/WaitlistCTA";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <Philosophy />
-      <FourPillars />
-      <WhoIsItFor />
-      <AIAgents />
-      <Pricing />
-      <Download />
-    </main>
+    <>
+      <HeroSection />
+      <ProblemSection />
+      <SolutionSection />
+      <PillarsSection />
+      <AgentsSection />
+      <HowItWorksSection />
+      <StatsSection />
+      <WaitlistCTA />
+    </>
   );
 }
