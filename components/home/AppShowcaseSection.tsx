@@ -17,33 +17,29 @@ const demos = [
   {
     component: CanvasDemo,
     icon: Mic,
-    title: "Start thinking",
-    description: "Speak or type your dilemma. AI structures it into clear options.",
-    glowColor: "bg-cyan-500/20",
+    title: "Just talk",
+    description: "Tap the mic, say what's on your mind. Orria listens and structures it for you.",
+    glowColor: "bg-cyan-500/10",
   },
   {
     component: RoundtableDemo,
     icon: Users,
     title: "Get perspectives",
-    description: "Four AI personalities challenge your blind spots.",
-    glowColor: "bg-indigo-500/15",
+    description: "Four AI personalities challenge your blind spots from every angle.",
+    glowColor: "bg-indigo-500/8",
   },
   {
     component: CrystallizeDemo,
     icon: Sparkles,
     title: "Make the call",
     description: "See the full picture. Decide with confidence.",
-    glowColor: "bg-amber-500/15",
+    glowColor: "bg-amber-500/8",
   },
 ];
 
 export function AppShowcaseSection() {
   return (
-    <section className="py-24 md:py-32 bg-dark-900 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 hero-mesh-dark opacity-50" />
-      <div className="absolute inset-0 hero-noise pointer-events-none" />
-
+    <section className="py-24 md:py-32 bg-gradient-to-b from-cream-100 to-cream-200 relative overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -53,20 +49,20 @@ export function AppShowcaseSection() {
           viewport={viewportSettings}
           className="text-center mb-16"
         >
-          <p className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">
+          <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
             The Experience
           </p>
           <h2
-            className="text-display text-white"
+            className="text-display text-text-primary"
             style={{
               fontFamily: "var(--font-playfair), Playfair Display, serif",
             }}
           >
             Meet Orria.
             <br />
-            <span className="italic text-cyan-400">See it in action.</span>
+            <span className="italic text-cyan-600">See it in action.</span>
           </h2>
-          <p className="text-white/50 text-lg mt-4 max-w-xl mx-auto">
+          <p className="text-text-secondary text-lg mt-4 max-w-xl mx-auto">
             From messy thought to clear decision — in three moves.
           </p>
         </motion.div>
@@ -95,10 +91,10 @@ export function AppShowcaseSection() {
               {/* Caption */}
               <div className="mt-6 text-center max-w-[220px]">
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <demo.icon size={14} className="text-cyan-400" />
-                  <h3 className="text-white font-semibold text-sm">{demo.title}</h3>
+                  <demo.icon size={14} className="text-cyan-600" />
+                  <h3 className="text-text-primary font-semibold text-sm">{demo.title}</h3>
                 </div>
-                <p className="text-white/40 text-xs leading-relaxed">
+                <p className="text-text-muted text-xs leading-relaxed">
                   {demo.description}
                 </p>
               </div>

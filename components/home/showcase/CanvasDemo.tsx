@@ -4,59 +4,66 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { Mic, Sparkles } from "lucide-react";
 
-const TYPED_TEXT = "I got a job offer in another city but I\u2019d have to leave everything behind...";
-const TYPING_SPEED = 40; // ms per character
-const PAUSE_AFTER_TYPING = 1200;
+const SPOKEN_TEXT = "I got a job offer in another city but I\u2019d have to leave everything behind...";
+const DICTATION_SPEED = 35; // ms per character — slightly faster than typing to feel like speech
+const PAUSE_BEFORE_VOICE = 800;
+const RECORDING_DURATION = 1200; // waveform active before words appear
+const PAUSE_AFTER_DICTATION = 1000;
 const PAUSE_AFTER_STRUCTURE = 2500;
 const RESTART_DELAY = 1500;
+
+type Phase = "idle" | "recording" | "dictating" | "structuring" | "structured";
 
 export function CanvasDemo() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: false, amount: 0.5 });
-  const [phase, setPhase] = useState<"typing" | "structuring" | "structured">("typing");
+  const [phase, setPhase] = useState<Phase>("idle");
   const [charIndex, setCharIndex] = useState(0);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const reset = useCallback(() => {
-    setPhase("typing");
+    setPhase("idle");
     setCharIndex(0);
   }, []);
 
-  // Typing effect
-  useEffect(() => {
-    if (!isInView || phase !== "typing") return;
-    if (charIndex < TYPED_TEXT.length) {
-      timeoutRef.current = setTimeout(() => setCharIndex((i) => i + 1), TYPING_SPEED);
-      return () => clearTimeout(timeoutRef.current);
-    }
-    // Done typing, pause then structure
-    timeoutRef.current = setTimeout(() => setPhase("structuring"), PAUSE_AFTER_TYPING);
-    return () => clearTimeout(timeoutRef.current);
-  }, [isInView, phase, charIndex]);
-
-  // Structuring phase
-  useEffect(() => {
-    if (phase !== "structuring") return;
-    timeoutRef.current = setTimeout(() => setPhase("structured"), 800);
-    return () => clearTimeout(timeoutRef.current);
-  }, [phase]);
-
-  // Structured phase — wait then restart
-  useEffect(() => {
-    if (phase !== "structured") return;
-    timeoutRef.current = setTimeout(() => {
-      timeoutRef.current = setTimeout(reset, RESTART_DELAY);
-    }, PAUSE_AFTER_STRUCTURE);
-    return () => clearTimeout(timeoutRef.current);
-  }, [phase, reset]);
-
-  // Pause when out of view
+  // Phase machine
   useEffect(() => {
     if (!isInView) {
       clearTimeout(timeoutRef.current);
       reset();
+      return;
     }
-  }, [isInView, reset]);
+
+    switch (phase) {
+      case "idle":
+        // Brief pause, then start recording
+        timeoutRef.current = setTimeout(() => setPhase("recording"), PAUSE_BEFORE_VOICE);
+        break;
+      case "recording":
+        // Show waveform for a beat, then start dictation
+        timeoutRef.current = setTimeout(() => setPhase("dictating"), RECORDING_DURATION);
+        break;
+      case "dictating":
+        // Character-by-character dictation
+        if (charIndex < SPOKEN_TEXT.length) {
+          timeoutRef.current = setTimeout(() => setCharIndex((i) => i + 1), DICTATION_SPEED);
+        } else {
+          // Done dictating, pause then structure
+          timeoutRef.current = setTimeout(() => setPhase("structuring"), PAUSE_AFTER_DICTATION);
+        }
+        break;
+      case "structuring":
+        timeoutRef.current = setTimeout(() => setPhase("structured"), 800);
+        break;
+      case "structured":
+        timeoutRef.current = setTimeout(reset, PAUSE_AFTER_STRUCTURE + RESTART_DELAY);
+        break;
+    }
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [isInView, phase, charIndex, reset]);
+
+  const isVoiceActive = phase === "recording" || phase === "dictating";
 
   return (
     <div ref={ref} className="w-full h-full bg-dark-900 flex flex-col">
@@ -70,7 +77,7 @@ export function CanvasDemo() {
 
       <div className="flex-1 flex flex-col px-4 pt-4">
         <AnimatePresence mode="wait">
-          {phase === "typing" || phase === "structuring" ? (
+          {phase !== "structured" ? (
             <motion.div
               key="canvas"
               initial={{ opacity: 1 }}
@@ -78,29 +85,57 @@ export function CanvasDemo() {
               transition={{ duration: 0.3 }}
               className="flex-1 flex flex-col"
             >
-              {/* Guidance */}
-              <p className="text-white/20 text-[9px] mb-3">What&apos;s on your mind?</p>
+              {/* Guidance text */}
+              <p className="text-white/20 text-[9px] mb-3">
+                {isVoiceActive ? "Listening..." : "What\u2019s on your mind?"}
+              </p>
 
-              {/* Typed text */}
+              {/* Voice dictation area */}
               <div className="flex-1">
-                <p className="text-white/90 text-[11px] leading-relaxed">
-                  {TYPED_TEXT.slice(0, charIndex)}
-                  {charIndex < TYPED_TEXT.length && (
-                    <span className="inline-block w-[1px] h-3 bg-cyan-400 ml-[1px] animate-cursor-blink align-text-bottom" />
-                  )}
-                </p>
+                {(phase === "dictating" || phase === "structuring") && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-white/90 text-[11px] leading-relaxed"
+                  >
+                    {SPOKEN_TEXT.slice(0, charIndex)}
+                    {phase === "dictating" && charIndex < SPOKEN_TEXT.length && (
+                      <span className="inline-block w-[1px] h-3 bg-cyan-400 ml-[1px] animate-cursor-blink align-text-bottom" />
+                    )}
+                  </motion.p>
+                )}
+
+                {phase === "idle" && (
+                  <div className="flex items-center justify-center h-full opacity-30">
+                    <p className="text-white/30 text-[10px] text-center">
+                      Tap the mic to start
+                    </p>
+                  </div>
+                )}
+
+                {phase === "recording" && (
+                  <div className="flex items-center justify-center h-full">
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 0.4 }}
+                      className="text-white/40 text-[10px]"
+                    >
+                      Speak freely...
+                    </motion.p>
+                  </div>
+                )}
               </div>
 
               {/* Structure button */}
               <motion.div
-                className="mt-auto pb-4"
-                animate={charIndex >= TYPED_TEXT.length ? { opacity: 1 } : { opacity: 0.3 }}
+                className="pb-2"
+                animate={charIndex >= SPOKEN_TEXT.length && phase !== "idle" && phase !== "recording" ? { opacity: 1 } : { opacity: 0.3 }}
               >
                 <div
                   className={`flex items-center justify-center gap-1.5 py-2 rounded-xl text-[10px] font-medium ${
                     phase === "structuring"
                       ? "bg-cyan-500 text-white"
-                      : charIndex >= TYPED_TEXT.length
+                      : charIndex >= SPOKEN_TEXT.length
                       ? "bg-cyan-500/20 text-cyan-400 animate-pulse-glow"
                       : "bg-white/5 text-white/30"
                   }`}
@@ -109,6 +144,80 @@ export function CanvasDemo() {
                   {phase === "structuring" ? "Structuring..." : "Structure with AI"}
                 </div>
               </motion.div>
+
+              {/* Mic bar — the star of the show */}
+              <div className="pb-3 pt-1">
+                <div className="flex items-center justify-center gap-2.5">
+                  {/* Waveform bars — left */}
+                  <div className="flex items-center gap-[2px] h-5">
+                    {[0, 1, 2].map((i) => (
+                      <motion.div
+                        key={`l-${i}`}
+                        className="w-[3px] rounded-full bg-cyan-400"
+                        animate={isVoiceActive ? {
+                          height: [4, 10 + Math.random() * 8, 6, 14 + Math.random() * 4, 4],
+                        } : { height: 4 }}
+                        transition={isVoiceActive ? {
+                          duration: 0.5 + Math.random() * 0.3,
+                          repeat: Infinity,
+                          repeatType: "reverse" as const,
+                          delay: i * 0.1,
+                        } : { duration: 0.3 }}
+                        style={{ opacity: isVoiceActive ? 1 : 0.2 }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Mic button */}
+                  <motion.div
+                    className={`relative w-8 h-8 rounded-full flex items-center justify-center ${
+                      isVoiceActive ? "bg-cyan-500" : "bg-white/10"
+                    }`}
+                    animate={isVoiceActive ? {
+                      scale: [1, 1.05, 1],
+                      boxShadow: [
+                        "0 0 0 0 rgba(8,145,178,0.4)",
+                        "0 0 0 8px rgba(8,145,178,0)",
+                        "0 0 0 0 rgba(8,145,178,0.4)",
+                      ],
+                    } : {}}
+                    transition={isVoiceActive ? {
+                      duration: 1.5,
+                      repeat: Infinity,
+                    } : {}}
+                  >
+                    <Mic size={12} className={isVoiceActive ? "text-white" : "text-white/40"} />
+                    {/* Glow ring when active */}
+                    {isVoiceActive && (
+                      <motion.div
+                        className="absolute inset-[-3px] rounded-full border-2 border-cyan-400/30"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                      />
+                    )}
+                  </motion.div>
+
+                  {/* Waveform bars — right */}
+                  <div className="flex items-center gap-[2px] h-5">
+                    {[0, 1, 2].map((i) => (
+                      <motion.div
+                        key={`r-${i}`}
+                        className="w-[3px] rounded-full bg-cyan-400"
+                        animate={isVoiceActive ? {
+                          height: [4, 12 + Math.random() * 6, 5, 10 + Math.random() * 6, 4],
+                        } : { height: 4 }}
+                        transition={isVoiceActive ? {
+                          duration: 0.6 + Math.random() * 0.2,
+                          repeat: Infinity,
+                          repeatType: "reverse" as const,
+                          delay: i * 0.12,
+                        } : { duration: 0.3 }}
+                        style={{ opacity: isVoiceActive ? 1 : 0.2 }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ) : (
             <motion.div
@@ -182,14 +291,6 @@ export function CanvasDemo() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="h-6 flex items-center justify-center border-t border-white/5">
-        <div className="flex items-center gap-2">
-          <Mic size={10} className="text-white/20" />
-          <div className="w-20 h-1.5 rounded-full bg-white/5" />
-        </div>
       </div>
     </div>
   );
