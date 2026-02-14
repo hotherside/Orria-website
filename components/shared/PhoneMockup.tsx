@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface PhoneMockupProps {
   screenshot?: string;
+  children?: React.ReactNode;
   label?: string;
   sublabel?: string;
   gradient?: string;
@@ -21,6 +22,7 @@ const sizes = {
 
 export function PhoneMockup({
   screenshot,
+  children,
   label,
   sublabel,
   gradient = "from-cyan-600/30 to-dark-800",
@@ -48,8 +50,12 @@ export function PhoneMockup({
           style={{ width: s.notchW, height: s.notchH }}
         />
 
-        {/* Screen content */}
-        {screenshot ? (
+        {/* Screen content — priority: children > screenshot > fallback */}
+        {children ? (
+          <div className="relative w-full h-full overflow-hidden">
+            {children}
+          </div>
+        ) : screenshot ? (
           <div className="relative w-full h-full">
             <Image
               src={screenshot}
@@ -59,11 +65,9 @@ export function PhoneMockup({
               sizes={`${s.width}px`}
               priority
             />
-            {/* Subtle top fade for status bar blending */}
             <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/10 to-transparent z-10" />
           </div>
         ) : (
-          /* Fallback gradient placeholder */
           <div
             className={cn(
               "w-full h-full bg-gradient-to-br flex flex-col items-center justify-center p-6 text-center",
@@ -73,12 +77,8 @@ export function PhoneMockup({
             <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm mb-4 flex items-center justify-center">
               <div className="w-6 h-6 rounded-full bg-white/20" />
             </div>
-            {label && (
-              <p className="text-white/70 text-sm font-medium">{label}</p>
-            )}
-            {sublabel && (
-              <p className="text-white/40 text-xs mt-1">{sublabel}</p>
-            )}
+            {label && <p className="text-white/70 text-sm font-medium">{label}</p>}
+            {sublabel && <p className="text-white/40 text-xs mt-1">{sublabel}</p>}
             <div className="mt-6 w-full space-y-3">
               <div className="h-3 bg-white/10 rounded-full w-3/4 mx-auto" />
               <div className="h-3 bg-white/10 rounded-full w-1/2 mx-auto" />
@@ -91,10 +91,7 @@ export function PhoneMockup({
 
       {/* Glow effect */}
       <div
-        className={cn(
-          "absolute inset-0 -z-10 blur-3xl scale-110 opacity-60",
-          glowColor
-        )}
+        className={cn("absolute inset-0 -z-10 blur-3xl scale-110 opacity-60", glowColor)}
         style={{ borderRadius: s.radius }}
       />
 
@@ -110,55 +107,6 @@ export function PhoneMockup({
           maskComposite: "exclude",
         }}
       />
-    </div>
-  );
-}
-
-/* Floating phone mockup with perspective tilt for hero/feature sections */
-interface FloatingPhoneProps {
-  screenshot: string;
-  label?: string;
-  tilt?: "left" | "right" | "none";
-  className?: string;
-  glowColor?: string;
-  size?: "sm" | "md" | "lg";
-}
-
-export function FloatingPhone({
-  screenshot,
-  label,
-  tilt = "none",
-  className,
-  glowColor = "bg-cyan-500/15",
-  size = "md",
-}: FloatingPhoneProps) {
-  const tiltStyles = {
-    left: "rotate-y-[-8deg] rotate-x-[4deg] rotate-z-[-2deg]",
-    right: "rotate-y-[8deg] rotate-x-[4deg] rotate-z-[2deg]",
-    none: "",
-  };
-
-  return (
-    <div
-      className={cn(
-        "perspective-[1200px]",
-        className
-      )}
-    >
-      <div
-        className={cn(
-          "transition-transform duration-500",
-          tiltStyles[tilt]
-        )}
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        <PhoneMockup
-          screenshot={screenshot}
-          label={label}
-          glowColor={glowColor}
-          size={size}
-        />
-      </div>
     </div>
   );
 }

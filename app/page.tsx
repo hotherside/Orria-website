@@ -1,10 +1,9 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { ProblemSection } from "@/components/home/ProblemSection";
-import { SolutionSection } from "@/components/home/SolutionSection";
-import { PillarsSection } from "@/components/home/PillarsSection";
+import { AppShowcaseSection } from "@/components/home/AppShowcaseSection";
+import { JourneySection } from "@/components/home/JourneySection";
 import { AgentsSection } from "@/components/home/AgentsSection";
-import { HowItWorksSection } from "@/components/home/HowItWorksSection";
-import { StatsSection } from "@/components/home/StatsSection";
+import { SocialProofSection } from "@/components/home/SocialProofSection";
 import { WaitlistCTA } from "@/components/home/WaitlistCTA";
 
 export default function Home() {
@@ -12,11 +11,10 @@ export default function Home() {
     <>
       <HeroSection />
       <ProblemSection />
-      <SolutionSection />
-      <PillarsSection />
+      <AppShowcaseSection />
+      <JourneySection />
       <AgentsSection />
-      <HowItWorksSection />
-      <StatsSection />
+      <SocialProofSection />
       <WaitlistCTA />
     </>
   );

@@ -133,9 +133,9 @@ export function HeroSection() {
             }}
             className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Your AI decision companion. Talk through dilemmas, get perspectives
-            from 4 distinct AI personalities, and build a journal of the choices
-            that define your journey.
+            When the big decisions keep you up at night, Orria helps you think
+            them through — with AI perspectives that challenge your blind spots,
+            and a journal that remembers what shaped you.
           </motion.p>
         </motion.div>
 

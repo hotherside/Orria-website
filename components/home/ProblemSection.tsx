@@ -19,6 +19,7 @@ const problems = [
   },
   {
     icon: RotateCcw,
+    stat: "73%",
     title: "The Dilemma Gap",
     description:
       "When facing big choices, we spin in circles for weeks. We ask friends who are biased. We don't see our blind spots. No clarity. No structure. No closure.",
@@ -44,7 +45,7 @@ export function ProblemSection() {
           className="text-center mb-16"
         >
           <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
-            The Problem
+            Sound Familiar?
           </p>
           <h2
             className="text-display text-text-primary"

@@ -185,3 +185,50 @@ export const gentleFloatDelayed = {
     }
   }
 };
+
+// ═══ New Showcase Animation Variants ═══
+
+// Stagger for chat message sequences
+export const staggerMessages: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.8,
+      delayChildren: 0.3
+    }
+  }
+};
+
+// Individual message bubble entry
+export const messageItem: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 12,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.4,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
+// Draw SVG path animation
+export const pathDraw: Variants = {
+  hidden: {
+    pathLength: 0,
+    opacity: 0
+  },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      pathLength: { duration: 1.5, ease: "easeInOut" },
+      opacity: { duration: 0.3 }
+    }
+  }
+};

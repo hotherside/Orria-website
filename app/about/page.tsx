@@ -10,100 +10,58 @@ import {
 import { WaitlistForm } from "@/components/shared/WaitlistForm";
 import {
   MessageCircle,
-  Lock,
+  Sparkles,
+  Clock,
   RefreshCw,
-  Users,
-  Sprout,
 } from "lucide-react";
 
-const values = [
+const beliefs = [
   {
-    icon: MessageCircle,
-    title: "Conversation over forms",
+    title: "Decisions start as dilemmas, not decisions",
     description:
-      "Talk through your dilemma naturally. Structure comes after clarity.",
+      "Every tool asks you to fill in a form. But real crossroads don\u2019t start with structure \u2014 they start with mess. Orria meets you there. You speak or type whatever\u2019s on your mind, and AI helps you discover what you\u2019re actually deciding.",
   },
   {
-    icon: Lock,
-    title: "Private by default",
-    description: "Your thoughts are yours until you choose to share them.",
+    title: "Multiple perspectives break echo chambers",
+    description:
+      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because your blind spots need more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. Together they see what you can\u2019t see alone.",
+  },
+  {
+    title: "Closing the loop builds wisdom",
+    description:
+      "Most decisions disappear the moment you make them. Orria asks you to come back. Record what you chose. Reflect on whether you\u2019d do it again. That\u2019s how scattered choices become lived wisdom.",
+  },
+  {
+    title: "Your decisions are your autobiography",
+    description:
+      "The job you almost didn\u2019t take. The city you considered moving to. The relationship you fought for. These crossroads defined who you are \u2014 but most are forgotten. Orria\u2019s journal keeps the story of how you became you.",
+  },
+];
+
+const framework = [
+  {
+    icon: MessageCircle,
+    label: "Conversation",
+    description: "Speak or type your dilemma. AI structures your thoughts into clear options.",
+    color: "var(--cyan-500)",
+  },
+  {
+    icon: Sparkles,
+    label: "Clarity",
+    description: "Four AI perspectives challenge your blind spots and surface what you can\u2019t see alone.",
+    color: "var(--agent-liam)",
+  },
+  {
+    icon: Clock,
+    label: "Commit",
+    description: "Set a deadline. Make the call. Break the indecision cycle and move forward.",
+    color: "var(--terracotta-500)",
   },
   {
     icon: RefreshCw,
-    title: "Close the loop",
-    description:
-      "Decisions aren't complete until you learn from the outcomes.",
-  },
-  {
-    icon: Users,
-    title: "Multiple perspectives",
-    description:
-      "AI companions + community = clarity you can't find alone.",
-  },
-  {
-    icon: Sprout,
-    title: "Growth through reflection",
-    description: "Look back to move forward wisely.",
-  },
-];
-
-const timeline = [
-  {
-    year: "The Background",
-    title: "From Apple to autonomous intelligence",
-    description:
-      "Starting as a Product Specialist at Apple, then leading autonomous asset intelligence and computer vision products at Unleash Live, to driving product strategy at SafetyCulture and CoverGenius — a career spent building tools that help people see things more clearly.",
-  },
-  {
-    year: "The Struggle",
-    title: "Standing at a crossroads",
-    description:
-      "Facing the kind of decisions that keep you up at night — career paths, big moves, the choices that define who you become. No tool helped me actually think it through. Friends were biased, the internet was useless, and I'd spin in circles for weeks.",
-  },
-  {
-    year: "The Realization",
-    title: "People start with dilemmas, not decisions",
-    description:
-      "Every app asked me to fill in a form. But I didn't even know what I was deciding yet. I needed a thinking partner — not a productivity tool. I needed something that could meet me in the mess and help me find clarity.",
-  },
-  {
-    year: "The Build",
-    title: "One founder, AI-powered development",
-    description:
-      "Built Orria solo with Claude as my AI development partner. 110+ Swift files, production-ready, in weeks — not months. Years of product management experience distilled into an app that actually helps people think.",
-  },
-  {
-    year: "Today",
-    title: "Making it real",
-    description:
-      "Orria is the companion I wish I had at every crossroads. A calm thinking partner that helps you find clarity through conversation, captures your journey, and builds wisdom from every choice you make.",
-  },
-];
-
-const experience = [
-  {
-    role: "Product Lead",
-    company: "CoverGenius",
-    period: "2023 — Present",
-    description: "Leading partner platform strategy, building self-service tools and analytics dashboards for global insurance distribution.",
-  },
-  {
-    role: "Senior Product Manager",
-    company: "Unleash Live",
-    period: "2022 — 2023",
-    description: "Led autonomous asset intelligence and inspection products powered by computer vision, bringing AI-driven insights to industrial workflows.",
-  },
-  {
-    role: "Associate Product Manager",
-    company: "SafetyCulture",
-    period: "2022 — 2023",
-    description: "Drove 10% increase in monthly active users through strategic feature development. Bridged a 1.5-year disconnect with customers through daily interviews.",
-  },
-  {
-    role: "Product & Technical Specialist",
-    company: "Apple",
-    period: "2014 — 2020",
-    description: "Three tours at Apple across specialist, expert, and Genius roles — diagnosing problems, simplifying complexity, and delivering exceptional experiences.",
+    label: "Close",
+    description: "Record outcomes. Reflect. Learn. Your decisions become your autobiography.",
+    color: "var(--amber-500)",
   },
 ];
 
@@ -127,14 +85,14 @@ export default function AboutPage() {
               Why Orria Exists
             </h1>
             <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-              Born from the decisions that shaped one person&apos;s journey — and
-              the realization that everyone deserves a thinking partner.
+              Born from a frustration everyone shares — and the belief that
+              everyone deserves a thinking partner at life&apos;s crossroads.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Founder Story */}
+      {/* Origin Story */}
       <section className="py-20 md:py-28 bg-cream-50">
         <div className="max-w-3xl mx-auto px-6">
           <motion.div
@@ -150,29 +108,26 @@ export default function AboutPage() {
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              The Story Behind Orria
+              The Story
             </h2>
             <div className="space-y-6 text-text-secondary leading-relaxed">
               <p>
-                I&apos;ve spent my career building products that help people
-                see things more clearly — from autonomous inspection systems
-                powered by computer vision at Unleash Live, to self-service
-                partner platforms at CoverGenius, to user-facing products
-                at SafetyCulture that grew engagement by double digits.
+                Orria started with a frustration that most people share:
+                standing at a crossroads with no good way to think it through.
               </p>
               <p>
-                But throughout it all, I kept facing my own version of the same
-                problem: big personal decisions with no good tool to think them
-                through. A career change across continents. Whether to leave a
-                comfortable role to start something. The life choices that
-                don&apos;t fit in a spreadsheet.
+                A career change across continents. Whether to leave a
+                comfortable role to chase something uncertain. The life choices
+                that don&apos;t fit in a spreadsheet. We all face these moments
+                — and we all handle them the same way: asking friends who are
+                biased, searching the internet for answers that don&apos;t
+                exist, and spinning in circles for weeks.
               </p>
               <p>
-                I&apos;d talk to friends who were biased, search the internet
-                for answers that didn&apos;t exist, and spin in circles for
-                weeks before finally making a choice I wasn&apos;t sure about.
-                Every decision app wanted me to fill in a form — but I
-                didn&apos;t even know what I was deciding yet.
+                Every decision tool wanted a form. But real dilemmas don&apos;t
+                start with structure — they start with mess. We needed
+                something that could meet us in the uncertainty and help us
+                find clarity through conversation.
               </p>
             </div>
           </motion.div>
@@ -191,11 +146,11 @@ export default function AboutPage() {
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              &ldquo;I needed a thinking partner, not a productivity tool. So I
-              built one.&rdquo;
+              &ldquo;We needed a thinking partner, not a productivity tool.
+              So we built one.&rdquo;
             </p>
             <cite className="text-text-muted text-sm not-italic mt-3 block">
-              — Hojae Jung, Founder of Orria
+              — Founder, Orria
             </cite>
           </motion.blockquote>
 
@@ -207,48 +162,42 @@ export default function AboutPage() {
             className="space-y-6 text-text-secondary leading-relaxed"
           >
             <p>
-              That&apos;s when the idea for Orria clicked: what if there was
-              an AI companion that met you where you are — in the mess of
-              uncertainty — and helped you find clarity through conversation?
-              Not a chatbot that gives you an answer, but a thinking partner
-              that helps you discover your own.
+              What if there was an AI companion that met you where you are —
+              in the mess of uncertainty — and helped you find clarity through
+              conversation? Not a chatbot that gives you an answer, but a
+              thinking partner that helps you discover your own.
             </p>
             <p>
-              With a background spanning design, technology, product management,
-              and even military operations — I&apos;ve learned that the best
-              decisions come from seeing all angles, hearing multiple
-              perspectives, and having the courage to commit. Orria brings that
-              process to everyone.
+              That&apos;s Orria. A calm space to think through the decisions
+              that shape your life, get perspectives from AI personalities
+              that challenge your blind spots, and build a journal of the
+              choices that made you who you are.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Experience Highlights */}
+      {/* What We Believe */}
       <section className="py-20 md:py-28 bg-cream-100">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-3xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
             <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
-              The Founder
+              Philosophy
             </p>
             <h2
-              className="text-heading text-text-primary mb-4"
+              className="text-heading text-text-primary"
               style={{
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              Built by a product person
+              What We Believe
             </h2>
-            <p className="text-text-secondary max-w-2xl mx-auto">
-              A decade of building products people love — from Apple&apos;s retail floors
-              to autonomous AI systems to global insurance platforms.
-            </p>
           </motion.div>
 
           <motion.div
@@ -256,96 +205,30 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+            className="space-y-10"
           >
-            {experience.map((exp) => (
+            {beliefs.map((belief, i) => (
               <motion.div
-                key={exp.company + exp.role}
+                key={belief.title}
                 variants={staggerItem}
-                className="bg-white rounded-2xl p-6 border border-cream-300/50 shadow-soft"
+                className="flex gap-5"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-cyan-500">
-                    {exp.company}
-                  </span>
-                  <span className="text-xs text-text-muted">{exp.period}</span>
-                </div>
-                <h3 className="text-text-primary font-semibold mb-2">
-                  {exp.role}
-                </h3>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  {exp.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Additional credentials */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="mt-8 flex flex-wrap justify-center gap-3"
-          >
-            {[
-              "B.A. Design in Visual Communications — UTS",
-              "B.Sc. Information Technology — Macquarie",
-              "Photographer for Figma, Google, Sony, Tesla",
-              "ROKA & U.S. Army — Sergeant, S3 Operations",
-            ].map((credential) => (
-              <span
-                key={credential}
-                className="px-4 py-2 rounded-full bg-cream-200 text-text-muted text-xs font-medium"
-              >
-                {credential}
-              </span>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-20 md:py-28 bg-cream-50">
-        <div className="max-w-3xl mx-auto px-6">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="text-heading text-text-primary mb-12 text-center"
-            style={{
-              fontFamily: "var(--font-playfair), Playfair Display, serif",
-            }}
-          >
-            The Journey
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="space-y-8"
-          >
-            {timeline.map((item) => (
-              <motion.div
-                key={item.year}
-                variants={staggerItem}
-                className="flex gap-6"
-              >
-                <div className="flex-shrink-0 w-24 pt-1">
-                  <span className="text-cyan-500 text-xs font-semibold uppercase tracking-wider">
-                    {item.year}
+                <div className="flex-shrink-0 pt-1.5">
+                  <span className="text-cyan-500/40 text-2xl font-bold font-mono">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="pb-8 border-l-2 border-cream-300 pl-6 relative">
-                  <div className="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-cyan-500" />
-                  <h3 className="text-text-primary font-semibold mb-2">
-                    {item.title}
+                <div>
+                  <h3
+                    className="text-text-primary font-semibold text-lg mb-3"
+                    style={{
+                      fontFamily: "var(--font-playfair), Playfair Display, serif",
+                    }}
+                  >
+                    {belief.title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    {item.description}
+                  <p className="text-text-secondary leading-relaxed">
+                    {belief.description}
                   </p>
                 </div>
               </motion.div>
@@ -354,9 +237,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Values */}
-      <section className="py-20 md:py-28 bg-cream-100">
-        <div className="max-w-5xl mx-auto px-6">
+      {/* The Framework */}
+      <section className="py-20 md:py-28 bg-cream-50">
+        <div className="max-w-4xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -364,19 +247,17 @@ export default function AboutPage() {
             viewport={viewportSettings}
             className="text-center mb-16"
           >
+            <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
+              The Method
+            </p>
             <h2
-              className="text-heading text-text-primary mb-4"
+              className="text-heading text-text-primary"
               style={{
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              Our Mission & Values
+              Four steps to clarity
             </h2>
-            <p className="text-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Help people think through, capture, and close the loop on the
-              decisions that shape their lives — through conversation, not
-              forms.
-            </p>
           </motion.div>
 
           <motion.div
@@ -384,23 +265,31 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
           >
-            {values.map((value) => (
+            {framework.map((step, i) => (
               <motion.div
-                key={value.title}
+                key={step.label}
                 variants={staggerItem}
-                className="bg-white rounded-2xl p-6 border border-cream-300/50 shadow-soft"
+                className="text-center p-6 rounded-2xl bg-white border border-cream-300/50 shadow-soft"
               >
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
-                  <value.icon size={20} className="text-cyan-500" />
+                <div
+                  className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center"
+                  style={{ backgroundColor: `color-mix(in srgb, ${step.color} 10%, transparent)` }}
+                >
+                  <step.icon size={22} style={{ color: step.color }} />
                 </div>
-                <h3 className="text-text-primary font-semibold mb-2 text-sm">
-                  {value.title}
+                <h3 className="text-text-primary font-semibold mb-2">
+                  {step.label}
                 </h3>
                 <p className="text-text-secondary text-sm leading-relaxed">
-                  {value.description}
+                  {step.description}
                 </p>
+                {i < framework.length - 1 && (
+                  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 text-cream-300">
+                    →
+                  </div>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -426,33 +315,17 @@ export default function AboutPage() {
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              Solo founder.
+              Small team.
               <br />
               <span className="italic text-cyan-400">
-                Enterprise-grade output.
+                Deep empathy.
               </span>
             </h2>
-            <p className="text-white/60 max-w-xl mx-auto leading-relaxed mb-8">
-              Orria is built by one person with AI as a development partner.
-              110+ Swift files, production-ready code, built in weeks instead
-              of months. A product manager who designs, codes, and ships.
+            <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
+              Orria is built with care by a small team using AI as a development
+              partner. We believe great products come from deeply understanding
+              the problem — not from large teams or long timelines.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              {[
-                "SwiftUI",
-                "Supabase",
-                "GPT-4o",
-                "StoreKit 2",
-                "Claude Opus 4.6",
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/60"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
