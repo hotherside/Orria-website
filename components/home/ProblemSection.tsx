@@ -15,7 +15,7 @@ const problems = [
     stat: "35,000",
     title: "The Forgotten Journey",
     description:
-      "You make ~35,000 decisions a day. The job you almost didn't take, the city you considered moving to — these crossroads defined you. But most are forgotten.",
+      "You make ~35,000 decisions a day. From what to cook for dinner to whether to change careers — the relationship you fought for, the city you almost moved to. These crossroads defined you. But most are forgotten.",
   },
   {
     icon: RotateCcw,
@@ -28,7 +28,7 @@ const problems = [
     icon: XCircle,
     title: "Current Solutions Fail",
     description:
-      "AI chatbots forget everything. Notes apps have no insight. Social media is performance, not substance. No platform helps you THINK through a dilemma.",
+      "AI chatbots forget everything. Notes apps have no insight. Social media is performance, not substance. No platform combines AI thinking partners with real human perspectives to help you actually decide.",
   },
 ];
 

@@ -225,13 +225,17 @@ function JourneyNode({ node, index }: { node: typeof journeyNodes[0]; index: num
 
       {/* Center node */}
       <div className="flex flex-col items-center md:order-2">
-        <div className="relative">
+        <motion.div
+          className="relative"
+          animate={isInView ? { y: [-3, 3, -3] } : {}}
+          transition={{ duration: 3 + index * 0.5, repeat: Infinity, ease: "easeInOut" }}
+        >
           <JourneyNodeIllustration index={index} isInView={isInView} />
           {/* Glow */}
           <div
             className={`absolute inset-0 -z-10 blur-2xl scale-150 opacity-40 rounded-full ${node.glowClass}`}
           />
-        </div>
+        </motion.div>
         {/* Connecting line (not on last) */}
         {index < journeyNodes.length - 1 && (
           <motion.div

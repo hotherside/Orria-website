@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { Mic, Sparkles } from "lucide-react";
 
-const SPOKEN_TEXT = "I got a job offer in another city but I\u2019d have to leave everything behind...";
+const SPOKEN_TEXT = "My partner wants to move cities but I just started something here I really believe in...";
 const DICTATION_SPEED = 35; // ms per character — slightly faster than typing to feel like speech
 const PAUSE_BEFORE_VOICE = 800;
 const RECORDING_DURATION = 1200; // waveform active before words appear
@@ -230,7 +230,7 @@ export function CanvasDemo() {
               {/* Structured result */}
               <div className="bg-white/5 rounded-xl p-3 border border-white/10">
                 <p className="text-cyan-400 text-[8px] font-semibold uppercase tracking-wider mb-1">Decision</p>
-                <p className="text-white text-[11px] font-medium">Take the job offer in the new city</p>
+                <p className="text-white text-[11px] font-medium">Navigate the move vs. stay dilemma together</p>
               </div>
 
               <div className="space-y-2">
@@ -243,7 +243,7 @@ export function CanvasDemo() {
                   <div className="w-4 h-4 rounded-full bg-cyan-500/20 flex items-center justify-center">
                     <span className="text-cyan-400 text-[7px] font-bold">1</span>
                   </div>
-                  <p className="text-white/80 text-[10px]">Accept and relocate</p>
+                  <p className="text-white/80 text-[10px]">Move together, find new balance</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: -8 }}
@@ -254,7 +254,7 @@ export function CanvasDemo() {
                   <div className="w-4 h-4 rounded-full bg-white/10 flex items-center justify-center">
                     <span className="text-white/60 text-[7px] font-bold">2</span>
                   </div>
-                  <p className="text-white/80 text-[10px]">Decline and stay</p>
+                  <p className="text-white/80 text-[10px]">Stay and explore long-distance</p>
                 </motion.div>
               </div>
 
@@ -265,7 +265,7 @@ export function CanvasDemo() {
                 transition={{ delay: 0.5 }}
                 className="flex gap-1.5 mt-1"
               >
-                <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 text-[8px]">Career</span>
+                <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 text-[8px]">Relationship</span>
                 <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 text-[8px]">Life Change</span>
               </motion.div>
 

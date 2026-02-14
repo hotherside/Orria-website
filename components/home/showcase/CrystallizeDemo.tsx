@@ -110,7 +110,7 @@ export function CrystallizeDemo() {
                   <p className="text-cyan-400 text-[8px] font-semibold">Here&apos;s what I&apos;m seeing</p>
                 </div>
                 <p className="text-white/80 text-[9px] leading-relaxed">
-                  Deciding whether to take a job offer in a new city. This is about weighing growth against roots.
+                  Choosing between two schools for your child. This is about values — structure vs. creativity, proximity vs. fit.
                 </p>
               </div>
 
@@ -125,8 +125,8 @@ export function CrystallizeDemo() {
                     Your options
                   </motion.p>
                   {[
-                    { num: "1", text: "Accept and relocate", subtext: "Career growth, new experiences" },
-                    { num: "2", text: "Decline and stay", subtext: "Stability, existing relationships" },
+                    { num: "1", text: "Montessori school", subtext: "Creative freedom, longer commute" },
+                    { num: "2", text: "Local public school", subtext: "Community, friends nearby" },
                   ].map((opt, i) => (
                     <motion.div
                       key={opt.num}

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import {
   fadeUp,
   staggerContainer,
@@ -8,11 +9,14 @@ import {
   viewportSettings,
 } from "@/lib/animation-variants";
 import { WaitlistForm } from "@/components/shared/WaitlistForm";
+import { FloatingElements } from "@/components/shared/FloatingElements";
 import {
   MessageCircle,
   Sparkles,
   Clock,
   RefreshCw,
+  Users,
+  Heart,
 } from "lucide-react";
 
 const beliefs = [
@@ -24,7 +28,7 @@ const beliefs = [
   {
     title: "Multiple perspectives break echo chambers",
     description:
-      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because your blind spots need more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. Together they see what you can\u2019t see alone.",
+      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because your blind spots need more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. And when AI isn\u2019t enough, real people from the Orria community offer perspectives shaped by lived experience.",
   },
   {
     title: "Closing the loop builds wisdom",
@@ -34,7 +38,7 @@ const beliefs = [
   {
     title: "Your decisions are your autobiography",
     description:
-      "The job you almost didn\u2019t take. The city you considered moving to. The relationship you fought for. These crossroads defined who you are \u2014 but most are forgotten. Orria\u2019s journal keeps the story of how you became you.",
+      "The relationship you fought for. The city you almost moved to. The career change that scared you. Whether to rent or buy, which school for the kids, the treatment plan you debated. These crossroads defined who you are \u2014 but most are forgotten. Orria\u2019s journal keeps the story of how you became you.",
   },
 ];
 
@@ -65,12 +69,124 @@ const framework = [
   },
 ];
 
+/* Animated pull-quote border that draws itself */
+function AnimatedQuoteBorder({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  return (
+    <div ref={ref} className="relative my-12 py-6 pl-8">
+      {/* Animated cyan border line */}
+      <svg
+        className="absolute left-0 top-0 h-full w-[3px]"
+        viewBox="0 0 3 100"
+        preserveAspectRatio="none"
+      >
+        <motion.line
+          x1="1.5"
+          y1="0"
+          x2="1.5"
+          y2="100"
+          stroke="var(--cyan-500)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
+        />
+      </svg>
+      {/* Glow effect at the drawing tip */}
+      <motion.div
+        className="absolute left-0 w-1 rounded-full"
+        style={{ backgroundColor: "var(--cyan-400)", filter: "blur(4px)" }}
+        initial={{ top: 0, height: 0, opacity: 0 }}
+        animate={
+          isInView
+            ? { top: ["0%", "100%"], height: 12, opacity: [0, 1, 1, 0] }
+            : { top: 0, height: 0, opacity: 0 }
+        }
+        transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+      />
+      {/* Content fades in after border draws */}
+      <motion.div
+        initial={{ opacity: 0, x: -10 }}
+        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
+/* Animated framework step with hover + scroll effects */
+function FrameworkCard({
+  step,
+  index,
+}: {
+  step: (typeof framework)[0];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={staggerItem}
+      className="relative text-center p-6 rounded-2xl bg-white border border-cream-300/50 shadow-soft hover-scan-border group"
+    >
+      {/* Icon container with animated entrance */}
+      <motion.div
+        className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center"
+        style={{
+          backgroundColor: `color-mix(in srgb, ${step.color} 10%, transparent)`,
+        }}
+        initial={{ scale: 0, rotate: -45 }}
+        animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -45 }}
+        transition={{
+          duration: 0.5,
+          delay: 0.2 + index * 0.15,
+          type: "spring",
+          stiffness: 200,
+          damping: 15,
+        }}
+      >
+        <motion.div
+          animate={isInView ? { y: [-1, 1, -1] } : {}}
+          transition={{ duration: 2.5 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <step.icon size={22} style={{ color: step.color }} />
+        </motion.div>
+      </motion.div>
+      <h3 className="text-text-primary font-semibold mb-2">{step.label}</h3>
+      <p className="text-text-secondary text-sm leading-relaxed">
+        {step.description}
+      </p>
+      {/* Connecting arrow between cards */}
+      {index < framework.length - 1 && (
+        <motion.div
+          className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-cyan-500/30"
+          initial={{ opacity: 0, x: -5 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -5 }}
+          transition={{ delay: 0.6 + index * 0.15 }}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.div>
+      )}
+    </motion.div>
+  );
+}
+
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-cream-100" />
+        <FloatingElements count={6} className="opacity-60" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div variants={fadeUp} initial="hidden" animate="visible">
             <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -117,11 +233,12 @@ export default function AboutPage() {
               </p>
               <p>
                 A career change across continents. Whether to leave a
-                comfortable role to chase something uncertain. The life choices
-                that don&apos;t fit in a spreadsheet. We all face these moments
-                — and we all handle them the same way: asking friends who are
-                biased, searching the internet for answers that don&apos;t
-                exist, and spinning in circles for weeks.
+                comfortable role to chase something uncertain. A relationship at
+                a turning point. The life choices that don&apos;t fit in a
+                spreadsheet. We all face these moments — and we all handle them
+                the same way: asking friends who are biased, searching the
+                internet for answers that don&apos;t exist, and spinning in
+                circles for weeks.
               </p>
               <p>
                 Every decision tool wanted a form. But real dilemmas don&apos;t
@@ -132,27 +249,23 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Pull quote */}
-          <motion.blockquote
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="my-12 pl-6 border-l-[3px] border-cyan-500 py-4"
-          >
-            <p
-              className="text-text-primary text-xl md:text-2xl italic leading-relaxed"
-              style={{
-                fontFamily: "var(--font-playfair), Playfair Display, serif",
-              }}
-            >
-              &ldquo;We needed a thinking partner, not a productivity tool.
-              So we built one.&rdquo;
-            </p>
-            <cite className="text-text-muted text-sm not-italic mt-3 block">
-              — Founder, Orria
-            </cite>
-          </motion.blockquote>
+          {/* Animated Pull Quote */}
+          <AnimatedQuoteBorder>
+            <blockquote>
+              <p
+                className="text-text-primary text-xl md:text-2xl italic leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-playfair), Playfair Display, serif",
+                }}
+              >
+                &ldquo;We needed a thinking partner, not a productivity tool.
+                So we built one.&rdquo;
+              </p>
+              <cite className="text-text-muted text-sm not-italic mt-3 block">
+                — Founder, Orria
+              </cite>
+            </blockquote>
+          </AnimatedQuoteBorder>
 
           <motion.div
             variants={fadeUp}
@@ -169,17 +282,24 @@ export default function AboutPage() {
             </p>
             <p>
               That&apos;s Orria. A calm space to think through the decisions
-              that shape your life, get perspectives from AI personalities
-              that challenge your blind spots, and build a journal of the
-              choices that made you who you are.
+              that shape your life — from career moves to relationship
+              crossroads, health choices to financial turning points. Get
+              perspectives from AI personalities that challenge your blind
+              spots, share with real people who&apos;ve been there, and build
+              a journal of the choices that made you who you are.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* What We Believe */}
-      <section className="py-20 md:py-28 bg-cream-100">
-        <div className="max-w-3xl mx-auto px-6">
+      <section className="relative py-20 md:py-28 bg-cream-100 overflow-hidden">
+        <FloatingElements
+          count={10}
+          colors={["#0891B2", "#E5A53D", "#6366F1", "#9333EA", "#C4704B"]}
+          className="opacity-40"
+        />
+        <div className="relative z-10 max-w-3xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -211,18 +331,23 @@ export default function AboutPage() {
               <motion.div
                 key={belief.title}
                 variants={staggerItem}
-                className="flex gap-5"
+                className="flex gap-5 group"
               >
                 <div className="flex-shrink-0 pt-1.5">
-                  <span className="text-cyan-500/40 text-2xl font-bold font-mono">
+                  <motion.span
+                    className="text-cyan-500/40 text-2xl font-bold font-mono block"
+                    whileHover={{ scale: 1.2, color: "var(--cyan-500)" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     {String(i + 1).padStart(2, "0")}
-                  </span>
+                  </motion.span>
                 </div>
                 <div>
                   <h3
                     className="text-text-primary font-semibold text-lg mb-3"
                     style={{
-                      fontFamily: "var(--font-playfair), Playfair Display, serif",
+                      fontFamily:
+                        "var(--font-playfair), Playfair Display, serif",
                     }}
                   >
                     {belief.title}
@@ -268,30 +393,24 @@ export default function AboutPage() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
           >
             {framework.map((step, i) => (
-              <motion.div
-                key={step.label}
-                variants={staggerItem}
-                className="text-center p-6 rounded-2xl bg-white border border-cream-300/50 shadow-soft"
-              >
-                <div
-                  className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center"
-                  style={{ backgroundColor: `color-mix(in srgb, ${step.color} 10%, transparent)` }}
-                >
-                  <step.icon size={22} style={{ color: step.color }} />
-                </div>
-                <h3 className="text-text-primary font-semibold mb-2">
-                  {step.label}
-                </h3>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  {step.description}
-                </p>
-                {i < framework.length - 1 && (
-                  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 text-cream-300">
-                    →
-                  </div>
-                )}
-              </motion.div>
+              <FrameworkCard key={step.label} step={step} index={i} />
             ))}
+          </motion.div>
+
+          {/* Community callout */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            className="mt-10 text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-500/5 border border-cyan-500/15">
+              <Users size={14} className="text-cyan-500" />
+              <span className="text-text-secondary text-sm">
+                Plus real community perspectives from people who&apos;ve faced similar decisions
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -299,6 +418,11 @@ export default function AboutPage() {
       {/* Building Approach */}
       <section className="py-20 md:py-28 bg-dark-900 relative overflow-hidden">
         <div className="absolute inset-0 hero-mesh-dark opacity-30" />
+        <FloatingElements
+          count={6}
+          colors={["#22D3EE", "#0891B2", "#155E75"]}
+          className="opacity-30"
+        />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
             variants={fadeUp}
@@ -321,11 +445,15 @@ export default function AboutPage() {
                 Deep empathy.
               </span>
             </h2>
-            <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
+            <p className="text-white/60 max-w-xl mx-auto leading-relaxed mb-8">
               Orria is built with care by a small team using AI as a development
               partner. We believe great products come from deeply understanding
               the problem — not from large teams or long timelines.
             </p>
+            <div className="flex items-center justify-center gap-2 text-white/40">
+              <Heart size={14} className="text-terracotta-400" />
+              <span className="text-sm">Made with purpose</span>
+            </div>
           </motion.div>
         </div>
       </section>

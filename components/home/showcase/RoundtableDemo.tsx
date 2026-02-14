@@ -15,27 +15,27 @@ const messages = [
   {
     agent: "orria" as const,
     name: "Orria",
-    text: "Let\u2019s hear from everyone. What does this decision look like from each angle?",
+    text: "Let\u2019s hear from everyone. Buying vs renting \u2014 what does each path look like?",
   },
   {
     agent: "maya" as const,
     name: "Maya",
-    text: "This is a chance to reinvent yourself! New city, new energy \u2014 growth often lives outside comfort zones.",
+    text: "Owning a home is more than finance \u2014 it\u2019s roots, stability, a place that\u2019s truly yours!",
   },
   {
     agent: "liam" as const,
     name: "Liam",
-    text: "Let\u2019s look at the numbers: cost of living difference, salary adjustment, career trajectory impact.",
+    text: "Run the numbers: mortgage vs rent, opportunity cost of the down payment, maintenance buffer.",
   },
   {
     agent: "sara" as const,
     name: "Sara",
-    text: "Have you visited the city? Talked to the team? The practical details matter most here.",
+    text: "How long are you staying? If less than 5 years, renting usually wins on flexibility alone.",
   },
   {
     agent: "rex" as const,
     name: "Rex",
-    text: "What are you really running from? Make sure this isn\u2019t about escaping, but choosing.",
+    text: "What if the market drops 20%? Are you buying because you want to, or because you feel you should?",
   },
 ];
 

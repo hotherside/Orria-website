@@ -133,8 +133,9 @@ export function HeroSection() {
             }}
             className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            When the big decisions keep you up at night, Orria helps you think
-            them through — with AI perspectives that challenge your blind spots,
+            When life&apos;s big decisions keep you up at night, Orria helps you
+            think them through — with AI perspectives that challenge your blind
+            spots, real community feedback from people who&apos;ve been there,
             and a journal that remembers what shaped you.
           </motion.p>
         </motion.div>

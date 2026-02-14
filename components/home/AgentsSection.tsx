@@ -229,6 +229,17 @@ export function AgentsSection() {
               decision.
             </p>
           </div>
+
+          {/* Community note */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mt-4 text-text-muted text-sm"
+          >
+            And when AI isn&apos;t enough — share with the Orria community for real human perspectives.
+          </motion.p>
         </motion.div>
       </div>
     </section>

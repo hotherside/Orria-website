@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, Sparkles } from "lucide-react";
+import { Check, X, Sparkles, Link2, Heart } from "lucide-react";
 
 interface WaitlistSuccessModalProps {
   isOpen: boolean;
@@ -10,6 +11,18 @@ interface WaitlistSuccessModalProps {
 }
 
 export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccessModalProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText("https://orria.app");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -33,9 +46,9 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
           >
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
               {/* Top accent bar */}
-              <div className="h-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-amber-400" />
+              <div className="h-1.5 bg-gradient-to-r from-cyan-500 via-cyan-400 to-amber-400" />
 
-              <div className="p-8 text-center relative">
+              <div className="p-8 relative">
                 {/* Close button */}
                 <button
                   onClick={onClose}
@@ -45,75 +58,76 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
                   <X size={16} />
                 </button>
 
-                {/* Success icon */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", damping: 15, stiffness: 200, delay: 0.1 }}
-                  className="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center mx-auto mb-5"
-                >
+                {/* Big number hero */}
+                {count !== null && count !== undefined && count > 0 && (
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", damping: 12, stiffness: 200, delay: 0.25 }}
-                    className="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", damping: 12, stiffness: 150, delay: 0.1 }}
+                    className="text-center mb-4"
                   >
-                    <Check size={20} className="text-white" strokeWidth={3} />
+                    <AnimatedNumber target={count} />
                   </motion.div>
-                </motion.div>
+                )}
 
                 {/* Heading */}
                 <motion.h3
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-xl font-semibold text-text-primary mb-2"
+                  transition={{ delay: 0.35 }}
+                  className="text-2xl font-semibold text-text-primary text-center mb-2"
                   style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
                 >
-                  You&apos;re in!
+                  Welcome to Orria
                 </motion.h3>
 
-                {/* Body text */}
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
+                {/* Thank you */}
+                <motion.p
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="space-y-3 mb-6"
+                  transition={{ delay: 0.45 }}
+                  className="text-center text-text-secondary text-sm mb-5 flex items-center justify-center gap-1.5"
                 >
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    We&apos;re in the final stages of building Orria. You&apos;ll be among the first to try it.
-                  </p>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    As an early member, we&apos;ll reach out to invite you as a beta tester — your feedback will directly shape the experience.
-                  </p>
-                </motion.div>
+                  <Heart size={13} className="text-terracotta-400" />
+                  Thank you for believing in a better way to make decisions.
+                </motion.p>
 
-                {/* What to expect */}
+                {/* Belonging copy */}
+                <motion.p
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55 }}
+                  className="text-center text-text-secondary text-sm mb-6 leading-relaxed"
+                >
+                  You&apos;re now one of Orria&apos;s founding members. Your early support means the world — and your feedback will directly shape what Orria becomes.
+                </motion.p>
+
+                {/* What's next */}
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="bg-cream-100 rounded-2xl p-4 mb-6 text-left"
+                  transition={{ delay: 0.6 }}
+                  className="bg-cream-100 rounded-2xl p-5 mb-6"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <Sparkles size={14} className="text-cyan-600" />
                     <p className="text-xs font-semibold text-text-primary uppercase tracking-wider">What&apos;s next</p>
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {[
-                      "Early access to the beta",
-                      "Invite to share your feedback",
-                      "Updates as we launch",
+                      "Early access to the beta before anyone else",
+                      "A personal invite to share your feedback",
+                      "Updates as we approach launch",
                     ].map((item, i) => (
                       <motion.li
                         key={item}
                         initial={{ opacity: 0, x: -8 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6 + i * 0.1 }}
-                        className="flex items-start gap-2"
+                        transition={{ delay: 0.7 + i * 0.1 }}
+                        className="flex items-start gap-2.5"
                       >
-                        <div className="w-4 h-4 rounded-full bg-cyan-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <Check size={8} className="text-cyan-600" />
+                        <div className="w-5 h-5 rounded-full bg-cyan-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Check size={10} className="text-cyan-600" />
                         </div>
                         <p className="text-sm text-text-secondary">{item}</p>
                       </motion.li>
@@ -121,25 +135,30 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
                   </ul>
                 </motion.div>
 
-                {/* Counter */}
-                {count !== null && count !== undefined && count > 0 && (
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="text-xs text-text-muted"
+                {/* Share prompt */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.95 }}
+                  className="flex items-center justify-center gap-2 mb-5"
+                >
+                  <p className="text-xs text-text-muted">Know someone who&apos;d love this?</p>
+                  <button
+                    onClick={handleCopyLink}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream-200 hover:bg-cream-300 transition-colors text-xs text-text-secondary"
                   >
-                    You&apos;re #{count.toLocaleString()} on the waitlist
-                  </motion.p>
-                )}
+                    <Link2 size={12} />
+                    {copied ? "Copied!" : "Copy link"}
+                  </button>
+                </motion.div>
 
                 {/* CTA */}
                 <motion.button
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9 }}
+                  transition={{ delay: 1 }}
                   onClick={onClose}
-                  className="mt-4 w-full py-3 rounded-full bg-cyan-500 text-white font-semibold text-sm hover:bg-cyan-600 transition-colors"
+                  className="w-full py-3 rounded-full bg-cyan-500 text-white font-semibold text-sm hover:bg-cyan-600 transition-colors"
                 >
                   Got it
                 </motion.button>
@@ -149,5 +168,47 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
         </>
       )}
     </AnimatePresence>
+  );
+}
+
+/** Animated number that counts up with easing */
+function AnimatedNumber({ target }: { target: number }) {
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    let frame: number;
+    const duration = 800;
+    const start = Date.now();
+
+    const animate = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(eased * target));
+      if (progress < 1) {
+        frame = requestAnimationFrame(animate);
+      }
+    };
+
+    const timeout = setTimeout(() => {
+      frame = requestAnimationFrame(animate);
+    }, 200);
+
+    return () => {
+      clearTimeout(timeout);
+      cancelAnimationFrame(frame);
+    };
+  }, [target]);
+
+  return (
+    <div className="flex items-baseline justify-center gap-1">
+      <span className="text-cyan-500/40 text-3xl font-light">#</span>
+      <span
+        className="text-5xl md:text-6xl font-bold text-cyan-600 tabular-nums"
+        style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+      >
+        {display.toLocaleString()}
+      </span>
+    </div>
   );
 }
