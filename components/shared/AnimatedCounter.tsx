@@ -9,6 +9,7 @@ interface AnimatedCounterProps {
   suffix?: string;
   duration?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export function AnimatedCounter({
@@ -17,6 +18,7 @@ export function AnimatedCounter({
   suffix = "",
   duration = 2,
   className,
+  style,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -49,6 +51,7 @@ export function AnimatedCounter({
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       className={className}
+      style={style}
     >
       {prefix}
       {count.toLocaleString()}

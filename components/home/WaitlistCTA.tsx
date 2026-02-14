@@ -23,16 +23,15 @@ export function WaitlistCTA() {
               fontFamily: "var(--font-playfair), Playfair Display, serif",
             }}
           >
-            Your story starts
+            Every story starts
             <br />
-            <span className="italic">with a choice.</span>
+            <span className="italic">with a crossroad.</span>
           </h2>
           <p className="text-text-secondary text-lg mb-2 max-w-xl mx-auto leading-relaxed">
-            Every journey is a series of crossroads.
+            Be the first to experience a new way of thinking through the decisions that matter most.
           </p>
           <p className="text-text-muted text-base mb-10 max-w-md mx-auto">
-            Be the first to experience a new way of thinking through the ones
-            that matter most.
+            Join the waitlist for early access. We&apos;ll be in touch.
           </p>
           <WaitlistForm variant="section" />
           <p className="text-text-muted text-xs mt-4">

@@ -12,6 +12,7 @@ interface PhoneMockupProps {
   className?: string;
   glowColor?: string;
   size?: "sm" | "md" | "lg";
+  frameTheme?: "dark" | "light";
 }
 
 const sizes = {
@@ -27,27 +28,34 @@ export function PhoneMockup({
   sublabel,
   gradient = "from-cyan-600/30 to-dark-800",
   className,
-  glowColor = "bg-cyan-500/20",
+  glowColor,
   size = "md",
+  frameTheme = "dark",
 }: PhoneMockupProps) {
   const s = sizes[size];
+  const isLight = frameTheme === "light";
+  const frameBg = isLight ? "#F5F1EA" : "#121110";
+  const frameBorder = isLight ? "#D4D0C8" : "#1a1918";
+  const notchBg = isLight ? "#C8C4BC" : "#1a1918";
+  const defaultGlow = isLight ? "bg-cyan-500/10" : "bg-cyan-500/20";
 
   return (
     <div className={cn("relative mx-auto", className)}>
       {/* Phone frame */}
       <div
-        className="relative bg-dark-900 shadow-2xl overflow-hidden"
+        className="relative shadow-2xl overflow-hidden"
         style={{
           width: s.width,
           height: s.height,
           borderRadius: s.radius,
-          border: `${s.border}px solid #1a1918`,
+          border: `${s.border}px solid ${frameBorder}`,
+          backgroundColor: frameBg,
         }}
       >
         {/* Dynamic Island / Notch */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#1a1918] rounded-b-2xl z-20"
-          style={{ width: s.notchW, height: s.notchH }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl z-20"
+          style={{ width: s.notchW, height: s.notchH, backgroundColor: notchBg }}
         />
 
         {/* Screen content — priority: children > screenshot > fallback */}
@@ -91,7 +99,7 @@ export function PhoneMockup({
 
       {/* Glow effect */}
       <div
-        className={cn("absolute inset-0 -z-10 blur-3xl scale-110 opacity-60", glowColor)}
+        className={cn("absolute inset-0 -z-10 blur-3xl scale-110 opacity-60", glowColor || defaultGlow)}
         style={{ borderRadius: s.radius }}
       />
 

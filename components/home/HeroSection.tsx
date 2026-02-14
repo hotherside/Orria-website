@@ -152,6 +152,18 @@ export function HeroSection() {
           </p>
         </motion.div>
 
+        {/* Stat badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 backdrop-blur-sm border border-white/10"
+        >
+          <span className="text-white/50 text-xs">
+            ~35,000 decisions a day. Zero tools for the ones that matter.
+          </span>
+        </motion.div>
+
         {/* See how it works */}
         <motion.a
           href="#problem"

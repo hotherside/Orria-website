@@ -217,6 +217,28 @@ export const messageItem: Variants = {
   }
 };
 
+// Blur reveal (for cinematic section transitions)
+export const blurReveal: Variants = {
+  hidden: { opacity: 0, filter: "blur(20px)", y: 30 },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+// Phone mockup reveal (scale + lift)
+export const phoneReveal: Variants = {
+  hidden: { opacity: 0, y: 80, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] }
+  }
+};
+
 // Draw SVG path animation
 export const pathDraw: Variants = {
   hidden: {

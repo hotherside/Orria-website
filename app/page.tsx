@@ -1,9 +1,8 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { ProblemSection } from "@/components/home/ProblemSection";
-import { AppShowcaseSection } from "@/components/home/AppShowcaseSection";
-import { JourneySection } from "@/components/home/JourneySection";
+import { CategoriesSection } from "@/components/home/CategoriesSection";
+import { StickyFeatureShowcase } from "@/components/home/StickyFeatureShowcase";
 import { AgentsSection } from "@/components/home/AgentsSection";
-import { SocialProofSection } from "@/components/home/SocialProofSection";
 import { WaitlistCTA } from "@/components/home/WaitlistCTA";
 
 export default function Home() {
@@ -11,10 +10,9 @@ export default function Home() {
     <>
       <HeroSection />
       <ProblemSection />
-      <AppShowcaseSection />
-      <JourneySection />
+      <CategoriesSection />
+      <StickyFeatureShowcase />
       <AgentsSection />
-      <SocialProofSection />
       <WaitlistCTA />
     </>
   );
