@@ -8,12 +8,16 @@ import { RoundtableDemo } from "@/components/home/showcase/RoundtableDemo";
 import { CrystallizeDemo } from "@/components/home/showcase/CrystallizeDemo";
 import { CommunityDemo } from "@/components/home/showcase/CommunityDemo";
 import { InsightsDemo } from "@/components/home/showcase/InsightsDemo";
+import { JournalDemo } from "@/components/home/showcase/JournalDemo";
+import { ReflectionDemo } from "@/components/home/showcase/ReflectionDemo";
 import {
   Mic,
   Users,
   Sparkles,
   Globe,
   BarChart3,
+  BookOpen,
+  RotateCcw,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -49,9 +53,9 @@ const features = [
   {
     kicker: "Get Perspective",
     icon: Globe,
-    title: "Because we\u2019re still human.",
+    title: "Real people. Real perspective.",
     description:
-      "AI is powerful, but nothing replaces real human perspective. Share your decision \u2014 anonymously or by name \u2014 and get votes, comments, and hard-won wisdom from people who\u2019ve actually been there.",
+      "AI is powerful, but some things need real human perspective. Share your decision anonymously and get votes, comments, and hard-won wisdom from people who\u2019ve been there.",
     Demo: CommunityDemo,
     color: "#C4704B",
   },
@@ -63,6 +67,24 @@ const features = [
       "See how you decide across topics, track your confidence over time, and uncover insights about your decision-making style. Every choice becomes part of your story.",
     Demo: InsightsDemo,
     color: "#9333EA",
+  },
+  {
+    kicker: "Your Story",
+    icon: BookOpen,
+    title: "Your decision passport.",
+    description:
+      "Every decision you make \u2014 logged, searchable, and yours forever. A living journal that turns scattered choices into the story of how you became you.",
+    Demo: JournalDemo,
+    color: "#C4704B",
+  },
+  {
+    kicker: "Look Back",
+    icon: RotateCcw,
+    title: "Close the loop.",
+    description:
+      "Come back months later. Would you make the same choice? Reflect, track your confidence over time, and celebrate your milestones.",
+    Demo: ReflectionDemo,
+    color: "#E5A53D",
   },
 ];
 
@@ -127,7 +149,7 @@ export function StickyFeatureShowcase() {
   };
 
   return (
-    <section id="product" className="bg-cream-50 py-14 md:py-20">
+    <section id="product" className="bg-cream-100 py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header — Introducing Orria + How It Works merged */}
         <motion.div

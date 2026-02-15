@@ -39,10 +39,10 @@ import {
 /* ── Data ─────────────────────────────────────────── */
 
 const opportunityStats = [
-  { value: 400, prefix: "$", suffix: "B", label: "Lost annually to decision fatigue in organizations", source: "World Economic Forum" },
-  { value: 35, suffix: "K", label: "Decisions made per person per day", source: "Various studies" },
-  { value: 85, suffix: "%", label: "Adults report anxiety about major life decisions", source: "APA Research" },
-  { value: 61, suffix: "%", label: "Executives say poor decisions are as frequent as good ones", source: "McKinsey" },
+  { value: 250, prefix: "$", suffix: "B+", label: "Lost annually to poor decision-making in organizations", source: "Gallup Workplace Research" },
+  { value: 35, suffix: "K", label: "Decisions made per person per day", source: "Sahakian & Labuzetta, 2013" },
+  { value: 85, suffix: "%", label: "Adults report anxiety about major life decisions", source: "Oracle Decision Dilemma Study, 2023" },
+  { value: 72, suffix: "%", label: "Executives say bad decisions are about as frequent as good ones", source: "McKinsey" },
 ];
 
 const howItWorks = [
@@ -76,7 +76,7 @@ const traction = [
 ];
 
 const markets = [
-  { title: "Decision Intelligence", current: "$16.3B", future: "$50.1B", year: "2030", cagr: "24.7%", source: "MarketsandMarkets", barWidth: "60%" },
+  { title: "Decision Intelligence", current: "$13.3B", future: "$50.1B", year: "2030", cagr: "24.7%", source: "MarketsandMarkets", barWidth: "60%" },
   { title: "AI Companion & Copilot", current: "$37.1B", future: "$552.5B", year: "2035", cagr: "31%", source: "Precedence Research", barWidth: "100%" },
   { title: "Mental Wellness Apps", current: "$7.2B", future: "$22.5B", year: "2033", cagr: "15.2%", source: "Industry Research", barWidth: "35%" },
   { title: "AI Virtual Assistant", current: "$3.4B", future: "$21.1B", year: "2030", cagr: "44.5%", source: "Industry Research", barWidth: "30%" },
@@ -101,12 +101,12 @@ const whyNow = [
   {
     icon: SmartphoneNfc,
     title: "Social media fatigue is real",
-    description: "Usage down 10% since 2022. Two-thirds of users report platform fatigue. People are craving substance, depth, and tools that respect their time.",
+    description: "Growing platform fatigue \u2014 two-thirds of users report wanting more substance and less noise from their digital tools. People are craving depth.",
   },
   {
     icon: Globe,
     title: "Decision anxiety is an epidemic",
-    description: "Gen Z reports 2\u00D7 more decision anxiety than previous generations. The need is urgent, growing, and completely unmet by existing tools.",
+    description: "Decision anxiety is surging \u2014 younger generations report unprecedented levels of choice paralysis. The need is urgent, growing, and completely unmet by existing tools.",
   },
 ];
 

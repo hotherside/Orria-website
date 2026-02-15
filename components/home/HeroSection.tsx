@@ -285,7 +285,7 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Two-column layout — items-center to vertically center */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-20 md:pt-24 pb-6 md:pb-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-20 md:pt-24 pb-10 md:pb-14 items-center">
           {/* Left: Text content */}
           <div>
             {/* Elevator pitch pill */}
@@ -336,7 +336,7 @@ export function HeroSection() {
               className="text-base md:text-lg text-text-primary font-medium mb-6 max-w-lg"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
-              One place to think through every decision that matters — with multiple AI perspectives, real human feedback, and a living journal that grows wiser with you.
+              Think through what matters — with AI perspectives, real human feedback, and a living journal that grows wiser with you.
             </motion.p>
 
             {/* Waitlist — directly under text */}

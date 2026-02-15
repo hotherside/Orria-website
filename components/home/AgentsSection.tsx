@@ -91,7 +91,6 @@ export function AgentsSection() {
           <p className="text-text-secondary text-lg mt-4 max-w-xl mx-auto">
             Every big decision deserves more than one opinion. Meet the AI
             personalities that challenge, encourage, analyze, and ground you.
-            They don&apos;t just talk to you — they react to each other.
           </p>
         </motion.div>
 

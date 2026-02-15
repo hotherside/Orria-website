@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Mail } from "lucide-react";
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -31,9 +29,18 @@ export function Footer() {
             >
               Think it through. Remember what shaped you.
             </p>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <p className="text-text-secondary text-sm leading-relaxed mb-3">
               Your AI decision companion for life&apos;s crossroads.
             </p>
+            <a
+              href="https://www.instagram.com/orria.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-text-muted hover:text-cyan-500 transition-colors text-sm"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @orria.app
+            </a>
           </div>
 
           {/* Product */}

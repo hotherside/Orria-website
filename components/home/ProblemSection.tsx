@@ -14,7 +14,7 @@ const problems = [
     icon: Clock,
     stat: 35000,
     suffix: "",
-    label: "Decisions a day",
+    label: "Decisions per person, per day",
     body: "The career pivot. The relationship you fought for. The city you almost moved to. These crossroads defined you \u2014 but you\u2019ve lost most of them.",
     accent: "#0891B2",
   },

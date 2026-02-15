@@ -27,11 +27,8 @@ export function WaitlistCTA() {
             <br />
             <span className="italic">with a crossroad.</span>
           </h2>
-          <p className="text-text-secondary text-lg mb-2 max-w-xl mx-auto leading-relaxed">
-            Be the first to experience a new way of thinking through the decisions that matter most.
-          </p>
-          <p className="text-text-muted text-base mb-10 max-w-md mx-auto">
-            Join the waitlist for early access. We&apos;ll be in touch.
+          <p className="text-text-secondary text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+            Be the first to think through what matters. Join the waitlist for early access.
           </p>
           <WaitlistForm variant="section" />
           <p className="text-text-muted text-xs mt-4">

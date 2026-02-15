@@ -98,7 +98,7 @@ function InfinityPill() {
 
 export function CategoriesSection() {
   return (
-    <section className="pt-2 md:pt-4 pb-14 md:pb-20 bg-cream-100 overflow-hidden">
+    <section className="pt-10 md:pt-14 pb-14 md:pb-20 bg-cream-100 overflow-hidden">
       {/* Header */}
       <div className="max-w-4xl mx-auto px-6 text-center mb-10">
         <motion.div
@@ -121,7 +121,7 @@ export function CategoriesSection() {
             <span className="italic text-cyan-600">And thousands more.</span>
           </h2>
           <p className="text-text-secondary text-lg mt-4 max-w-xl mx-auto">
-            Whatever keeps you up at night, Orria is built for it.
+            Whatever keeps you up at night, Orria has your back.
           </p>
         </motion.div>
       </div>
@@ -157,7 +157,7 @@ export function CategoriesSection() {
         className="max-w-4xl mx-auto px-6 text-center mt-10"
       >
         <p className="text-text-secondary text-base">
-          <span className="text-text-primary font-semibold">~35,000 decisions a day.</span>{" "}
+          <span className="text-text-primary font-semibold">~35,000 decisions per person, every day.</span>{" "}
           We built Orria for the ones that matter.
         </p>
       </motion.div>
