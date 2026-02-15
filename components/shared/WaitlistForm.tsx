@@ -194,16 +194,17 @@ export function WaitlistForm({ variant = "section", className }: WaitlistFormPro
                   : "bg-cyan-500/5 border border-cyan-500/15"
               )}
             >
-              {/* Stacked avatar dots */}
-              <div className="flex -space-x-1.5">
-                {["#0891B2", "#6366F1", "#E5A53D", "#9333EA", "#C4704B"].map((color, i) => (
-                  <div
-                    key={i}
-                    className="w-5 h-5 rounded-full border-2 border-white"
-                    style={{ backgroundColor: color, zIndex: 5 - i }}
-                  />
-                ))}
-              </div>
+              {/* Pulse dot */}
+              <span className="relative flex h-2.5 w-2.5">
+                <span className={cn(
+                  "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
+                  isHero ? "bg-white/40" : "bg-cyan-400"
+                )} />
+                <span className={cn(
+                  "relative inline-flex rounded-full h-2.5 w-2.5",
+                  isHero ? "bg-white/60" : "bg-cyan-500"
+                )} />
+              </span>
               <p className={cn(
                 "text-sm font-medium",
                 isHero ? "text-white/80" : "text-text-secondary"
