@@ -15,7 +15,7 @@ export default function TermsOfService() {
             Terms of Service
           </h1>
           <p className="text-lg text-text-muted">
-            Last Updated: February 8, 2026
+            Last Updated: February 15, 2026
           </p>
         </div>
 
@@ -174,10 +174,33 @@ export default function TermsOfService() {
             </p>
           </section>
 
+          {/* Governing Law */}
+          <section>
+            <h2 className="text-2xl font-bold text-text-primary mb-4">
+              10. Governing Law
+            </h2>
+            <p className="text-text-secondary leading-relaxed">
+              These Terms shall be governed by and construed in accordance with the laws of New South Wales, Australia, without regard to its conflict of law provisions. Any disputes arising from or relating to these Terms or the App shall be subject to the exclusive jurisdiction of the courts of New South Wales, Australia.
+            </p>
+          </section>
+
+          {/* Apple Third-Party Beneficiary */}
+          <section>
+            <h2 className="text-2xl font-bold text-text-primary mb-4">
+              11. Apple Third-Party Beneficiary
+            </h2>
+            <p className="text-text-secondary leading-relaxed mb-4">
+              You acknowledge and agree that these Terms are between you and Orria only, and not with Apple Inc. (&quot;Apple&quot;). Orria, not Apple, is solely responsible for the App and its content. However, Apple and its subsidiaries are third-party beneficiaries of these Terms. Upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary thereof.
+            </p>
+            <p className="text-text-secondary leading-relaxed">
+              You acknowledge that Apple has no obligation whatsoever to furnish any maintenance and support services with respect to the App. To the maximum extent permitted by applicable law, Apple will have no warranty obligation whatsoever with respect to the App.
+            </p>
+          </section>
+
           {/* Changes */}
           <section>
             <h2 className="text-2xl font-bold text-text-primary mb-4">
-              10. Changes to These Terms
+              12. Changes to These Terms
             </h2>
             <p className="text-text-secondary leading-relaxed">
               We may update these Terms from time to time. We will notify you of material changes by posting the updated Terms on this page and updating the &quot;Last Updated&quot; date. Your continued use of the App after any changes constitutes acceptance of the new Terms.
@@ -208,7 +231,7 @@ export default function TermsOfService() {
           {/* Effective Date */}
           <section className="text-center pt-8 border-t border-cream-300">
             <p className="text-sm text-text-muted">
-              These Terms of Service are effective as of February 8, 2026
+              These Terms of Service are effective as of February 15, 2026
             </p>
           </section>
 
