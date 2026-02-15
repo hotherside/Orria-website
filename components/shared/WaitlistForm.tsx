@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Loader2, Users } from "lucide-react";
+import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { WaitlistSuccessModal } from "./WaitlistSuccessModal";
 
@@ -178,21 +178,42 @@ export function WaitlistForm({ variant = "section", className }: WaitlistFormPro
           </motion.p>
         )}
 
-        {/* Live waitlist counter */}
+        {/* Live waitlist counter — social proof */}
         {waitlistCount !== null && waitlistCount > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 5 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.4 }}
-            className={cn(
-              "flex items-center justify-center gap-1.5 mt-3",
-              isHero ? "text-white/50" : "text-text-muted"
-            )}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="mt-5"
           >
-            <Users size={12} />
-            <p className="text-xs">
-              <AnimatedCount count={waitlistCount} isHero={isHero} /> already on the waitlist
-            </p>
+            <div
+              className={cn(
+                "inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full",
+                isHero
+                  ? "bg-white/10 backdrop-blur-md border border-white/15"
+                  : "bg-cyan-500/5 border border-cyan-500/15"
+              )}
+            >
+              {/* Stacked avatar dots */}
+              <div className="flex -space-x-1.5">
+                {["#0891B2", "#6366F1", "#E5A53D", "#9333EA", "#C4704B"].map((color, i) => (
+                  <div
+                    key={i}
+                    className="w-5 h-5 rounded-full border-2 border-white"
+                    style={{ backgroundColor: color, zIndex: 5 - i }}
+                  />
+                ))}
+              </div>
+              <p className={cn(
+                "text-sm font-medium",
+                isHero ? "text-white/80" : "text-text-secondary"
+              )}>
+                <AnimatedCount count={waitlistCount} isHero={isHero} />{" "}
+                <span className={cn(isHero ? "text-white/60" : "text-text-muted")}>
+                  people ready to think it through
+                </span>
+              </p>
+            </div>
           </motion.div>
         )}
       </div>
@@ -234,7 +255,7 @@ function AnimatedCount({ count, isHero }: { count: number; isHero: boolean }) {
   }, [count, displayCount]);
 
   return (
-    <span className={cn("font-semibold tabular-nums", isHero ? "text-white/70" : "text-text-secondary")}>
+    <span className={cn("font-bold tabular-nums", isHero ? "text-white" : "text-cyan-600")}>
       {displayCount.toLocaleString()}
     </span>
   );
