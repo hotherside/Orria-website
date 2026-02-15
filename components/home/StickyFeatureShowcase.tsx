@@ -24,65 +24,65 @@ import {
 
 const features = [
   {
-    kicker: "Start Here",
+    kicker: "Dump It",
     icon: Mic,
-    title: "Just talk.",
+    title: "Say it. Orria gets it.",
     description:
-      "Say what\u2019s weighing on you. Orria listens, structures your thoughts, and gives you two paths \u2014 log a clear decision, or talk it through deeper with AI.",
+      "Have a dilemma \u2014 maybe not even a decision yet? Say it out loud or type it out. Orria listens, finds the structure underneath, and gives you two paths: log it as a decision, or talk it through deeper.",
     Demo: CanvasDemo,
     color: "#0891B2",
   },
   {
-    kicker: "Go Deeper",
+    kicker: "Roundtable",
     icon: Users,
-    title: "Break your echo chamber.",
+    title: "Four minds. One table.",
     description:
-      "Four AI personalities with distinct worldviews challenge your blind spots. They don\u2019t just talk to you \u2014 they react to each other in a live roundtable.",
+      "Four AI agents with real personalities debate your dilemma in a live roundtable. They don\u2019t just advise you \u2014 they challenge each other. Maya encourages, Liam analyzes, Sara grounds, Rex pushes back.",
     Demo: RoundtableDemo,
     color: "#6366F1",
   },
   {
-    kicker: "Get Clarity",
+    kicker: "Crystallize",
     icon: Sparkles,
-    title: "See the full picture.",
+    title: "From chaos to clarity.",
     description:
-      "Orria synthesizes everything \u2014 your thoughts, the perspectives, the trade-offs \u2014 into crystallized clarity. Make the call with confidence.",
+      "After the conversation, Orria distills your thoughts, the roundtable debate, and every trade-off into one clear summary. You see what matters most \u2014 and decide with confidence.",
     Demo: CrystallizeDemo,
     color: "#E5A53D",
   },
   {
-    kicker: "Get Perspective",
+    kicker: "Community",
     icon: Globe,
-    title: "Real people. Real perspective.",
+    title: "Ask people who\u2019ve been there.",
     description:
-      "AI is powerful, but some things need real human perspective. Share your decision anonymously and get votes, comments, and hard-won wisdom from people who\u2019ve been there.",
+      "Share your decision anonymously and get votes, comments, and perspective from real people who\u2019ve faced similar crossroads. AI is powerful \u2014 but lived experience is irreplaceable.",
     Demo: CommunityDemo,
     color: "#C4704B",
   },
   {
-    kicker: "Grow Wiser",
+    kicker: "Patterns",
     icon: BarChart3,
-    title: "Discover your patterns.",
+    title: "See how you actually decide.",
     description:
-      "See how you decide across topics, track your confidence over time, and uncover insights about your decision-making style. Every choice becomes part of your story.",
+      "Track your decisions across topics, see how your confidence changes over time, and uncover patterns in how you make choices. Every decision becomes data that makes you sharper.",
     Demo: InsightsDemo,
     color: "#9333EA",
   },
   {
-    kicker: "Your Story",
+    kicker: "Journal",
     icon: BookOpen,
-    title: "Your decision passport.",
+    title: "Every decision, logged forever.",
     description:
-      "Every decision you make \u2014 logged, searchable, and yours forever. A living journal that turns scattered choices into the story of how you became you.",
+      "A living journal of every crossroad you\u2019ve navigated \u2014 searchable, timestamped, yours forever. The career change. The move. The relationship. The story of how you became you.",
     Demo: JournalDemo,
     color: "#C4704B",
   },
   {
-    kicker: "Look Back",
+    kicker: "Reflect",
     icon: RotateCcw,
-    title: "Close the loop.",
+    title: "Come back. Close the loop.",
     description:
-      "Come back months later. Would you make the same choice? Reflect, track your confidence over time, and celebrate your milestones.",
+      "Three months later, six months later \u2014 come back and ask: would I do it again? Record your reflection, track how your confidence evolves, and celebrate decision milestones.",
     Demo: ReflectionDemo,
     color: "#E5A53D",
   },

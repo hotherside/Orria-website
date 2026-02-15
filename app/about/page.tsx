@@ -70,12 +70,13 @@ const framework = [
 ];
 
 const timeline = [
-  { year: "Jan 18", label: "Day zero", detail: "First commit. From a personal crossroad to a product idea in one weekend." },
-  { year: "Jan \u2013 Feb 1", label: "v1.0 \u2014 Foundation", detail: "Full iOS app built end-to-end: auth, journal, AI insights, community, analytics." },
-  { year: "Feb 7", label: "v2.0 \u2014 The Refresh", detail: "Complete design overhaul: Ocean on Parchment palette, voice canvas, AI agent personas, decision weight system." },
-  { year: "Feb 11\u201312", label: "v3.0 \u2014 Conversations", detail: "Conversational AI companion, multi-round roundtable, unified decision flow. 162-item QA sweep." },
-  { year: "Feb 13\u201315", label: "Website & positioning", detail: "Marketing site, investor pitch, waitlist infrastructure." },
-  { year: "Late Feb", label: "Beta launch", detail: "Closed beta with early adopters. Real-world testing begins." },
+  { year: "Jan 18", label: "Day zero", detail: "A personal crossroad became a product idea. First commit pushed that same weekend." },
+  { year: "Jan \u2013 Feb", label: "v1.0 \u2014 Share & Decide", detail: "Built the full iOS app end-to-end: decision logging, AI insights, community voting, analytics. The thesis? Decisions are social \u2014 share them, get feedback, learn from each other." },
+  { year: "Feb 7", label: "v1.1 \u2014 The Design Overhaul", detail: "Complete visual refresh. Ocean on Parchment palette, voice-first canvas, four named AI agent personas (Maya, Liam, Sara, Rex), and a decision weight system." },
+  { year: "Feb 10", label: "v1.2 \u2014 The Pivot", detail: "After feedback from 30+ early testers, the product shifted. Community sharing moved secondary. The personal decision journal became the core \u2014 because people wanted a private space to think, not a public stage." },
+  { year: "Feb 11\u201312", label: "v1.3 \u2014 Dilemmas, Not Just Decisions", detail: "The biggest insight: people don\u2019t arrive with decisions \u2014 they arrive with dilemmas. Added conversational AI companion, multi-round agent roundtable, and a unified flow that meets you in the mess." },
+  { year: "Feb 13\u201315", label: "Website & positioning", detail: "Marketing site, investor pitch page, waitlist infrastructure. Telling the story to the world." },
+  { year: "Late Feb", label: "Beta launch", detail: "Closed beta with early adopters. Real decisions. Real feedback. Real iteration." },
   { year: "March 2026", label: "Public launch", detail: "App Store release. The world gets Orria." },
 ];
 
