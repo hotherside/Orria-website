@@ -466,22 +466,29 @@ function SocialProofCounter() {
       transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
       className="mt-8 flex items-center gap-4"
     >
-      {/* Stacked avatar placeholders */}
+      {/* Stacked avatars */}
       <div className="flex -space-x-2.5">
         {[
-          "bg-cyan-500/20 text-cyan-700",
-          "bg-amber-500/20 text-amber-700",
-          "bg-indigo-500/20 text-indigo-700",
-          "bg-rose-500/20 text-rose-700",
-          "bg-emerald-500/20 text-emerald-700",
-        ].map((colors, i) => (
+          { bg: "#B8E8F0", text: "#0C5E72", initials: "JK" },
+          { bg: "#F5D9A8", text: "#7C3A0A", initials: "AR" },
+          { bg: "#C7C4F7", text: "#3730A3", initials: "ML" },
+          { bg: "#F5C2D0", text: "#9D174D", initials: "SP" },
+        ].map((avatar, i) => (
           <div
             key={i}
-            className={`w-9 h-9 rounded-full ${colors} flex items-center justify-center border-2 border-cream-100 text-[10px] font-bold`}
+            className="w-9 h-9 rounded-full flex items-center justify-center border-2 border-cream-100 text-[10px] font-bold"
+            style={{ backgroundColor: avatar.bg, color: avatar.text, zIndex: 10 - i }}
           >
-            {["JK", "AR", "ML", "SP", "TC"][i]}
+            {avatar.initials}
           </div>
         ))}
+        {/* +more indicator */}
+        <div
+          className="w-9 h-9 rounded-full flex items-center justify-center border-2 border-cream-100 text-[10px] font-semibold bg-cream-200 text-text-muted"
+          style={{ zIndex: 6 }}
+        >
+          +{count > 4 ? count - 4 : ""}
+        </div>
       </div>
 
       {/* Counter text */}
