@@ -887,9 +887,9 @@ export default function PotentialsPage() {
               </div>
               <h3 className="text-text-primary font-semibold mb-2">Consumer Subscription</h3>
               <p className="text-text-secondary text-sm leading-relaxed mb-3">
-                Freemium with Orria Pro at $4.99/mo or $39.99/yr. Unlimited AI conversations, advanced insights, extended journal history.
+                Freemium with Orria Pro at $7.99 AUD/mo ($4.99 USD). Unlimited AI conversations, advanced insights, extended journal history.
               </p>
-              <p className="text-xs font-semibold text-cyan-600">$4.99 \u2013 $39.99/yr per user</p>
+              <p className="text-xs font-semibold text-cyan-600">From $7.99 AUD/mo per user</p>
             </motion.div>
 
             <motion.div variants={staggerItem} className="bg-white rounded-2xl p-7 border border-cream-300/50 shadow-soft">

@@ -1,268 +1,505 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { WaitlistForm } from "@/components/shared/WaitlistForm";
 import {
   Mic,
   Users,
   Sparkles,
   Globe,
-  BarChart3,
-  MessageCircle,
+  BookOpen,
   ThumbsUp,
+  MessageCircle,
+  BarChart3,
   ChevronDown,
 } from "lucide-react";
 
-/* ── Interactive floating snippet cards ──────────────────── */
+/* ── Feature carousel data ──────────────────────────────── */
 
-function SnippetCard({
-  children,
-  className = "",
-  delay = 0,
-  hoverContent,
-  style,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-  hoverContent?: React.ReactNode;
-  style?: React.CSSProperties;
-}) {
-  const [isHovered, setIsHovered] = useState(false);
+const CARD_INTERVAL = 3200; // ms per card
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        duration: 0.8,
-        delay,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      whileHover={{
-        scale: 1.04,
-        y: -4,
-        transition: { duration: 0.25, ease: "easeOut" },
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`absolute bg-white rounded-2xl shadow-soft border border-cream-300/50 cursor-default transition-shadow duration-300 ${
-        isHovered ? "shadow-lg z-20" : "z-10"
-      } ${className}`}
-      style={style}
-    >
-      {children}
-      {/* Hover expansion */}
-      {hoverContent && (
-        <motion.div
-          initial={false}
-          animate={{
-            height: isHovered ? "auto" : 0,
-            opacity: isHovered ? 1 : 0,
-          }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="overflow-hidden"
-        >
-          {hoverContent}
-        </motion.div>
-      )}
-    </motion.div>
-  );
+interface FeatureCard {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  color: string;
+  icon: React.ReactNode;
 }
 
-function ProductSnippets() {
+const featureCards: FeatureCard[] = [
+  {
+    id: "voice",
+    label: "Voice Input",
+    title: "Just talk.",
+    description: "Speak your thoughts naturally. No forms, no templates — Orria listens and structures your decision for you.",
+    color: "#0891B2",
+    icon: <Mic size={15} />,
+  },
+  {
+    id: "structure",
+    label: "AI Structuring",
+    title: "Clarity, instantly.",
+    description: "AI crystallizes your rambling thoughts into a clear decision with structured options and context.",
+    color: "#E5A53D",
+    icon: <Sparkles size={15} />,
+  },
+  {
+    id: "roundtable",
+    label: "AI Roundtable",
+    title: "Four minds, one table.",
+    description: "Maya, Liam, Sara and Rex — AI agents who debate your decision from every angle before you commit.",
+    color: "#6366F1",
+    icon: <Users size={15} />,
+  },
+  {
+    id: "community",
+    label: "Community",
+    title: "Real human signal.",
+    description: "Share decisions anonymously. See how others voted, read their takes, find confidence in the crowd.",
+    color: "#C4704B",
+    icon: <Globe size={15} />,
+  },
+  {
+    id: "journal",
+    label: "Living Journal",
+    title: "Grow wiser over time.",
+    description: "Every decision becomes a journal entry. Track patterns, revisit outcomes, and learn how you decide.",
+    color: "#9333EA",
+    icon: <BookOpen size={15} />,
+  },
+];
+
+/* ── Card preview illustrations ─────────────────────────── */
+
+function VoicePreview() {
   return (
-    <div className="relative w-full" style={{ height: "420px" }}>
-      {/* Voice input — top-left, slightly rotated */}
-      <SnippetCard
-        className="p-5 w-[240px]"
-        delay={0.3}
-        style={{ top: "0%", left: "0%", transform: "rotate(-1.5deg)" }}
-        hoverContent={
-          <div className="px-5 pb-4 pt-1">
-            <div className="h-px bg-cream-200 mb-3" />
-            <p className="text-[10px] text-text-muted">Orria structures your thoughts into clear options — no forms, no templates.</p>
-          </div>
-        }
-      >
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
-            <Mic size={16} className="text-cyan-600" />
-          </div>
-          <span className="text-[11px] font-semibold text-cyan-600 uppercase tracking-wider">Voice Input</span>
-        </div>
-        <p className="text-xs text-text-secondary italic leading-relaxed">
+    <div className="flex flex-col items-center justify-center h-full gap-3">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 w-full max-w-[260px] shadow-sm border border-cream-300/40">
+        <p className="text-[11px] text-text-secondary italic leading-relaxed mb-3">
           &ldquo;My partner wants to move cities but I just got promoted...&rdquo;
         </p>
-        <div className="flex items-center gap-1.5 mt-3">
+        <div className="flex items-center gap-2">
           <div className="flex gap-[2px]">
-            {[0, 1, 2, 3, 4].map((i) => (
+            {[0, 1, 2, 3, 4, 5, 6].map((i) => (
               <motion.div
                 key={i}
                 className="w-[3px] rounded-full bg-cyan-500"
-                animate={{ height: [4, 10 + Math.random() * 8, 4] }}
+                animate={{ height: [3, 10 + Math.random() * 8, 3] }}
                 transition={{
-                  duration: 0.6 + Math.random() * 0.3,
+                  duration: 0.5 + Math.random() * 0.4,
                   repeat: Infinity,
                   repeatType: "reverse",
-                  delay: i * 0.08,
+                  delay: i * 0.06,
                 }}
               />
             ))}
           </div>
-          <span className="text-[10px] text-text-muted">Listening...</span>
+          <span className="text-[9px] text-text-muted ml-1">Listening...</span>
         </div>
-      </SnippetCard>
+      </div>
+    </div>
+  );
+}
 
-      {/* Crystallize — top-right, overlaps voice slightly */}
-      <SnippetCard
-        className="p-5 w-[220px]"
-        delay={0.45}
-        style={{ top: "2%", right: "0%", transform: "rotate(2deg)" }}
-        hoverContent={
-          <div className="px-5 pb-4 pt-1">
-            <div className="h-px bg-cream-200 mb-3" />
-            <p className="text-[10px] text-text-muted">AI distills your thoughts into a clear decision with structured options.</p>
-          </div>
-        }
-      >
-        <div className="flex items-center gap-2 mb-3">
-          <Sparkles size={15} style={{ color: "#E5A53D" }} />
-          <span className="text-[11px] font-semibold" style={{ color: "#E5A53D" }}>Crystallized</span>
+function StructurePreview() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-2.5">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 w-full max-w-[260px] shadow-sm border border-cream-300/40">
+        <p className="text-[12px] font-medium text-text-primary leading-snug mb-2.5">
+          Navigate the move vs. stay dilemma together
+        </p>
+        <div className="flex gap-1.5 mb-3">
+          <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 text-[8px] font-medium">
+            Relationship
+          </span>
+          <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 text-[8px] font-medium">
+            Life Change
+          </span>
         </div>
-        <p className="text-xs font-medium text-text-primary leading-snug">Navigate the move vs. stay dilemma together</p>
-        <div className="flex gap-1.5 mt-3 flex-wrap">
-          <span className="px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-600 text-[9px] font-medium">Relationship</span>
-          <span className="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 text-[9px] font-medium">Life Change</span>
+        <div className="space-y-1.5">
+          {["Stay and grow here", "Move together"].map((opt, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-cream-300/60 bg-cream-100/60"
+            >
+              <div className="w-3 h-3 rounded-full border-2 border-cyan-500/40" />
+              <span className="text-[10px] text-text-secondary">{opt}</span>
+            </div>
+          ))}
         </div>
-      </SnippetCard>
+      </div>
+    </div>
+  );
+}
 
-      {/* AI Roundtable — center, overlaps both above */}
-      <SnippetCard
-        className="p-5 w-[280px]"
-        delay={0.55}
-        style={{ top: "38%", left: "50%", transform: "translateX(-50%) rotate(-0.5deg)" }}
-        hoverContent={
-          <div className="px-5 pb-4 pt-1">
-            <div className="h-px bg-cream-200 mb-3" />
-            <div className="flex items-start gap-2">
-              <div className="w-4 h-4 rounded-full bg-indigo-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-[6px] font-bold" style={{ color: "#6366F1" }}>L</span>
-              </div>
-              <p className="text-[10px] text-text-secondary leading-snug italic">&ldquo;The data suggests renting is 23% more cost-effective in this market...&rdquo;</p>
+function RoundtablePreview() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-2">
+      <div className="w-full max-w-[260px] space-y-2">
+        {[
+          { initial: "M", name: "Maya", color: "#E5A53D", bgColor: "bg-amber-500/12", text: "Owning a home means roots, stability..." },
+          { initial: "R", name: "Rex", color: "#64748B", bgColor: "bg-slate-500/12", text: "What if the market drops 20%?" },
+          { initial: "L", name: "Liam", color: "#6366F1", bgColor: "bg-indigo-500/12", text: "The data suggests renting is 23% more cost-effective..." },
+        ].map((agent, i) => (
+          <motion.div
+            key={agent.initial}
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.2, duration: 0.4 }}
+            className="bg-white/80 backdrop-blur-sm rounded-xl p-2.5 flex items-start gap-2.5 shadow-sm border border-cream-300/40"
+          >
+            <div
+              className={`w-6 h-6 rounded-full ${agent.bgColor} flex items-center justify-center flex-shrink-0`}
+            >
+              <span className="text-[8px] font-bold" style={{ color: agent.color }}>
+                {agent.initial}
+              </span>
             </div>
-          </div>
-        }
-      >
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-            <Users size={16} style={{ color: "#6366F1" }} />
-          </div>
-          <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: "#6366F1" }}>AI Roundtable</span>
-        </div>
-        <div className="flex gap-4">
-          <div className="flex items-start gap-2 flex-1">
-            <div className="w-5 h-5 rounded-full bg-amber-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <span className="text-[7px] font-bold" style={{ color: "#E5A53D" }}>M</span>
+            <div className="flex-1 min-w-0">
+              <span className="text-[8px] font-semibold block mb-0.5" style={{ color: agent.color }}>
+                {agent.name}
+              </span>
+              <p className="text-[10px] text-text-secondary leading-snug">{agent.text}</p>
             </div>
-            <p className="text-[11px] text-text-secondary leading-snug">Owning a home means roots, stability...</p>
-          </div>
-          <div className="flex items-start gap-2 flex-1">
-            <div className="w-5 h-5 rounded-full bg-slate-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <span className="text-[7px] font-bold text-slate-600">R</span>
-            </div>
-            <p className="text-[11px] text-text-secondary leading-snug">What if the market drops 20%?</p>
-          </div>
-        </div>
-      </SnippetCard>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-      {/* Community — bottom-left */}
-      <SnippetCard
-        className="p-5 w-[230px]"
-        delay={0.7}
-        style={{ bottom: "0%", left: "2%", transform: "rotate(1deg)" }}
-        hoverContent={
-          <div className="px-5 pb-4 pt-1">
-            <div className="h-px bg-cream-200 mb-3" />
-            <p className="text-[10px] text-text-muted italic">&ldquo;I took the leap — best decision I ever made.&rdquo; — Anonymous</p>
-          </div>
-        }
-      >
-        <div className="flex items-center gap-2 mb-2.5">
-          <Globe size={15} style={{ color: "#C4704B" }} />
-          <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: "#C4704B" }}>Community</span>
-        </div>
-        <p className="text-xs font-medium text-text-primary mb-2.5">&ldquo;Should I accept the job abroad?&rdquo;</p>
-        <div>
+function CommunityPreview() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-2.5">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 w-full max-w-[260px] shadow-sm border border-cream-300/40">
+        <p className="text-[11px] font-medium text-text-primary mb-3">
+          &ldquo;Should I accept the job abroad?&rdquo;
+        </p>
+        <div className="mb-2.5">
           <div className="flex justify-between mb-1">
-            <span className="text-[10px] text-text-secondary">Accept</span>
-            <span className="text-[10px] font-medium text-cyan-600">65%</span>
+            <span className="text-[9px] text-text-secondary">Accept</span>
+            <span className="text-[9px] font-semibold text-cyan-600">65%</span>
           </div>
-          <div className="h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: "#F5F1EA" }}>
+          <div className="h-1.5 rounded-full overflow-hidden bg-cream-200">
             <motion.div
               className="h-full rounded-full bg-cyan-500"
               initial={{ width: "0%" }}
               animate={{ width: "65%" }}
-              transition={{ duration: 0.8, delay: 1.0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             />
           </div>
         </div>
-        <div className="flex items-center gap-3 mt-2.5">
-          <div className="flex items-center gap-1">
-            <ThumbsUp size={10} className="text-text-muted" />
-            <span className="text-[10px] text-text-muted">24</span>
+        <div className="mb-2.5">
+          <div className="flex justify-between mb-1">
+            <span className="text-[9px] text-text-secondary">Decline</span>
+            <span className="text-[9px] font-semibold text-text-muted">35%</span>
           </div>
-          <div className="flex items-center gap-1">
-            <MessageCircle size={10} className="text-text-muted" />
-            <span className="text-[10px] text-text-muted">3</span>
-          </div>
-        </div>
-      </SnippetCard>
-
-      {/* Insights — bottom-right, overlaps community */}
-      <SnippetCard
-        className="p-5 w-[210px]"
-        delay={0.8}
-        style={{ bottom: "2%", right: "4%", transform: "rotate(-1.5deg)" }}
-        hoverContent={
-          <div className="px-5 pb-4 pt-1">
-            <div className="h-px bg-cream-200 mb-3" />
-            <p className="text-[10px] text-text-muted">You make career decisions with 2× more confidence than personal ones.</p>
-          </div>
-        }
-      >
-        <div className="flex items-center gap-1.5 mb-2.5">
-          <BarChart3 size={15} style={{ color: "#9333EA" }} />
-          <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: "#9333EA" }}>Patterns</span>
-        </div>
-        <div className="flex gap-1.5 items-end h-11 mb-2.5">
-          {[1, 2, 3, 2, 4].map((h, i) => (
+          <div className="h-1.5 rounded-full overflow-hidden bg-cream-200">
             <motion.div
-              key={i}
-              className="flex-1 rounded-sm"
-              style={{ backgroundColor: i === 4 ? "#9333EA" : "#9333EA40" }}
-              initial={{ height: 0 }}
-              animate={{ height: `${(h / 4) * 36}px` }}
-              transition={{ duration: 0.5, delay: 1.0 + i * 0.08 }}
+              className="h-full rounded-full bg-cream-400"
+              initial={{ width: "0%" }}
+              animate={{ width: "35%" }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             />
-          ))}
+          </div>
         </div>
-        <p className="text-[10px] text-text-secondary">Career decisions 2× faster</p>
-      </SnippetCard>
-
-      {/* Ambient floating dots */}
-      <motion.div
-        className="absolute top-[50%] left-[40%] w-2 h-2 rounded-full bg-cyan-500/20"
-        animate={{ y: [0, -10, 0], opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-[20%] left-[55%] w-1.5 h-1.5 rounded-full bg-amber-500/20"
-        animate={{ y: [0, -8, 0], opacity: [0.15, 0.4, 0.15] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-      />
+        <div className="flex items-center gap-3 pt-1 border-t border-cream-200">
+          <div className="flex items-center gap-1 pt-1.5">
+            <ThumbsUp size={10} className="text-text-muted" />
+            <span className="text-[9px] text-text-muted">24</span>
+          </div>
+          <div className="flex items-center gap-1 pt-1.5">
+            <MessageCircle size={10} className="text-text-muted" />
+            <span className="text-[9px] text-text-muted">8 comments</span>
+          </div>
+        </div>
+      </div>
     </div>
+  );
+}
+
+function JournalPreview() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-2.5">
+      <div className="w-full max-w-[260px] space-y-2">
+        {[
+          { title: "Took the new role", time: "3 months ago", confidence: 85, color: "#22C55E" },
+          { title: "Moved to Melbourne", time: "6 months ago", confidence: 72, color: "#0891B2" },
+        ].map((entry, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.2, duration: 0.4 }}
+            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-cream-300/40"
+          >
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[10px] font-medium text-text-primary">{entry.title}</span>
+              <span className="text-[8px] text-text-muted">{entry.time}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="flex-1 h-1 rounded-full bg-cream-200 overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full"
+                  style={{ backgroundColor: entry.color }}
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${entry.confidence}%` }}
+                  transition={{ duration: 0.8, delay: 0.4 + i * 0.2 }}
+                />
+              </div>
+              <span className="text-[8px] font-medium" style={{ color: entry.color }}>
+                {entry.confidence}%
+              </span>
+            </div>
+          </motion.div>
+        ))}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-cream-300/40"
+        >
+          <div className="flex items-center gap-2 mb-1.5">
+            <BarChart3 size={11} style={{ color: "#9333EA" }} />
+            <span className="text-[9px] font-semibold" style={{ color: "#9333EA" }}>Your pattern</span>
+          </div>
+          <p className="text-[9px] text-text-secondary leading-snug">
+            Career decisions 2× faster than personal ones
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+const cardPreviews: Record<string, () => React.JSX.Element> = {
+  voice: VoicePreview,
+  structure: StructurePreview,
+  roundtable: RoundtablePreview,
+  community: CommunityPreview,
+  journal: JournalPreview,
+};
+
+/* ── Feature Carousel ────────────────────────────────────── */
+
+function FeatureCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const goToNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % featureCards.length);
+    setProgress(0);
+  }, []);
+
+  // Auto-advance timer
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          goToNext();
+          return 0;
+        }
+        return prev + 100 / (CARD_INTERVAL / 50);
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isPaused, goToNext]);
+
+  const activeCard = featureCards[activeIndex];
+  const PreviewComponent = cardPreviews[activeCard.id];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      className="relative w-full max-w-[380px] mx-auto"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Main card */}
+      <div
+        className="rounded-[1.75rem] overflow-hidden border border-cream-300/60 bg-white"
+        style={{
+          boxShadow:
+            "0 20px 50px rgba(45,41,38,0.07), 0 6px 20px rgba(45,41,38,0.04), 0 0 0 1px rgba(45,41,38,0.02)",
+        }}
+      >
+        {/* Preview area */}
+        <div
+          className="relative overflow-hidden"
+          style={{ height: 260, background: "linear-gradient(135deg, #FAF8F5 0%, #F5F1EA 100%)" }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCard.id}
+              initial={{ opacity: 0, scale: 0.96, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: -8 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 p-5"
+            >
+              <PreviewComponent />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Text area */}
+        <div className="px-6 pt-5 pb-5">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCard.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <div
+                  className="w-6 h-6 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: `${activeCard.color}12`, color: activeCard.color }}
+                >
+                  {activeCard.icon}
+                </div>
+                <span
+                  className="text-[10px] font-semibold uppercase tracking-wider"
+                  style={{ color: activeCard.color }}
+                >
+                  {activeCard.label}
+                </span>
+              </div>
+              <h3
+                className="text-lg font-semibold text-text-primary mb-1 tracking-tight"
+                style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
+              >
+                {activeCard.title}
+              </h3>
+              <p className="text-[13px] text-text-secondary leading-relaxed">
+                {activeCard.description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Progress bars */}
+        <div className="px-6 pb-5">
+          <div className="flex items-center gap-1.5">
+            {featureCards.map((card, i) => (
+              <button
+                key={card.id}
+                onClick={() => {
+                  setActiveIndex(i);
+                  setProgress(0);
+                }}
+                className="relative flex-1 h-[3px] rounded-full overflow-hidden cursor-pointer"
+                style={{
+                  backgroundColor: i === activeIndex ? `${activeCard.color}20` : "#EDE8DC",
+                }}
+                aria-label={`Go to ${card.label}`}
+              >
+                {i === activeIndex && (
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full transition-[width] duration-100 ease-linear"
+                    style={{
+                      backgroundColor: activeCard.color,
+                      width: `${progress}%`,
+                    }}
+                  />
+                )}
+                {i < activeIndex && (
+                  <div
+                    className="absolute inset-0 rounded-full"
+                    style={{ backgroundColor: `${featureCards[i].color}50` }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Subtle glow behind card */}
+      <div
+        className="absolute -inset-6 -z-10 rounded-[2.5rem] opacity-30 blur-2xl transition-colors duration-700"
+        style={{
+          background: `radial-gradient(ellipse at 50% 50%, ${activeCard.color}18 0%, transparent 65%)`,
+        }}
+      />
+    </motion.div>
+  );
+}
+
+/* ── Social Proof Counter ────────────────────────────────── */
+
+const SUPABASE_URL = "https://nnfcodpedesktqrpqbab.supabase.co/functions/v1";
+
+function SocialProofCounter() {
+  const [count, setCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    async function fetchCount() {
+      try {
+        const res = await fetch(`${SUPABASE_URL}/waitlist-count`);
+        if (res.ok) {
+          const data = await res.json();
+          setCount(data.count);
+        }
+      } catch {
+        // Silent fail
+      }
+    }
+    fetchCount();
+  }, []);
+
+  if (count === null || count <= 0) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+      className="mt-8 flex items-center gap-4"
+    >
+      {/* Stacked avatar placeholders */}
+      <div className="flex -space-x-2.5">
+        {[
+          "bg-cyan-500/20 text-cyan-700",
+          "bg-amber-500/20 text-amber-700",
+          "bg-indigo-500/20 text-indigo-700",
+          "bg-rose-500/20 text-rose-700",
+          "bg-emerald-500/20 text-emerald-700",
+        ].map((colors, i) => (
+          <div
+            key={i}
+            className={`w-9 h-9 rounded-full ${colors} flex items-center justify-center border-2 border-cream-100 text-[10px] font-bold`}
+          >
+            {["JK", "AR", "ML", "SP", "TC"][i]}
+          </div>
+        ))}
+      </div>
+
+      {/* Counter text */}
+      <div className="flex flex-col gap-0.5">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+          <p className="text-[15px] font-medium text-text-primary">
+            Join {count.toLocaleString()}+ others
+          </p>
+        </div>
+        <p className="text-xs text-text-muted ml-4">
+          on the waitlist — be first to try Orria
+        </p>
+      </div>
+    </motion.div>
   );
 }
 
@@ -284,8 +521,8 @@ export function HeroSection() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Two-column layout — items-center to vertically center */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-20 md:pt-24 pb-10 md:pb-14 items-center">
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 min-h-[85vh] pt-32 md:pt-40 pb-16 md:pb-24 items-center">
           {/* Left: Text content */}
           <div>
             {/* Elevator pitch pill */}
@@ -346,22 +583,17 @@ export function HeroSection() {
               transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-md"
             >
-              <WaitlistForm variant="section" />
-              <p className="text-text-muted text-xs mt-2">
-                Free to start. No credit card needed.
-              </p>
+              <WaitlistForm variant="section" showCounter={false} />
             </motion.div>
+
+            {/* Social proof — standalone, elevated design */}
+            <SocialProofCounter />
           </div>
 
-          {/* Right: Product snippets — organic offset layout */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="hidden lg:block relative"
-          >
-            <ProductSnippets />
-          </motion.div>
+          {/* Right: Feature carousel */}
+          <div className="hidden lg:flex justify-center relative">
+            <FeatureCarousel />
+          </div>
         </div>
 
         {/* Scroll indicator */}

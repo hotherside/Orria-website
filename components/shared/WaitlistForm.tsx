@@ -11,9 +11,10 @@ const SUPABASE_URL = "https://nnfcodpedesktqrpqbab.supabase.co/functions/v1";
 interface WaitlistFormProps {
   variant?: "hero" | "section";
   className?: string;
+  showCounter?: boolean;
 }
 
-export function WaitlistForm({ variant = "section", className }: WaitlistFormProps) {
+export function WaitlistForm({ variant = "section", className, showCounter = true }: WaitlistFormProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -179,7 +180,7 @@ export function WaitlistForm({ variant = "section", className }: WaitlistFormPro
         )}
 
         {/* Live waitlist counter — social proof */}
-        {waitlistCount !== null && waitlistCount > 0 && (
+        {showCounter && waitlistCount !== null && waitlistCount > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
