@@ -529,7 +529,7 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 min-h-[85vh] pt-32 md:pt-40 pb-16 md:pb-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 min-h-[90vh] pt-36 md:pt-44 pb-10 md:pb-16 items-center">
           {/* Left: Text content */}
           <div>
             {/* Elevator pitch pill */}
@@ -598,7 +598,7 @@ export function HeroSection() {
           </div>
 
           {/* Right: Feature carousel */}
-          <div className="hidden lg:flex justify-center relative">
+          <div className="hidden lg:flex justify-center items-center relative">
             <FeatureCarousel />
           </div>
         </div>

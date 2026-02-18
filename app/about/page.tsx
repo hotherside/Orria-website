@@ -444,7 +444,7 @@ export default function AboutPage() {
       <section className="relative py-20 md:py-28 bg-cream-100 overflow-hidden">
         <FloatingElements
           count={10}
-          colors={["#0891B2", "#E5A53D", "#6366F1", "#9333EA", "#C4704B"]}
+          colors={["#0891B2", "#E5A53D", "#C4704B"]}
           className="opacity-40"
         />
         <div className="relative z-10 max-w-3xl mx-auto px-6">
