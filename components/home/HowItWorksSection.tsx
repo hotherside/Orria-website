@@ -14,7 +14,7 @@ import { PhoneMockup } from "@/components/shared/PhoneMockup";
 const steps = [
   {
     icon: Mic,
-    title: "Speak or type your dilemma",
+    title: "Say what\u2019s on your mind",
     description:
       "Open a blank canvas. No forms, no prompts — just say what's on your mind. Voice dictation streams your words in real-time. It takes 10 seconds to start thinking clearly.",
     direction: "left" as const,
@@ -62,7 +62,7 @@ export function HowItWorksSection() {
               fontFamily: "var(--font-playfair), Playfair Display, serif",
             }}
           >
-            From dilemma to clarity
+            From thought to clarity
             <br />
             <span className="italic">in three steps</span>
           </h2>

@@ -41,7 +41,7 @@ const featureCards: FeatureCard[] = [
     id: "structure",
     label: "AI Structuring",
     title: "Clarity, instantly.",
-    description: "AI crystallizes your rambling thoughts into a clear decision with structured options and context.",
+    description: "AI organises your thoughts into a clear decision with structured options and context.",
     color: "#E5A53D",
     icon: <Sparkles size={15} />,
   },
@@ -108,7 +108,7 @@ function StructurePreview() {
     <div className="flex flex-col items-center justify-center h-full gap-2.5">
       <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 w-full max-w-[260px] shadow-sm border border-cream-300/40">
         <p className="text-[12px] font-medium text-text-primary leading-snug mb-2.5">
-          Navigate the move vs. stay dilemma together
+          Navigate the move vs. stay decision together
         </p>
         <div className="flex gap-1.5 mb-3">
           <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 text-[8px] font-medium">

@@ -52,7 +52,7 @@ const agents = [
     role: "The Challenger",
     quote: "Have you considered what happens if...",
     description:
-      "Your devil's advocate. Rex surfaces the risks and blind spots you might be ignoring, because what you don't see can hurt you.",
+      "Your honest challenger. Rex surfaces the risks and considerations you might not have explored yet, because the best decisions are the ones you\u2019ve fully thought through.",
     hoverResponse: "What\u2019s the worst-case scenario you haven\u2019t considered? That\u2019s where the real risk lives.",
     icon: AlertTriangle,
     color: "#64748B",
@@ -86,7 +86,7 @@ export function AgentsSection() {
           >
             4 perspectives.
             <br />
-            <span className="italic">Zero blind spots.</span>
+            <span className="italic">The full picture.</span>
           </h2>
           <p className="text-text-secondary text-lg mt-4 max-w-xl mx-auto">
             Every big decision deserves more than one opinion. Meet the AI

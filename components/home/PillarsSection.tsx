@@ -12,7 +12,7 @@ const pillars = [
     id: "conversation",
     icon: MessageCircle,
     label: "Conversation",
-    title: "Talk through your dilemma naturally",
+    title: "Talk through what\u2019s on your mind",
     description:
       "Just speak or type what's on your mind. Orria helps you discover what you're really deciding. No forms — AI structures your thoughts into clear options. Voice input for hands-free thinking.",
     highlight: "Meet you where you are, not where a form expects you to be.",
@@ -26,7 +26,7 @@ const pillars = [
     title: "See what you can't see alone",
     description:
       "Maya sees the opportunity. Liam breaks it down logically. Sara keeps it practical. Rex surfaces the risks. Plus Orria facilitates the whole conversation — never pushes a decision.",
-    highlight: "Break out of your echo chamber.",
+    highlight: "See the full picture before you choose.",
     screenshot: "/screenshots/roundtable.png",
     glowColor: "bg-amber-500/15",
   },

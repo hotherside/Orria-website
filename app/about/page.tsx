@@ -21,14 +21,14 @@ import {
 
 const beliefs = [
   {
-    title: "Decisions start as dilemmas, not decisions",
+    title: "Decisions start as thoughts, not forms",
     description:
-      "Every tool asks you to fill in a form. But real crossroads don\u2019t start with structure \u2014 they start with mess. Orria meets you there. You speak or type whatever\u2019s on your mind, and AI helps you discover what you\u2019re actually deciding.",
+      "Every tool asks you to fill in a form. But real crossroads don\u2019t start with structure \u2014 they start with something on your mind. Orria meets you there. You speak or type whatever you\u2019re thinking, and AI helps you discover what you\u2019re actually deciding.",
   },
   {
     title: "Multiple perspectives break echo chambers",
     description:
-      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because your blind spots need more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. And when AI isn\u2019t enough, real people from the Orria community offer perspectives shaped by lived experience.",
+      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because seeing the full picture takes more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. And when AI isn\u2019t enough, real people from the Orria community offer perspectives shaped by lived experience.",
   },
   {
     title: "Closing the loop builds wisdom",
@@ -46,19 +46,19 @@ const framework = [
   {
     icon: MessageCircle,
     label: "Conversation",
-    description: "Speak or type your dilemma. AI structures your thoughts into clear options.",
+    description: "Say what\u2019s on your mind. AI structures your thoughts into clear options.",
     color: "var(--cyan-500)",
   },
   {
     icon: Sparkles,
     label: "Clarity",
-    description: "Four AI perspectives challenge your blind spots and surface what you can\u2019t see alone.",
+    description: "Four AI perspectives show you what you might not see on your own.",
     color: "var(--agent-liam)",
   },
   {
     icon: Clock,
     label: "Commit",
-    description: "Set a deadline. Make the call. Break the indecision cycle and move forward.",
+    description: "Set a timeline. Make the call. Move forward with confidence.",
     color: "var(--terracotta-500)",
   },
   {
@@ -74,7 +74,7 @@ const timeline = [
   { year: "Jan \u2013 Feb", label: "v1.0 \u2014 Share & Decide", detail: "Built the full iOS app end-to-end: decision logging, AI insights, community voting, analytics. The thesis? Decisions are social \u2014 share them, get feedback, learn from each other." },
   { year: "Feb 7", label: "v1.1 \u2014 The Design Overhaul", detail: "Complete visual refresh. Ocean on Parchment palette, voice-first canvas, four named AI agent personas (Maya, Liam, Sara, Rex), and a decision weight system." },
   { year: "Feb 10", label: "v1.2 \u2014 The Pivot", detail: "After feedback from 30+ early testers, the product shifted. Community sharing moved secondary. The personal decision journal became the core \u2014 because people wanted a private space to think, not a public stage." },
-  { year: "Feb 11\u201312", label: "v1.3 \u2014 Dilemmas, Not Just Decisions", detail: "The biggest insight: people don\u2019t arrive with decisions \u2014 they arrive with dilemmas. Added conversational AI companion, multi-round agent roundtable, and a unified flow that meets you in the mess." },
+  { year: "Feb 11\u201312", label: "v1.3 \u2014 Conversation First", detail: "The biggest insight: people don\u2019t always arrive with a clear decision \u2014 they arrive with something on their mind. Added conversational AI companion, multi-round agent roundtable, and a unified flow that meets you where you are." },
   { year: "Feb 13\u201315", label: "Website & positioning", detail: "Marketing site, investor pitch page, waitlist infrastructure. Telling the story to the world." },
   { year: "Late Feb", label: "Beta launch", detail: "Closed beta with early adopters. Real decisions. Real feedback. Real iteration." },
   { year: "March 2026", label: "Public launch", detail: "App Store release. The world gets Orria." },
@@ -376,8 +376,8 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-6 text-text-secondary leading-relaxed">
               <p>
-                Orria started with a frustration that most people share:
-                standing at a crossroads with no good way to think it through.
+                Orria started with a moment most people know well:
+                standing at a crossroads and wishing you had a better way to think it through.
               </p>
               <p>
                 A career change across continents. Whether to leave a
@@ -385,13 +385,13 @@ export default function AboutPage() {
                 a turning point. The life choices that don&apos;t fit in a
                 spreadsheet. We all face these moments — and we all handle them
                 the same way: asking friends who are biased, searching the
-                internet for answers that don&apos;t exist, and spinning in
-                circles for weeks.
+                internet for answers that don&apos;t exist, and taking
+                longer than we need to.
               </p>
               <p>
-                Every decision tool wanted a form. But real dilemmas don&apos;t
-                start with structure — they start with mess. We needed
-                something that could meet us in the uncertainty and help us
+                Every decision tool wanted a form. But real crossroads don&apos;t
+                start with structure — they start with something on your mind. We needed
+                something that could meet us where we are and help us
                 find clarity through conversation.
               </p>
             </div>
@@ -424,7 +424,7 @@ export default function AboutPage() {
           >
             <p>
               What if there was an AI companion that met you where you are —
-              in the mess of uncertainty — and helped you find clarity through
+              in the middle of figuring things out — and helped you find clarity through
               conversation? Not a chatbot that gives you an answer, but a
               thinking partner that helps you discover your own.
             </p>
@@ -432,8 +432,8 @@ export default function AboutPage() {
               That&apos;s Orria. A calm space to think through the decisions
               that shape your life — from career moves to relationship
               crossroads, health choices to financial turning points. Get
-              perspectives from AI personalities that challenge your blind
-              spots, share with real people who&apos;ve been there, and build
+              perspectives from AI personalities that show you what you might
+              not see on your own, share with real people who&apos;ve been there, and build
               a journal of the choices that made you who you are.
             </p>
           </motion.div>

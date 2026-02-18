@@ -28,7 +28,7 @@ const features = [
     icon: Mic,
     title: "Say it. Orria gets it.",
     description:
-      "Have a dilemma \u2014 maybe not even a decision yet? Say it out loud or type it out. Orria listens, finds the structure underneath, and gives you two paths: log it as a decision, or talk it through deeper.",
+      "Have something on your mind \u2014 maybe not even a decision yet? Say it out loud or type it out. Orria listens, finds the shape of it, and gives you two paths: log it as a decision, or talk it through deeper.",
     Demo: CanvasDemo,
     color: "#0891B2",
   },
@@ -37,14 +37,14 @@ const features = [
     icon: Users,
     title: "Four minds. One table.",
     description:
-      "Four AI agents with real personalities debate your dilemma in a live roundtable. They don\u2019t just advise you \u2014 they challenge each other. Maya encourages, Liam analyzes, Sara grounds, Rex pushes back.",
+      "Four AI agents with real personalities explore your decision in a live roundtable. They don\u2019t just advise you \u2014 they challenge each other. Maya encourages, Liam analyzes, Sara grounds, Rex pushes back.",
     Demo: RoundtableDemo,
     color: "#6366F1",
   },
   {
     kicker: "Crystallize",
     icon: Sparkles,
-    title: "From chaos to clarity.",
+    title: "From thought to clarity.",
     description:
       "After the conversation, Orria distills your thoughts, the roundtable debate, and every trade-off into one clear summary. You see what matters most \u2014 and decide with confidence.",
     Demo: CrystallizeDemo,

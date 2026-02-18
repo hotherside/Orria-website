@@ -21,7 +21,7 @@ const stats = [
     value: 400,
     prefix: "$",
     suffix: "B",
-    label: "lost annually to decision fatigue",
+    label: "at stake in how organizations decide",
     source: "World Economic Forum, 2023",
   },
   {

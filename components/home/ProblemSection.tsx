@@ -15,15 +15,15 @@ const problems = [
     stat: 35000,
     suffix: "",
     label: "Decisions per person, per day",
-    body: "The career pivot. The relationship you fought for. The city you almost moved to. These crossroads defined you \u2014 but you\u2019ve lost most of them.",
+    body: "The career pivot. The relationship you fought for. The city you almost moved to. These crossroads defined you \u2014 imagine if you could revisit that journey.",
     accent: "#0891B2",
   },
   {
     icon: Brain,
     stat: 73,
     suffix: "%",
-    label: "Feel overwhelmed",
-    body: "When it matters, we spin for weeks. We poll biased friends. We doom-scroll for answers. No clarity. No structure. No closure.",
+    label: "Deserve more clarity",
+    body: "When something matters, you deserve the space to think it through \u2014 not just the pressure to decide quickly. Clarity. Perspective. Confidence.",
     accent: "#C4704B",
   },
   {
@@ -49,7 +49,7 @@ export function ProblemSection() {
             viewport={viewportSettings}
           >
             <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
-              The Problem
+              The Crossroads
             </p>
             <h2
               className="text-display text-text-primary"
@@ -57,9 +57,9 @@ export function ProblemSection() {
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              You don&apos;t start with a decision.
+              Your choices tell your story.
               <br />
-              <span className="italic">You start with a dilemma.</span>
+              <span className="italic">They deserve real thought.</span>
             </h2>
           </motion.div>
         </div>

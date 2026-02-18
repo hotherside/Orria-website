@@ -232,7 +232,7 @@ export function CanvasDemo() {
               {/* Structured result */}
               <div className="bg-white rounded-xl p-3" style={{ border: "1px solid #EDE8DC" }}>
                 <p className="text-cyan-600 text-[8px] font-semibold uppercase tracking-wider mb-1">Decision</p>
-                <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Navigate the move vs. stay dilemma together</p>
+                <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Navigate the move vs. stay decision together</p>
               </div>
 
               <div className="space-y-2">

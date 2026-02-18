@@ -25,7 +25,7 @@ const demos = [
     component: RoundtableDemo,
     icon: Users,
     title: "Get perspectives",
-    description: "Four AI personalities challenge your blind spots from every angle.",
+    description: "Four AI personalities show you what you might not see on your own.",
     glowColor: "bg-indigo-500/8",
   },
   {
@@ -63,7 +63,7 @@ export function AppShowcaseSection() {
             <span className="italic text-cyan-600">See it in action.</span>
           </h2>
           <p className="text-text-secondary text-lg mt-4 max-w-xl mx-auto">
-            From messy thought to clear decision — in three moves.
+            From first thought to clear decision — in three moves.
           </p>
         </motion.div>
 

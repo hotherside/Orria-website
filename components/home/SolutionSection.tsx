@@ -23,14 +23,14 @@ const steps = [
     number: "02",
     title: "AI Structures Your Thoughts",
     description:
-      "Tap 'Structure with AI' and watch your messy dilemma transform into clear options, a title, and a topic.",
+      "Tap \u2018Structure with AI\u2019 and watch your thoughts transform into clear options, a title, and a topic.",
   },
   {
     icon: GitFork,
     number: "03",
     title: "Choose Your Depth",
     description:
-      "Simple choices? Log it immediately. Complex dilemmas? Talk it through with Orria and your AI roundtable.",
+      "Simple choices? Log it immediately. Something bigger? Talk it through with Orria and your AI roundtable.",
   },
 ];
 
@@ -66,7 +66,7 @@ export function SolutionSection() {
             </span>
           </h2>
           <p className="text-white/60 text-lg mt-4 max-w-xl mx-auto">
-            Open a canvas. Speak or type your dilemma. Choose how deep to go.
+            Open a canvas. Say what\u2019s on your mind. Choose how deep to go.
           </p>
         </motion.div>
 

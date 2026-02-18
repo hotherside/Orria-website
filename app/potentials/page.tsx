@@ -43,10 +43,10 @@ import {
 /* ── Data ─────────────────────────────────────────── */
 
 const opportunityStats = [
-  { value: 250, prefix: "$", suffix: "B+", label: "Lost annually to poor decision-making in organizations", source: "Gallup Workplace Research" },
+  { value: 250, prefix: "$", suffix: "B+", label: "At stake in how organizations make decisions", source: "Gallup Workplace Research" },
   { value: 35, suffix: "K", label: "Decisions made per person per day", source: "Sahakian & Labuzetta, 2013" },
-  { value: 85, suffix: "%", label: "Adults report anxiety about major life decisions", source: "Oracle Decision Dilemma Study, 2023" },
-  { value: 72, suffix: "%", label: "Executives say bad decisions are about as frequent as good ones", source: "McKinsey" },
+  { value: 85, suffix: "%", label: "Adults want better tools for major life decisions", source: "Oracle Decision Dilemma Study, 2023" },
+  { value: 72, suffix: "%", label: "Executives say decision quality is their biggest lever", source: "McKinsey" },
 ];
 
 const howItWorks = [
@@ -54,14 +54,14 @@ const howItWorks = [
     icon: Mic,
     step: "01",
     title: "Speak or Type",
-    description: "No forms, no templates. Just say what\u2019s on your mind. AI structures the mess into a clear decision framework in seconds.",
+    description: "No forms, no templates. Just say what\u2019s on your mind. AI organises your thoughts into a clear decision framework in seconds.",
     color: "#0891B2",
   },
   {
     icon: Users,
     step: "02",
     title: "Get Perspectives",
-    description: "Four distinct AI personalities challenge your blind spots from every angle. Then share with real humans who\u2019ve been there.",
+    description: "Four distinct AI personalities show you what you might not see on your own. Then share with real humans who\u2019ve been there.",
     color: "#6366F1",
   },
   {
@@ -82,8 +82,8 @@ const traction = [
 const markets = [
   { title: "Decision Intelligence", current: "$13.3B", future: "$50.1B", year: "2030", cagr: "24.7%", source: "MarketsandMarkets", barWidth: "60%", narrative: "Enterprise decision tools are a $13B market growing at 25% annually. But they\u2019re built for boardrooms, not people. Orria democratizes structured decision-making for the consumer market \u2014 an entirely unaddressed segment." },
   { title: "AI Companion & Copilot", current: "$37.1B", future: "$552.5B", year: "2035", cagr: "31%", source: "Precedence Research", barWidth: "100%", narrative: "The AI companion market is exploding. But most companions are general-purpose chatbots. Orria is purpose-built for the highest-stakes moments in your life \u2014 where generic advice isn\u2019t enough." },
-  { title: "Mental Wellness Apps", current: "$7.2B", future: "$22.5B", year: "2033", cagr: "15.2%", source: "Industry Research", barWidth: "35%", narrative: "Decision anxiety is driving demand for tools that sit between \u201Ctalk to a friend\u201D and \u201Csee a therapist.\u201D Orria fills this gap \u2014 structured support without the stigma or cost of clinical care." },
-  { title: "AI Virtual Assistant", current: "$3.4B", future: "$21.1B", year: "2030", cagr: "44.5%", source: "Industry Research", barWidth: "30%", narrative: "Voice-first AI assistants are becoming the default interface. Orria is voice-native from day one \u2014 speak your dilemma, get structured clarity back." },
+  { title: "Mental Wellness Apps", current: "$7.2B", future: "$22.5B", year: "2033", cagr: "15.2%", source: "Industry Research", barWidth: "35%", narrative: "Growing demand for tools that sit between \u201Ctalk to a friend\u201D and \u201Csee a therapist.\u201D Orria fills this gap \u2014 structured support without the stigma or cost of clinical care." },
+  { title: "AI Virtual Assistant", current: "$3.4B", future: "$21.1B", year: "2030", cagr: "44.5%", source: "Industry Research", barWidth: "30%", narrative: "Voice-first AI assistants are becoming the default interface. Orria is voice-native from day one \u2014 say what\u2019s on your mind, get structured clarity back." },
 ];
 
 const alternatives = [
@@ -91,7 +91,7 @@ const alternatives = [
     name: "ChatGPT & AI Chatbots",
     icon: Brain,
     verdict: "Good for answers. Not for decisions.",
-    explanation: "AI chatbots give you one perspective \u2014 theirs. They don\u2019t remember what you decided last time, can\u2019t challenge your blind spots from multiple angles, and forget everything the moment you close the tab. They\u2019re search engines for advice, not thinking partners.",
+    explanation: "AI chatbots give you one perspective \u2014 theirs. They don\u2019t remember what you decided last time, can\u2019t show you multiple angles, and forget everything the moment you close the tab. They\u2019re search engines for advice, not thinking partners.",
     missingPieces: ["No decision memory", "Single perspective", "No reflection loop"],
     accent: "#64748B",
   },
@@ -134,8 +134,8 @@ const whyNow = [
   },
   {
     icon: Globe,
-    title: "Decision anxiety is an epidemic",
-    description: "Decision anxiety is surging \u2014 younger generations report unprecedented levels of choice paralysis. The need is urgent, growing, and completely unmet by existing tools.",
+    title: "Complex choices are the new normal",
+    description: "Younger generations face more complex choices than ever \u2014 and they\u2019re looking for thoughtful tools to help them navigate. The need is growing and completely unmet.",
   },
 ];
 
@@ -274,7 +274,7 @@ export default function PotentialsPage() {
             >
               Everyone makes decisions.
               <br />
-              <span className="italic">No one does it well.</span>
+              <span className="italic">Everyone deserves better tools.</span>
             </h2>
           </motion.div>
 
@@ -725,7 +725,7 @@ export default function PotentialsPage() {
               Nothing else <span className="italic">does this.</span>
             </h2>
             <p className="text-text-secondary max-w-xl mx-auto text-sm">
-              People already try to make better decisions. They use AI, therapists, journals, and spreadsheets. Here&apos;s why none of them work.
+              People already try to make better decisions. They use AI, therapists, journals, and spreadsheets. Here&apos;s where Orria goes further.
             </p>
           </motion.div>
 
@@ -791,7 +791,7 @@ export default function PotentialsPage() {
                   <span className="italic text-cyan-600">how people actually decide.</span>
                 </h3>
                 <p className="text-text-secondary leading-relaxed mb-4 text-sm">
-                  Voice-first input that meets you in the mess. Four AI personalities that challenge each other in a live roundtable. A decision journal that remembers everything. Community perspectives from people who&apos;ve been there. And a reflection loop that turns choices into wisdom.
+                  Voice-first input that meets you where you are. Four AI personalities that challenge each other in a live roundtable. A decision journal that remembers everything. Community perspectives from people who&apos;ve been there. And a reflection loop that turns choices into wisdom.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {["Voice-first input", "4 AI perspectives", "Decision memory", "Community feedback", "Reflection loop"].map((feature) => (

@@ -20,13 +20,13 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Orria — Think it through. Remember what shaped you.",
   description:
-    "Your AI decision companion. Talk through dilemmas, get perspectives from 4 distinct AI personalities, and build a journal of the choices that define your journey.",
+    "Your AI decision companion. Think through what matters with 4 distinct AI perspectives, and build a journal of the choices that define your journey.",
   keywords:
-    "decision making, AI companion, decision journal, life choices, decision fatigue, AI perspectives, career decisions",
+    "decision making, AI companion, decision journal, life choices, AI perspectives, career decisions, thinking partner",
   openGraph: {
     title: "Orria — Think it through. Remember what shaped you.",
     description:
-      "Your AI decision companion. Talk through dilemmas, get perspectives from 4 distinct AI personalities, and build a journal of the choices that define your journey.",
+      "Your AI decision companion. Think through what matters with 4 distinct AI perspectives, and build a journal of the choices that define your journey.",
     type: "website",
     url: "https://orria.app",
     siteName: "Orria",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Orria — Think it through. Remember what shaped you.",
     description:
-      "Your AI decision companion. Talk through dilemmas, get perspectives from 4 distinct AI personalities, and build a journal of the choices that define your journey.",
+      "Your AI decision companion. Think through what matters with 4 distinct AI perspectives, and build a journal of the choices that define your journey.",
   },
   metadataBase: new URL("https://orria.app"),
 };

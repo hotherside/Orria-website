@@ -7,15 +7,15 @@ import { fadeUp, viewportSettings } from "@/lib/animation-variants";
 const journeyNodes = [
   {
     label: "Open Up",
-    title: "Start with the mess",
+    title: "Say what\u2019s on your mind",
     description:
-      "Just speak or type. No forms, no structure — Orria meets you in the uncertainty and helps you discover what you\u2019re really deciding.",
+      "Just speak or type. No forms, no structure — Orria meets you where you are and helps you discover what you\u2019re really deciding.",
     color: "var(--cyan-500)",
     glowClass: "bg-cyan-500/20",
   },
   {
     label: "See Clearly",
-    title: "Break your echo chamber",
+    title: "See it from every angle",
     description:
       "Four AI personalities surface what you can\u2019t see alone. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. They react to each other like a real conversation.",
     color: "var(--agent-liam)",
@@ -23,9 +23,9 @@ const journeyNodes = [
   },
   {
     label: "Decide",
-    title: "Break the cycle",
+    title: "Move forward with confidence",
     description:
-      "Set a deadline. Make the call. Move forward. Orria helps you commit instead of letting choices linger for weeks.",
+      "Set a deadline. Make the call. Move forward. Orria helps you commit when you\u2019re ready, so decisions don\u2019t linger longer than they need to.",
     color: "var(--terracotta-500)",
     glowClass: "bg-terracotta-500/20",
   },
@@ -274,7 +274,7 @@ export function JourneySection() {
             className="text-display text-text-primary"
             style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
           >
-            From dilemma to clarity.
+            From thought to clarity.
             <br />
             <span className="italic">From clarity to wisdom.</span>
           </h2>
