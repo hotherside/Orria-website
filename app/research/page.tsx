@@ -5,8 +5,9 @@ import {
   fadeUp,
   staggerContainer,
   staggerItem,
-  viewportSettings,
 } from "@/lib/animation-variants";
+
+const eagerViewport = { once: true, amount: 0.05 };
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
 import { WaitlistForm } from "@/components/shared/WaitlistForm";
 import { FloatingElements } from "@/components/shared/FloatingElements";
@@ -164,7 +165,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -184,7 +185,7 @@ export default function ResearchPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
           >
             {opportunityStats.map((stat) => (
@@ -214,7 +215,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -232,7 +233,7 @@ export default function ResearchPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="grid grid-cols-1 md:grid-cols-3 gap-7"
           >
             {howItWorks.map((step, i) => (
@@ -274,7 +275,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -295,7 +296,7 @@ export default function ResearchPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"
           >
             {alternatives.map((alt) => (
@@ -336,7 +337,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="bg-gradient-to-r from-cyan-500/5 to-cyan-500/10 rounded-2xl p-8 border border-cyan-500/15"
           >
             <div className="flex flex-col md:flex-row items-start gap-5">
@@ -376,7 +377,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -398,7 +399,7 @@ export default function ResearchPage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={viewportSettings}
+              viewport={eagerViewport}
               className="space-y-8"
             >
               {markets.map((market) => (
@@ -421,7 +422,7 @@ export default function ResearchPage() {
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
-                viewport={viewportSettings}
+                viewport={eagerViewport}
                 className="space-y-4 mb-8"
               >
                 {markets.map((market) => (
@@ -461,7 +462,7 @@ export default function ResearchPage() {
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
-                viewport={viewportSettings}
+                viewport={eagerViewport}
               >
                 <div className="bg-white rounded-2xl px-8 py-6 border border-cream-300/50 shadow-soft text-center">
                   <p
@@ -486,7 +487,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -504,7 +505,7 @@ export default function ResearchPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {whyNow.map((item) => (
@@ -531,7 +532,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-10"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -552,7 +553,7 @@ export default function ResearchPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10"
           >
             {traction.map((item) => (
@@ -576,7 +577,7 @@ export default function ResearchPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center"
           >
             <WaitlistForm variant="section" />

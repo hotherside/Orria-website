@@ -5,7 +5,6 @@ import {
   fadeUp,
   staggerContainer,
   staggerItem,
-  viewportSettings,
 } from "@/lib/animation-variants";
 import { WaitlistForm } from "@/components/shared/WaitlistForm";
 import { FloatingElements } from "@/components/shared/FloatingElements";
@@ -108,6 +107,8 @@ const expansionPaths = [
   },
 ];
 
+const eagerViewport = { once: true, amount: 0.05 };
+
 /* ── Page ─────────────────────────────────────────── */
 
 export default function FutureStatePage() {
@@ -145,7 +146,7 @@ export default function FutureStatePage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -174,7 +175,7 @@ export default function FutureStatePage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-12"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -192,7 +193,7 @@ export default function FutureStatePage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="space-y-6"
           >
             {b2bUseCases.map((useCase) => (
@@ -242,7 +243,7 @@ export default function FutureStatePage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="mt-10 bg-white rounded-2xl border border-cyan-500/15 p-8 max-w-3xl mx-auto"
           >
             <div className="flex items-start gap-4">
@@ -267,7 +268,7 @@ export default function FutureStatePage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -287,7 +288,7 @@ export default function FutureStatePage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="grid grid-cols-1 md:grid-cols-4 gap-5"
           >
             {expansionPaths.map((path, i) => (
@@ -328,7 +329,7 @@ export default function FutureStatePage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="text-center mb-14"
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -346,7 +347,7 @@ export default function FutureStatePage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             <motion.div variants={staggerItem} className="bg-white rounded-2xl p-7 border border-cream-300/50 shadow-soft">
@@ -392,7 +393,7 @@ export default function FutureStatePage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
           >
             <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest mb-6">
               The Vision
@@ -422,7 +423,7 @@ export default function FutureStatePage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportSettings}
+            viewport={eagerViewport}
           >
             <h2
               className="text-heading text-text-primary mb-4"
