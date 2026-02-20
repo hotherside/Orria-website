@@ -439,11 +439,48 @@ function FeatureCarousel() {
 
 const SUPABASE_URL = "https://nnfcodpedesktqrpqbab.supabase.co/functions/v1";
 
+/** Deterministic avatar colors based on initials */
+const AVATAR_PALETTES = [
+  { bg: "#B8E8F0", text: "#0C5E72" },
+  { bg: "#F5D9A8", text: "#7C3A0A" },
+  { bg: "#C7C4F7", text: "#3730A3" },
+  { bg: "#F5C2D0", text: "#9D174D" },
+  { bg: "#BBF7D0", text: "#166534" },
+  { bg: "#FDE68A", text: "#92400E" },
+];
+
+function getAvatarColor(initials: string) {
+  const code = (initials.charCodeAt(0) || 0) + (initials.charCodeAt(1) || 0);
+  return AVATAR_PALETTES[code % AVATAR_PALETTES.length];
+}
+
+/** Extract 2-letter initials: from name (first+last) or email local part */
+function getInitials(email: string, name?: string): string {
+  if (name) {
+    const parts = name.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return name.trim().slice(0, 2).toUpperCase();
+  }
+  const local = email.split("@")[0].replace(/[^a-zA-Z]/g, "");
+  return local.slice(0, 2).toUpperCase() || "??";
+}
+
+const FALLBACK_AVATARS = [
+  { initials: "JK" },
+  { initials: "AR" },
+  { initials: "ML" },
+  { initials: "SP" },
+];
+
 function SocialProofCounter() {
   const [count, setCount] = useState<number | null>(null);
+  const [recentAvatars, setRecentAvatars] = useState<{ initials: string }[]>(FALLBACK_AVATARS);
 
   useEffect(() => {
-    async function fetchCount() {
+    async function fetchData() {
+      // Fetch count
       try {
         const res = await fetch(`${SUPABASE_URL}/waitlist-count`);
         if (res.ok) {
@@ -453,8 +490,26 @@ function SocialProofCounter() {
       } catch {
         // Silent fail
       }
+
+      // Fetch most recent 4 signups for avatar initials
+      try {
+        const res = await fetch(`${SUPABASE_URL}/waitlist-recent`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data.recent) && data.recent.length > 0) {
+            const avatars = data.recent.slice(0, 4).map(
+              (entry: { email: string; name?: string }) => ({
+                initials: getInitials(entry.email, entry.name),
+              })
+            );
+            setRecentAvatars(avatars);
+          }
+        }
+      } catch {
+        // Keep fallback avatars
+      }
     }
-    fetchCount();
+    fetchData();
   }, []);
 
   if (count === null || count <= 0) return null;
@@ -466,22 +521,20 @@ function SocialProofCounter() {
       transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
       className="mt-8 flex items-center gap-4"
     >
-      {/* Stacked avatars */}
+      {/* Stacked avatars — most recent first */}
       <div className="flex -space-x-2.5">
-        {[
-          { bg: "#B8E8F0", text: "#0C5E72", initials: "JK" },
-          { bg: "#F5D9A8", text: "#7C3A0A", initials: "AR" },
-          { bg: "#C7C4F7", text: "#3730A3", initials: "ML" },
-          { bg: "#F5C2D0", text: "#9D174D", initials: "SP" },
-        ].map((avatar, i) => (
-          <div
-            key={i}
-            className="w-9 h-9 rounded-full flex items-center justify-center border-2 border-cream-100 text-[10px] font-bold"
-            style={{ backgroundColor: avatar.bg, color: avatar.text, zIndex: 10 - i }}
-          >
-            {avatar.initials}
-          </div>
-        ))}
+        {recentAvatars.map((avatar, i) => {
+          const palette = getAvatarColor(avatar.initials);
+          return (
+            <div
+              key={`${avatar.initials}-${i}`}
+              className="w-9 h-9 rounded-full flex items-center justify-center border-2 border-cream-100 text-[10px] font-bold"
+              style={{ backgroundColor: palette.bg, color: palette.text, zIndex: 10 - i }}
+            >
+              {avatar.initials}
+            </div>
+          );
+        })}
         {/* +more indicator */}
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center border-2 border-cream-100 text-[10px] font-semibold bg-cream-200 text-text-muted"
@@ -527,7 +580,7 @@ export function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 min-h-[90vh] pt-36 md:pt-44 pb-10 md:pb-16 items-center">
           {/* Left: Text content */}

@@ -66,7 +66,7 @@ export function AgentsSection() {
 
   return (
     <section id="agents" className="py-14 md:py-20 bg-cream-100">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6 md:px-10 lg:px-16">
         {/* Header */}
         <motion.div
           variants={fadeUp}

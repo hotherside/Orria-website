@@ -16,6 +16,7 @@ interface WaitlistFormProps {
 
 export function WaitlistForm({ variant = "section", className, showCounter = true }: WaitlistFormProps) {
   const [email, setEmail] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
@@ -61,6 +62,7 @@ export function WaitlistForm({ variant = "section", className, showCounter = tru
       if (res.ok) {
         const data = await res.json();
         setStatus("success");
+        setSubmittedEmail(email);
         setEmail("");
         if (data.count !== undefined) {
           setWaitlistCount(data.count);
@@ -72,6 +74,7 @@ export function WaitlistForm({ variant = "section", className, showCounter = tru
         const data = await res.json().catch(() => ({}));
         if (data?.error?.includes("already")) {
           setStatus("success");
+          setSubmittedEmail(email);
           setEmail("");
           if (data.count !== undefined) setWaitlistCount(data.count);
           setShowModal(true);
@@ -225,6 +228,7 @@ export function WaitlistForm({ variant = "section", className, showCounter = tru
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         count={waitlistCount}
+        email={submittedEmail}
       />
     </>
   );

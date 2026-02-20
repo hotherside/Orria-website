@@ -41,7 +41,7 @@ export function ProblemSection() {
     <section id="problem">
       <div className="bg-cream-100">
         {/* Section header */}
-        <div className="pt-14 md:pt-20 pb-10 md:pb-12 max-w-4xl mx-auto px-6 text-center">
+        <div className="pt-14 md:pt-20 pb-10 md:pb-12 max-w-4xl mx-auto px-6 md:px-10 lg:px-16 text-center">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -65,7 +65,7 @@ export function ProblemSection() {
         </div>
 
         {/* Compact 3-column cards */}
-        <div className="max-w-6xl mx-auto px-6 pb-14 md:pb-20">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 lg:px-16 pb-14 md:pb-20">
           <motion.div
             initial="hidden"
             whileInView="visible"
