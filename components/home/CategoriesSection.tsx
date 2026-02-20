@@ -100,7 +100,7 @@ export function CategoriesSection() {
   return (
     <section className="pt-10 md:pt-14 pb-14 md:pb-20 bg-cream-100 overflow-hidden">
       {/* Header */}
-      <div className="max-w-4xl mx-auto px-6 text-center mb-10">
+      <div className="max-w-4xl mx-auto px-6 md:px-10 lg:px-16 text-center mb-10">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -154,7 +154,7 @@ export function CategoriesSection() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportSettings}
-        className="max-w-4xl mx-auto px-6 text-center mt-10"
+        className="max-w-4xl mx-auto px-6 md:px-10 lg:px-16 text-center mt-10"
       >
         <p className="text-text-secondary text-base">
           <span className="text-text-primary font-semibold">~35,000 decisions per person, every day.</span>{" "}

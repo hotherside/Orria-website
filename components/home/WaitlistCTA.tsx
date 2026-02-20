@@ -10,7 +10,7 @@ export function WaitlistCTA() {
       id="waitlist"
       className="py-14 md:py-20 bg-gradient-to-b from-cream-100 to-cream-200"
     >
-      <div className="max-w-3xl mx-auto px-6 text-center">
+      <div className="max-w-3xl mx-auto px-6 md:px-10 lg:px-16 text-center">
         <motion.div
           variants={fadeUp}
           initial="hidden"

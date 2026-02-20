@@ -3,22 +3,35 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, Sparkles, Link2, Heart } from "lucide-react";
+import { Check, X, Sparkles, Link2, Heart, Loader2, User } from "lucide-react";
+
+const SUPABASE_URL = "https://nnfcodpedesktqrpqbab.supabase.co/functions/v1";
 
 interface WaitlistSuccessModalProps {
   isOpen: boolean;
   onClose: () => void;
   count?: number | null;
+  email?: string;
 }
 
-export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccessModalProps) {
+export function WaitlistSuccessModal({ isOpen, onClose, count, email }: WaitlistSuccessModalProps) {
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [nameStatus, setNameStatus] = useState<"idle" | "loading" | "saved">("idle");
 
   // Wait for client mount so createPortal has a target
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Reset name state when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setFullName("");
+      setNameStatus("idle");
+    }
+  }, [isOpen]);
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -37,6 +50,27 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Fallback
+    }
+  };
+
+  const handleNameSubmit = async () => {
+    if (!fullName.trim() || !email) return;
+
+    setNameStatus("loading");
+    try {
+      const res = await fetch(`${SUPABASE_URL}/waitlist-update-name`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name: fullName.trim() }),
+      });
+      if (res.ok) {
+        setNameStatus("saved");
+      } else {
+        setNameStatus("saved");
+      }
+    } catch {
+      // Still mark as saved so the UI progresses
+      setNameStatus("saved");
     }
   };
 
@@ -92,7 +126,7 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
                   </motion.div>
                 )}
 
-                {/* Heading */}
+                {/* Heading — personalized if name is saved */}
                 <motion.h3
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -100,7 +134,9 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
                   className="text-2xl font-semibold text-text-primary text-center mb-2"
                   style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
                 >
-                  Welcome to Orria
+                  {nameStatus === "saved" && fullName.trim()
+                    ? `Welcome, ${fullName.trim().split(/\s+/)[0]}!`
+                    : "Welcome to Orria"}
                 </motion.h3>
 
                 {/* Thank you */}
@@ -113,6 +149,68 @@ export function WaitlistSuccessModal({ isOpen, onClose, count }: WaitlistSuccess
                   <Heart size={13} className="text-terracotta-400" />
                   Thank you for believing in a better way to make decisions.
                 </motion.p>
+
+                {/* Name input — shown when name hasn't been saved yet */}
+                <AnimatePresence mode="wait">
+                  {nameStatus !== "saved" ? (
+                    <motion.div
+                      key="name-input"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ delay: 0.5 }}
+                      className="mb-6"
+                    >
+                      <div className="bg-cream-100 rounded-2xl p-5">
+                        <div className="flex items-center gap-2 mb-3">
+                          <User size={14} className="text-cyan-600" />
+                          <p className="text-xs font-semibold text-text-primary uppercase tracking-wider">
+                            One more thing
+                          </p>
+                        </div>
+                        <p className="text-sm text-text-secondary mb-3">
+                          What should we call you? This helps us personalise your experience.
+                        </p>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" && fullName.trim()) handleNameSubmit();
+                            }}
+                            placeholder="Your full name"
+                            className="flex-1 px-4 py-2.5 rounded-full text-sm font-medium bg-white text-text-primary placeholder:text-text-muted border border-cream-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all duration-300"
+                            autoFocus
+                          />
+                          <button
+                            onClick={handleNameSubmit}
+                            disabled={!fullName.trim() || nameStatus === "loading"}
+                            className="px-4 py-2.5 rounded-full bg-cyan-500 text-white text-sm font-semibold hover:bg-cyan-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5"
+                          >
+                            {nameStatus === "loading" ? (
+                              <Loader2 size={14} className="animate-spin" />
+                            ) : (
+                              "Save"
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="name-saved"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="mb-6"
+                    >
+                      <div className="flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-cyan-500/10 text-cyan-600 text-sm font-medium">
+                        <Check size={16} />
+                        Nice to meet you, {fullName.trim().split(/\s+/)[0]}!
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {/* Belonging copy */}
                 <motion.p

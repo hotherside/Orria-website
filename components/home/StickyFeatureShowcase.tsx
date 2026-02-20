@@ -150,7 +150,7 @@ export function StickyFeatureShowcase() {
 
   return (
     <section id="product" className="bg-cream-100 py-14 md:py-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
         {/* Header — Introducing Orria + How It Works merged */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
