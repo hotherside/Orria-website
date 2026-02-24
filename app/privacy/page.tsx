@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="text-lg text-text-muted">
-            Last Updated: January 31, 2026
+            Last Updated: February 24, 2026
           </p>
         </div>
 
@@ -106,8 +106,55 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-bold text-text-primary mb-4">
               3. AI and Data Processing
             </h2>
+            <p className="text-text-secondary leading-relaxed mb-4">
+              Orria uses artificial intelligence to help you think through decisions and provide insights. Before any data is shared with AI services, we ask for your explicit consent within the app. You can grant or revoke this consent at any time in Settings.
+            </p>
+
+            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
+              What Data is Shared
+            </h3>
+            <p className="text-text-secondary leading-relaxed mb-4">
+              When you use AI features, the following data may be sent for processing:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
+              <li>Decision title, description, and options</li>
+              <li>Decision topic/category</li>
+              <li>Conversation messages (when using the conversational AI feature)</li>
+              <li>Your display name (for personalized responses only)</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
+              What Data is Never Shared
+            </h3>
+            <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
+              <li>Your email address or password</li>
+              <li>Financial or payment information</li>
+              <li>Device identifiers or IP address</li>
+              <li>Data from other users</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
+              Who Processes the Data
+            </h3>
+            <p className="text-text-secondary leading-relaxed mb-4">
+              Your decision data is processed by <strong>OpenAI</strong> via their API. OpenAI processes this data to generate AI insights, summaries, conversation responses, and agent perspectives within Orria.
+            </p>
+
+            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
+              How the Data is Protected
+            </h3>
+            <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
+              <li>Data sent to OpenAI is transmitted securely via encrypted HTTPS connections</li>
+              <li>Your data is used solely to generate responses for you and is not used to train AI models (per OpenAI&apos;s API data usage policy)</li>
+              <li>Your data is not shared with other Orria users through AI processing</li>
+              <li>AI-generated content is stored in your Orria account and follows the same data retention policies as your other content</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
+              Your Consent and Control
+            </h3>
             <p className="text-text-secondary leading-relaxed">
-              Orria uses artificial intelligence to analyze decisions and provide insights. When you request AI analysis, your decision data may be processed by third-party AI services (such as OpenAI). This data is used solely to generate insights for you and is not used to train AI models or shared with other users.
+              You are asked to provide explicit consent before any data is shared with AI services. You can revoke this consent at any time in the app&apos;s Settings under &quot;AI &amp; Privacy.&quot; If you revoke consent, AI features (including decision structuring, insights, summaries, and conversations) will be disabled, but your existing data and decisions will not be affected.
             </p>
           </section>
 
@@ -305,7 +352,7 @@ export default function PrivacyPolicy() {
           {/* Effective Date */}
           <section className="text-center pt-8 border-t border-cream-300">
             <p className="text-sm text-text-muted">
-              This Privacy Policy is effective as of January 31, 2026
+              This Privacy Policy is effective as of February 24, 2026
             </p>
           </section>
 
