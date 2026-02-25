@@ -30,7 +30,7 @@ export function Footer() {
               Think it through. Remember what shaped you.
             </p>
             <p className="text-text-secondary text-sm leading-relaxed mb-3">
-              Your AI decision companion for life&apos;s crossroads.
+              Your AI thinking companion.
             </p>
             <a
               href="https://www.instagram.com/orria.app/"

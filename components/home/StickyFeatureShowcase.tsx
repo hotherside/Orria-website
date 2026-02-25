@@ -4,87 +4,87 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback } from "react";
 import { PhoneMockup } from "@/components/shared/PhoneMockup";
 import { CanvasDemo } from "@/components/home/showcase/CanvasDemo";
+import { StructureDemo } from "@/components/home/showcase/StructureDemo";
+import { DepthForkDemo } from "@/components/home/showcase/DepthForkDemo";
 import { RoundtableDemo } from "@/components/home/showcase/RoundtableDemo";
 import { CrystallizeDemo } from "@/components/home/showcase/CrystallizeDemo";
-import { CommunityDemo } from "@/components/home/showcase/CommunityDemo";
-import { InsightsDemo } from "@/components/home/showcase/InsightsDemo";
 import { JournalDemo } from "@/components/home/showcase/JournalDemo";
 import { ReflectionDemo } from "@/components/home/showcase/ReflectionDemo";
 import {
   Mic,
   Users,
   Sparkles,
-  Globe,
-  BarChart3,
+  GitFork,
   BookOpen,
   RotateCcw,
+  Diamond,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
 
 const features = [
   {
-    kicker: "Dump It",
+    kicker: "Canvas",
     icon: Mic,
-    title: "Say it. Orria gets it.",
+    title: "Open a blank canvas.",
     description:
-      "Have something on your mind \u2014 maybe not even a decision yet? Say it out loud or type it out. Orria listens, finds the shape of it, and gives you two paths: log it as a decision, or talk it through deeper.",
+      "Say what\u2019s on your mind. Speak or type \u2014 no forms, no templates. Orria listens to whatever you\u2019re thinking through, whether it\u2019s a clear decision or just something weighing on you.",
     Demo: CanvasDemo,
     color: "#0891B2",
   },
   {
-    kicker: "Roundtable",
+    kicker: "Structure",
+    icon: Sparkles,
+    title: "AI finds the shape of it.",
+    description:
+      "In seconds, AI organizes your scattered thoughts into a clear decision with structured options and context. From chaos to clarity, instantly.",
+    Demo: StructureDemo,
+    color: "#E5A53D",
+  },
+  {
+    kicker: "Your Depth",
+    icon: GitFork,
+    title: "Quick log or deep conversation.",
+    description:
+      "Ready to decide? Create the decision and move on. Still thinking it over? Talk it through with Orria \u2014 your AI thinking companion who asks the right questions and never pushes.",
+    Demo: DepthForkDemo,
+    color: "#9333EA",
+  },
+  {
+    kicker: "Perspectives",
     icon: Users,
     title: "Four minds. One table.",
     description:
-      "Four AI agents with real personalities explore your decision in a live roundtable. They don\u2019t just advise you \u2014 they challenge each other. Maya encourages, Liam analyzes, Sara grounds, Rex pushes back.",
+      "Maya encourages. Liam analyzes. Sara grounds. Rex challenges. Four AI thinking partners weigh in on your decision in a live roundtable \u2014 showing you angles you might not see on your own.",
     Demo: RoundtableDemo,
     color: "#6366F1",
   },
   {
     kicker: "Crystallize",
-    icon: Sparkles,
+    icon: Diamond,
     title: "From thought to clarity.",
     description:
-      "After the conversation, Orria distills your thoughts, the roundtable debate, and every trade-off into one clear summary. You see what matters most \u2014 and decide with confidence.",
+      "After the conversation, Orria distills everything \u2014 your thoughts, the roundtable debate, every trade-off \u2014 into one clear summary card. You see what matters most and decide with confidence.",
     Demo: CrystallizeDemo,
-    color: "#E5A53D",
-  },
-  {
-    kicker: "Community",
-    icon: Globe,
-    title: "Ask people who\u2019ve been there.",
-    description:
-      "Share your decision anonymously and get votes, comments, and perspective from real people who\u2019ve faced similar crossroads. AI is powerful \u2014 but lived experience is irreplaceable.",
-    Demo: CommunityDemo,
     color: "#C4704B",
-  },
-  {
-    kicker: "Patterns",
-    icon: BarChart3,
-    title: "See how you actually decide.",
-    description:
-      "Track your decisions across topics, see how your confidence changes over time, and uncover patterns in how you make choices. Every decision becomes data that makes you sharper.",
-    Demo: InsightsDemo,
-    color: "#9333EA",
   },
   {
     kicker: "Journal",
     icon: BookOpen,
-    title: "Every decision, logged forever.",
+    title: "Your autobiography in decisions.",
     description:
-      "A living journal of every crossroad you\u2019ve navigated \u2014 searchable, timestamped, yours forever. The career change. The move. The relationship. The story of how you became you.",
+      "Every decision becomes a journal entry \u2014 timestamped, searchable, yours forever. The career change. The move. The relationship. Your story, written in choices.",
     Demo: JournalDemo,
-    color: "#C4704B",
+    color: "#E5A53D",
   },
   {
     kicker: "Reflect",
     icon: RotateCcw,
     title: "Come back. Close the loop.",
     description:
-      "Three months later, six months later \u2014 come back and ask: would I do it again? Record your reflection, track how your confidence evolves, and celebrate decision milestones.",
+      "Three months later, six months later \u2014 come back and ask: would I do it again? Rate your confidence, record your reflection, and celebrate decision milestones.",
     Demo: ReflectionDemo,
-    color: "#E5A53D",
+    color: "#0891B2",
   },
 ];
 
@@ -173,9 +173,9 @@ export function StickyFeatureShowcase() {
             Orria.
           </h2>
           <p className="text-text-secondary text-lg md:text-xl mt-6 max-w-2xl mx-auto leading-relaxed">
-            Your AI decision companion. Think through what matters.
+            Your AI thinking companion. Open a blank canvas, get perspectives
             <br className="hidden md:block" />{" "}
-            See every angle. Remember what shaped you.
+            from four AI personalities, and build a journal of the choices that shape your life.
           </p>
         </motion.div>
 

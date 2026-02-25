@@ -84,7 +84,7 @@ const expansionPaths = [
   {
     phase: "Now",
     title: "Consumer \u2014 D2C",
-    description: "Personal decision companion for individuals navigating life\u2019s crossroads. Voice-first, AI-powered, journal-backed.",
+    description: "Personal thinking companion for individuals navigating life\u2019s crossroads. Voice-first, AI-powered, journal-backed.",
     color: "#0891B2",
   },
   {

@@ -46,7 +46,7 @@ const row2Categories = [
   { icon: Scale, name: "Legal", example: "Is this worth pursuing?", color: "#64748B" },
   { icon: Palette, name: "Creativity", example: "Pursue art full-time?", color: "#9333EA" },
   { icon: Church, name: "Faith & Values", example: "What matters most to me?", color: "#C4704B" },
-  { icon: Globe, name: "Community", example: "How can I contribute?", color: "#0891B2" },
+  { icon: Globe, name: "Social Impact", example: "How can I contribute?", color: "#0891B2" },
   { icon: TreePine, name: "Family", example: "Move closer to parents?", color: "#E5A53D" },
   { icon: Lightbulb, name: "Identity", example: "Is this really who I am?", color: "#6366F1" },
   { icon: Sparkles, name: "Self-Growth", example: "What should I invest in next?", color: "#9333EA" },
@@ -121,7 +121,7 @@ export function CategoriesSection() {
             <span className="italic text-cyan-600">And thousands more.</span>
           </h2>
           <p className="text-text-secondary text-lg mt-4 max-w-xl mx-auto">
-            Whatever keeps you up at night, Orria has your back.
+            Whatever crossroad you&apos;re at, Orria is here to help you think it through.
           </p>
         </motion.div>
       </div>
@@ -158,7 +158,7 @@ export function CategoriesSection() {
       >
         <p className="text-text-secondary text-base">
           <span className="text-text-primary font-semibold">~35,000 decisions per person, every day.</span>{" "}
-          We built Orria for the ones that matter.
+          Orria is here for the ones that shape your story.
         </p>
       </motion.div>
     </section>

@@ -28,7 +28,7 @@ const beliefs = [
   {
     title: "Multiple perspectives break echo chambers",
     description:
-      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because seeing the full picture takes more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. And when AI isn\u2019t enough, real people from the Orria community offer perspectives shaped by lived experience.",
+      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because seeing the full picture takes more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. And when you want another angle, the Explore feed connects you with real people who\u2019ve navigated similar crossroads.",
   },
   {
     title: "Closing the loop builds wisdom",
@@ -45,7 +45,7 @@ const beliefs = [
 const framework = [
   {
     icon: MessageCircle,
-    label: "Conversation",
+    label: "Canvas",
     description: "Say what\u2019s on your mind. AI structures your thoughts into clear options.",
     color: "var(--cyan-500)",
   },
@@ -71,13 +71,10 @@ const framework = [
 
 const timeline = [
   { year: "Jan 18", label: "Day zero", detail: "A personal crossroad became a product idea. First commit pushed that same weekend." },
-  { year: "Jan \u2013 Feb", label: "v1.0 \u2014 Share & Decide", detail: "Built the full iOS app end-to-end: decision logging, AI insights, community voting, analytics. The thesis? Decisions are social \u2014 share them, get feedback, learn from each other." },
-  { year: "Feb 7", label: "v1.1 \u2014 The Design Overhaul", detail: "Complete visual refresh. Ocean on Parchment palette, voice-first canvas, four named AI agent personas (Maya, Liam, Sara, Rex), and a decision weight system." },
-  { year: "Feb 10", label: "v1.2 \u2014 The Pivot", detail: "After feedback from 30+ early testers, the product shifted. Community sharing moved secondary. The personal decision journal became the core \u2014 because people wanted a private space to think, not a public stage." },
-  { year: "Feb 11\u201312", label: "v1.3 \u2014 Conversation First", detail: "The biggest insight: people don\u2019t always arrive with a clear decision \u2014 they arrive with something on their mind. Added conversational AI companion, multi-round agent roundtable, and a unified flow that meets you where you are." },
-  { year: "Feb 13\u201315", label: "Website & positioning", detail: "Marketing site, investor pitch page, waitlist infrastructure. Telling the story to the world." },
-  { year: "Late Feb", label: "Beta launch", detail: "Closed beta with early adopters. Real decisions. Real feedback. Real iteration." },
-  { year: "March 2026", label: "Public launch", detail: "App Store release. The world gets Orria." },
+  { year: "Feb 7", label: "The Design Overhaul", detail: "Complete visual refresh. Ocean on Parchment palette, voice-first canvas, four named AI agent personas (Maya, Liam, Sara, Rex), and a decision weight system." },
+  { year: "Feb 10", label: "The Pivot", detail: "The product shifted from social-first to personal-first. The decision journal became the core \u2014 because people wanted a private space to think, not a public stage. Sharing became a choice, not the default." },
+  { year: "March 2026", label: "Beta launch", detail: "Closed beta with early adopters. Real decisions. Real feedback. Real iteration." },
+  { year: "April 2026", label: "Public launch", detail: "App Store release. The world gets Orria." },
 ];
 
 /* Animated pull-quote border that draws itself */
@@ -248,10 +245,10 @@ export default function AboutPage() {
 
                   <div className="space-y-4 text-text-secondary text-sm leading-relaxed">
                     <p>
-                      A product builder with an uncommon path — from the Apple Genius Bar to leading platform teams, from the front lines of the Republic of Korea and United States armies to shaping digital experiences used by thousands.
+                      A product builder with an uncommon path — from the Apple Genius Bar to managing products at SafetyCulture, CoverGenius, and Unleash live, from the front lines of the Republic of Korea and United States armies to shaping digital experiences used by thousands.
                     </p>
                     <p>
-                      Hojae started where great product people often do: closest to the customer. Years of solving real problems at Apple and SafetyCulture sharpened an instinct for what users actually need — not just what they ask for. That foundation evolved into leading product strategy at CoverGenius, where he built 0-to-1 platforms and rallied cross-functional teams around a shared vision.
+                      Hojae started where great product people often do: closest to the customer. Years of solving real problems sharpened an instinct for what users actually need — not just what they ask for.
                     </p>
                     <p>
                       Between those chapters, he served in two armies — earning early promotions at every rank, leading 60+ soldiers, and developing the discipline and bias for action that defines how Orria is built: with relentless standards and zero shortcuts.
@@ -433,7 +430,7 @@ export default function AboutPage() {
               that shape your life — from career moves to relationship
               crossroads, health choices to financial turning points. Get
               perspectives from AI personalities that show you what you might
-              not see on your own, share with real people who&apos;ve been there, and build
+              not see on your own, explore real perspectives from people who&apos;ve been there, and build
               a journal of the choices that made you who you are.
             </p>
           </motion.div>
@@ -556,7 +553,7 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-500/5 border border-cyan-500/15">
               <Users size={14} className="text-cyan-500" />
               <span className="text-text-secondary text-sm">
-                Plus real community perspectives from people who&apos;ve faced similar decisions
+                Plus real perspectives from people who&apos;ve navigated similar crossroads
               </span>
             </div>
           </motion.div>

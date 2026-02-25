@@ -14,31 +14,31 @@ const problems = [
     icon: Clock,
     stat: 35000,
     suffix: "",
-    label: "Decisions per person, per day",
-    body: "The career pivot. The relationship you fought for. The city you almost moved to. These crossroads defined you \u2014 imagine if you could revisit that journey.",
+    label: "Choices that shape who you are",
+    body: "The career pivot. The relationship you fought for. The city you almost moved to. Every day holds crossroads that define your story \u2014 what if you had a thinking partner for the ones that matter?",
     accent: "#0891B2",
   },
   {
     icon: Brain,
     stat: 73,
     suffix: "%",
-    label: "Deserve more clarity",
-    body: "When something matters, you deserve the space to think it through \u2014 not just the pressure to decide quickly. Clarity. Perspective. Confidence.",
+    label: "Want more clarity on big decisions",
+    body: "Clarity. Perspective. Confidence. Three things every crossroad deserves \u2014 and three things most people navigate without. What if you didn\u2019t have to?",
     accent: "#C4704B",
   },
   {
     icon: AlertTriangle,
     stat: 0,
     suffix: "",
-    label: "Tools built for this",
-    body: "AI chatbots forget everything. Notes apps have no insight. Nothing combines AI thinking partners with real perspectives and a living journal.",
+    label: "Tools built for this \u2014 until now",
+    body: "AI chatbots forget everything. Notes apps have no insight. Orria is the first tool that combines AI thinking partners with a living journal that grows wiser with you.",
     accent: "#E5A53D",
   },
 ];
 
 export function ProblemSection() {
   return (
-    <section id="problem">
+    <section id="opportunity">
       <div className="bg-cream-100">
         {/* Section header */}
         <div className="pt-14 md:pt-20 pb-10 md:pb-12 max-w-4xl mx-auto px-6 md:px-10 lg:px-16 text-center">
@@ -49,7 +49,7 @@ export function ProblemSection() {
             viewport={viewportSettings}
           >
             <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
-              The Crossroads
+              The Opportunity
             </p>
             <h2
               className="text-display text-text-primary"
@@ -57,9 +57,9 @@ export function ProblemSection() {
                 fontFamily: "var(--font-playfair), Playfair Display, serif",
               }}
             >
-              Your choices tell your story.
+              What if every crossroad came with
               <br />
-              <span className="italic">They deserve real thought.</span>
+              <span className="italic">clarity, perspective, and confidence?</span>
             </h2>
           </motion.div>
         </div>

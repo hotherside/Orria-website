@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const sections = [
   { id: "hero", label: "Home" },
-  { id: "problem", label: "The Problem" },
+  { id: "opportunity", label: "The Opportunity" },
   { id: "product", label: "How It Works" },
-  { id: "agents", label: "AI Agents" },
+  { id: "agents", label: "Your Thinking Partners" },
+  { id: "pricing", label: "Pricing" },
   { id: "waitlist", label: "Join Waitlist" },
 ];
 

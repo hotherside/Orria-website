@@ -199,7 +199,7 @@ const expansionPaths = [
   {
     phase: "Now",
     title: "Consumer \u2014 D2C",
-    description: "Personal decision companion for individuals navigating life\u2019s crossroads.",
+    description: "Personal thinking companion for individuals navigating life\u2019s crossroads.",
     color: "#0891B2",
   },
   {
@@ -791,10 +791,10 @@ export default function PotentialsPage() {
                   <span className="italic text-cyan-600">how people actually decide.</span>
                 </h3>
                 <p className="text-text-secondary leading-relaxed mb-4 text-sm">
-                  Voice-first input that meets you where you are. Four AI personalities that challenge each other in a live roundtable. A decision journal that remembers everything. Community perspectives from people who&apos;ve been there. And a reflection loop that turns choices into wisdom.
+                  Voice-first input that meets you where you are. Four AI personalities that challenge each other in a live roundtable. A decision journal that remembers everything. Real perspectives from people who&apos;ve navigated similar crossroads. And a reflection loop that turns choices into wisdom.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["Voice-first input", "4 AI perspectives", "Decision memory", "Community feedback", "Reflection loop"].map((feature) => (
+                  {["Voice-first input", "4 AI perspectives", "Decision memory", "Explore perspectives", "Reflection loop"].map((feature) => (
                     <span key={feature} className="inline-flex items-center gap-1 text-[11px] text-cyan-600 px-2.5 py-1 rounded-full bg-cyan-500/10 font-medium">
                       <Check size={10} />
                       {feature}

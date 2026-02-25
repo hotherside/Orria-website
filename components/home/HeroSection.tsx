@@ -5,12 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { WaitlistForm } from "@/components/shared/WaitlistForm";
 import {
   Mic,
-  Users,
   Sparkles,
-  Globe,
+  GitFork,
   BookOpen,
-  ThumbsUp,
-  MessageCircle,
+  RotateCcw,
   BarChart3,
   ChevronDown,
 } from "lucide-react";
@@ -30,44 +28,44 @@ interface FeatureCard {
 
 const featureCards: FeatureCard[] = [
   {
-    id: "voice",
-    label: "Voice Input",
-    title: "Just talk.",
-    description: "Speak your thoughts naturally. No forms, no templates — Orria listens and structures your decision for you.",
+    id: "canvas",
+    label: "Open Canvas",
+    title: "Say what's on your mind.",
+    description: "Open a blank canvas. Speak or type whatever you're thinking — no forms, no templates. Orria meets you where you are.",
     color: "#0891B2",
     icon: <Mic size={15} />,
   },
   {
     id: "structure",
-    label: "AI Structuring",
+    label: "AI Structures",
     title: "Clarity, instantly.",
-    description: "AI organises your thoughts into a clear decision with structured options and context.",
+    description: "AI organizes your thoughts into clear options with context. In seconds, scattered thinking becomes a structured decision.",
     color: "#E5A53D",
     icon: <Sparkles size={15} />,
   },
   {
-    id: "roundtable",
-    label: "AI Roundtable",
-    title: "Four minds, one table.",
-    description: "Maya, Liam, Sara and Rex — AI agents who debate your decision from every angle before you commit.",
-    color: "#6366F1",
-    icon: <Users size={15} />,
-  },
-  {
-    id: "community",
-    label: "Community",
-    title: "Real human signal.",
-    description: "Share decisions anonymously. See how others voted, read their takes, find confidence in the crowd.",
-    color: "#C4704B",
-    icon: <Globe size={15} />,
+    id: "depth",
+    label: "Choose Your Depth",
+    title: "Quick log or deep dive.",
+    description: "Ready to decide? Log it. Still thinking it over? Talk it through with Orria and four AI thinking partners who see what you might not.",
+    color: "#9333EA",
+    icon: <GitFork size={15} />,
   },
   {
     id: "journal",
     label: "Living Journal",
-    title: "Grow wiser over time.",
-    description: "Every decision becomes a journal entry. Track patterns, revisit outcomes, and learn how you decide.",
-    color: "#9333EA",
+    title: "Your story, written in choices.",
+    description: "Every decision becomes a journal entry. The career change, the move, the relationship — your autobiography in choices.",
+    color: "#C4704B",
     icon: <BookOpen size={15} />,
+  },
+  {
+    id: "reflect",
+    label: "Reflect",
+    title: "Come back. Close the loop.",
+    description: "Months later, ask yourself: would I do it again? Rate your confidence, record reflections, and celebrate decision milestones.",
+    color: "#6366F1",
+    icon: <RotateCcw size={15} />,
   },
 ];
 
@@ -170,51 +168,88 @@ function RoundtablePreview() {
   );
 }
 
-function CommunityPreview() {
+function DepthPreview() {
   return (
     <div className="flex flex-col items-center justify-center h-full gap-2.5">
       <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 w-full max-w-[260px] shadow-sm border border-cream-300/40">
-        <p className="text-[11px] font-medium text-text-primary mb-3">
-          &ldquo;Should I accept the job abroad?&rdquo;
+        <div className="flex items-center gap-2 mb-2.5">
+          <div className="w-5 h-5 rounded-lg bg-cyan-500/12 flex items-center justify-center">
+            <Sparkles size={10} className="text-cyan-500" />
+          </div>
+          <span className="text-[10px] font-semibold text-text-primary">AI structured your thoughts</span>
+        </div>
+        <p className="text-[11px] font-medium text-text-primary mb-1.5">
+          Navigate the move vs. stay decision
         </p>
-        <div className="mb-2.5">
-          <div className="flex justify-between mb-1">
-            <span className="text-[9px] text-text-secondary">Accept</span>
-            <span className="text-[9px] font-semibold text-cyan-600">65%</span>
-          </div>
-          <div className="h-1.5 rounded-full overflow-hidden bg-cream-200">
+        <div className="flex gap-1.5 mb-3">
+          <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 text-[8px] font-medium">
+            Relationship
+          </span>
+          <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 text-[8px] font-medium">
+            Life Change
+          </span>
+        </div>
+        <div className="space-y-1.5">
+          <motion.button
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
+            className="w-full px-3 py-2 rounded-xl bg-cyan-500 text-white text-[10px] font-semibold text-center"
+          >
+            Create Decision
+          </motion.button>
+          <motion.button
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+            className="w-full px-3 py-2 rounded-xl border border-cyan-500/30 text-cyan-600 text-[10px] font-medium text-center"
+          >
+            or talk it through with Orria
+          </motion.button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ReflectPreview() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-2.5">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 w-full max-w-[260px] shadow-sm border border-cream-300/40">
+        <div className="flex items-center gap-2 mb-2.5">
+          <RotateCcw size={12} className="text-cyan-500" />
+          <span className="text-[10px] font-semibold text-cyan-600">6-month check-in</span>
+        </div>
+        <p className="text-[11px] font-medium text-text-primary mb-2">
+          Would you make the same choice again?
+        </p>
+        <div className="flex gap-1.5 mb-3">
+          {["Absolutely", "Probably", "Not sure"].map((opt, i) => (
             <motion.div
-              className="h-full rounded-full bg-cyan-500"
-              initial={{ width: "0%" }}
-              animate={{ width: "65%" }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
-          </div>
+              key={opt}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 + i * 0.15, duration: 0.3 }}
+              className={`px-2.5 py-1.5 rounded-lg text-[9px] font-medium ${
+                i === 0
+                  ? "bg-cyan-500 text-white"
+                  : "border border-cream-300/60 text-text-secondary"
+              }`}
+            >
+              {opt}
+            </motion.div>
+          ))}
         </div>
-        <div className="mb-2.5">
-          <div className="flex justify-between mb-1">
-            <span className="text-[9px] text-text-secondary">Decline</span>
-            <span className="text-[9px] font-semibold text-text-muted">35%</span>
-          </div>
-          <div className="h-1.5 rounded-full overflow-hidden bg-cream-200">
-            <motion.div
-              className="h-full rounded-full bg-cream-400"
-              initial={{ width: "0%" }}
-              animate={{ width: "35%" }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            />
-          </div>
-        </div>
-        <div className="flex items-center gap-3 pt-1 border-t border-cream-200">
-          <div className="flex items-center gap-1 pt-1.5">
-            <ThumbsUp size={10} className="text-text-muted" />
-            <span className="text-[9px] text-text-muted">24</span>
-          </div>
-          <div className="flex items-center gap-1 pt-1.5">
-            <MessageCircle size={10} className="text-text-muted" />
-            <span className="text-[9px] text-text-muted">8 comments</span>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.4 }}
+          className="bg-cream-100/80 rounded-lg p-2.5"
+        >
+          <p className="text-[9px] text-text-secondary italic leading-snug">
+            &ldquo;Taking the new role was the best decision I made this year. The growth has been incredible.&rdquo;
+          </p>
+        </motion.div>
       </div>
     </div>
   );
@@ -275,11 +310,11 @@ function JournalPreview() {
 }
 
 const cardPreviews: Record<string, () => React.JSX.Element> = {
-  voice: VoicePreview,
+  canvas: VoicePreview,
   structure: StructurePreview,
-  roundtable: RoundtablePreview,
-  community: CommunityPreview,
+  depth: DepthPreview,
   journal: JournalPreview,
+  reflect: ReflectPreview,
 };
 
 /* ── Feature Carousel ────────────────────────────────────── */
@@ -594,7 +629,7 @@ export function HeroSection() {
             >
               <Sparkles size={12} className="text-cyan-500" />
               <span className="text-xs font-medium text-cyan-600">
-                Your AI decision companion
+                Your AI thinking companion
               </span>
             </motion.div>
 
@@ -633,7 +668,7 @@ export function HeroSection() {
               className="text-base md:text-lg text-text-primary font-medium mb-6 max-w-lg"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
-              Think through what matters — with AI perspectives, real human feedback, and a living journal that grows wiser with you.
+              Every decision you make — taking that job, moving to that city, saying yes when you almost said no — is part of your story. Orria helps you think it through.
             </motion.p>
 
             {/* Waitlist — directly under text */}
@@ -664,7 +699,7 @@ export function HeroSection() {
           className="flex justify-center pb-4"
         >
           <motion.a
-            href="#problem"
+            href="#opportunity"
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             className="text-text-muted hover:text-text-secondary transition-colors"

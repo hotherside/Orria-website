@@ -48,7 +48,7 @@ export default function Support() {
                 What is Orria?
               </h3>
               <p className="text-text-secondary leading-relaxed">
-                Orria is a social decision-making platform that helps you make better choices through AI insights and community wisdom. Create decisions, get votes from the community, and receive AI-powered analysis to see all angles of your choices.
+                Orria is an AI thinking companion that helps you make better choices through multiple perspectives and structured reflection. Create decisions, explore different angles, and receive AI-powered analysis to see all sides of your choices.
               </p>
             </div>
 
@@ -88,7 +88,7 @@ export default function Support() {
                 Are my decisions public?
               </h3>
               <p className="text-text-secondary leading-relaxed">
-                You can choose! When creating a decision, you can make it public for the community to see and vote on, or keep it private for your personal use. You have full control over who sees your decisions.
+                You can choose! When creating a decision, you can make it public on the Explore feed for others to see and vote on, or keep it private for your personal use. You have full control over who sees your decisions.
               </p>
             </div>
 

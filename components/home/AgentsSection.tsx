@@ -52,7 +52,7 @@ const agents = [
     role: "The Challenger",
     quote: "Have you considered what happens if...",
     description:
-      "Your honest challenger. Rex surfaces the risks and considerations you might not have explored yet, because the best decisions are the ones you\u2019ve fully thought through.",
+      "Your honest challenger. Rex surfaces the risks and considerations you might not have explored yet, because the angles you haven\u2019t considered are often the ones that matter most.",
     hoverResponse: "What\u2019s the worst-case scenario you haven\u2019t considered? That\u2019s where the real risk lives.",
     icon: AlertTriangle,
     color: "#64748B",
@@ -76,7 +76,7 @@ export function AgentsSection() {
           className="text-center mb-12"
         >
           <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
-            Your Roundtable
+            Your Thinking Partners
           </p>
           <h2
             className="text-display text-text-primary"
@@ -84,13 +84,13 @@ export function AgentsSection() {
               fontFamily: "var(--font-playfair), Playfair Display, serif",
             }}
           >
-            4 perspectives.
+            Four perspectives
             <br />
-            <span className="italic">The full picture.</span>
+            <span className="italic">on every choice.</span>
           </h2>
           <p className="text-text-secondary text-lg mt-4 max-w-xl mx-auto">
-            Every big decision deserves more than one opinion. Meet the AI
-            personalities that challenge, encourage, analyze, and ground you.
+            Every crossroad looks different from four angles. Meet the AI
+            thinking partners who challenge, encourage, analyze, and ground you.
           </p>
         </motion.div>
 
@@ -238,7 +238,7 @@ export function AgentsSection() {
             transition={{ delay: 0.6 }}
             className="mt-4 text-text-muted text-sm"
           >
-            And when AI isn&apos;t enough — share with the Orria community for real human perspectives.
+            And when you want another lens — share on the Explore feed and hear from people who&apos;ve been there.
           </motion.p>
         </motion.div>
       </div>
