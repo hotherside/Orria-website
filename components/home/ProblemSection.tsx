@@ -15,7 +15,7 @@ const problems = [
     stat: 35000,
     suffix: "",
     label: "Choices that shape who you are",
-    body: "The career pivot. The relationship you fought for. The city you almost moved to. Every day holds crossroads that define your story \u2014 what if you had a thinking partner for the ones that matter?",
+    body: "Every day holds crossroads that define your story. What if the ones that matter had a thinking partner?",
     accent: "#0891B2",
   },
   {
@@ -23,7 +23,7 @@ const problems = [
     stat: 73,
     suffix: "%",
     label: "Want more clarity on big decisions",
-    body: "Clarity. Perspective. Confidence. Three things every crossroad deserves \u2014 and three things most people navigate without. What if you didn\u2019t have to?",
+    body: "Most people navigate their biggest decisions alone \u2014 no structure, no outside perspective, no way to learn from past choices.",
     accent: "#C4704B",
   },
   {
@@ -31,7 +31,7 @@ const problems = [
     stat: 0,
     suffix: "",
     label: "Tools built for this \u2014 until now",
-    body: "AI chatbots forget everything. Notes apps have no insight. Orria is the first tool that combines AI thinking partners with a living journal that grows wiser with you.",
+    body: "AI chatbots forget. Notes apps don\u2019t think. Orria combines a thinking companion with a living journal.",
     accent: "#E5A53D",
   },
 ];

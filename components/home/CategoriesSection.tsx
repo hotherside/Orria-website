@@ -67,9 +67,9 @@ function CategoryPill({ icon: Icon, name, example, color }: {
         >
           <Icon size={14} style={{ color }} />
         </div>
-        <span className="text-sm font-semibold" style={{ color: "#2D2926" }}>{name}</span>
+        <span className="text-sm font-semibold" style={{ color: "#111111" }}>{name}</span>
       </div>
-      <p className="text-xs leading-relaxed italic" style={{ color: "#9C948A" }}>
+      <p className="text-xs leading-relaxed italic" style={{ color: "#9CA3AF" }}>
         &ldquo;{example}&rdquo;
       </p>
     </div>

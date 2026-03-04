@@ -95,22 +95,22 @@ export function RoundtableDemo() {
   }, [isInView, visibleCount]);
 
   return (
-    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FAF8F5" }}>
+    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
       {/* Status bar area */}
       <div className="h-12 flex-shrink-0" />
 
       {/* Header */}
-      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #EDE8DC" }}>
+      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #E5E7EB" }}>
         <div className="w-5 h-5 rounded-full bg-cyan-500/15 flex items-center justify-center">
           <span className="text-cyan-600 text-[7px] font-bold">O</span>
         </div>
-        <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Roundtable</p>
+        <p className="text-[11px] font-medium" style={{ color: "#111111" }}>Roundtable</p>
         <div className="ml-auto flex -space-x-1.5">
           {Object.entries(AGENT_COLORS).slice(1).map(([name, color]) => (
             <div
               key={name}
               className="w-4 h-4 rounded-full"
-              style={{ backgroundColor: `${color}25`, border: "1.5px solid #FAF8F5" }}
+              style={{ backgroundColor: `${color}25`, border: "1.5px solid #FFFFFF" }}
             />
           ))}
         </div>
@@ -151,7 +151,7 @@ export function RoundtableDemo() {
                   border: `1px solid ${AGENT_COLORS[msg.agent]}12`,
                 }}
               >
-                <p className="text-[9px] leading-relaxed" style={{ color: "#2D2926" }}>{msg.text}</p>
+                <p className="text-[9px] leading-relaxed" style={{ color: "#111111" }}>{msg.text}</p>
               </div>
             </div>
           </motion.div>
@@ -164,20 +164,20 @@ export function RoundtableDemo() {
             animate={{ opacity: 1 }}
             className="flex items-center gap-2 pl-7"
           >
-            <span className="text-[8px]" style={{ color: "#9C948A" }}>{typingAgent} is thinking</span>
+            <span className="text-[8px]" style={{ color: "#9CA3AF" }}>{typingAgent} is thinking</span>
             <div className="flex gap-[2px]">
-              <div className="w-1 h-1 rounded-full typing-dot" style={{ backgroundColor: "#9C948A" }} />
-              <div className="w-1 h-1 rounded-full typing-dot" style={{ backgroundColor: "#9C948A" }} />
-              <div className="w-1 h-1 rounded-full typing-dot" style={{ backgroundColor: "#9C948A" }} />
+              <div className="w-1 h-1 rounded-full typing-dot" style={{ backgroundColor: "#9CA3AF" }} />
+              <div className="w-1 h-1 rounded-full typing-dot" style={{ backgroundColor: "#9CA3AF" }} />
+              <div className="w-1 h-1 rounded-full typing-dot" style={{ backgroundColor: "#9CA3AF" }} />
             </div>
           </motion.div>
         )}
       </div>
 
       {/* Input bar */}
-      <div className="h-10 px-3 pb-2 flex items-center gap-2" style={{ borderTop: "1px solid #EDE8DC" }}>
-        <div className="flex-1 h-6 rounded-full bg-white px-3 flex items-center" style={{ border: "1px solid #EDE8DC" }}>
-          <span className="text-[9px]" style={{ color: "#9C948A" }}>Reply to roundtable...</span>
+      <div className="h-10 px-3 pb-2 flex items-center gap-2" style={{ borderTop: "1px solid #E5E7EB" }}>
+        <div className="flex-1 h-6 rounded-full bg-white px-3 flex items-center" style={{ border: "1px solid #E5E7EB" }}>
+          <span className="text-[9px]" style={{ color: "#9CA3AF" }}>Reply to roundtable...</span>
         </div>
       </div>
     </div>

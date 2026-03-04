@@ -63,12 +63,12 @@ export function ReflectionDemo() {
   const showMilestone = phase === "milestone";
 
   return (
-    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FAF8F5" }}>
+    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="h-12 flex-shrink-0" />
 
-      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #EDE8DC" }}>
+      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #E5E7EB" }}>
         <Sparkles size={14} className="text-cyan-600" />
-        <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Looking Back</p>
+        <p className="text-[11px] font-medium" style={{ color: "#111111" }}>Looking Back</p>
       </div>
 
       <div className="flex-1 px-4 py-3 flex flex-col gap-3 overflow-hidden">
@@ -80,16 +80,16 @@ export function ReflectionDemo() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="bg-white rounded-xl p-3"
-              style={{ border: "1px solid #EDE8DC" }}
+              style={{ border: "1px solid #E5E7EB" }}
             >
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle size={12} className="text-green-500" />
                 <span className="text-[7px] px-1.5 py-0.5 rounded-full" style={{ backgroundColor: "#22C55E12", color: "#22C55E" }}>
                   Resolved
                 </span>
-                <span className="ml-auto text-[7px]" style={{ color: "#9C948A" }}>6 months ago</span>
+                <span className="ml-auto text-[7px]" style={{ color: "#9CA3AF" }}>6 months ago</span>
               </div>
-              <p className="text-[11px] font-medium" style={{ color: "#2D2926", fontFamily: "var(--font-playfair), Playfair Display, serif" }}>
+              <p className="text-[11px] font-medium" style={{ color: "#111111", fontFamily: "var(--font-playfair), Playfair Display, serif" }}>
                 Accept the remote role
               </p>
               <div className="flex gap-1.5 mt-2">
@@ -105,7 +105,7 @@ export function ReflectionDemo() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <p className="text-[9px] font-medium mb-2" style={{ color: "#6B635A" }}>
+              <p className="text-[9px] font-medium mb-2" style={{ color: "#6B7280" }}>
                 Would you make the same choice?
               </p>
               <div className="flex gap-1.5 flex-wrap">
@@ -125,7 +125,7 @@ export function ReflectionDemo() {
                     }`}
                     style={
                       selectedConfidence !== i
-                        ? { border: "1px solid #EDE8DC", color: "#6B635A" }
+                        ? { border: "1px solid #E5E7EB", color: "#6B7280" }
                         : undefined
                     }
                   >
@@ -143,10 +143,10 @@ export function ReflectionDemo() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="bg-white rounded-xl p-3"
-              style={{ border: "1px solid #EDE8DC" }}
+              style={{ border: "1px solid #E5E7EB" }}
             >
-              <p className="text-[8px] font-medium mb-1.5" style={{ color: "#9C948A" }}>What did this teach you?</p>
-              <p className="text-[9px] leading-relaxed italic" style={{ color: "#2D2926" }}>
+              <p className="text-[8px] font-medium mb-1.5" style={{ color: "#9CA3AF" }}>What did this teach you?</p>
+              <p className="text-[9px] leading-relaxed italic" style={{ color: "#111111" }}>
                 &ldquo;I learned that flexibility matters more to me than I thought. The freedom reshaped how I think about work entirely.&rdquo;
               </p>
             </motion.div>
@@ -166,7 +166,7 @@ export function ReflectionDemo() {
             >
               <Award size={16} style={{ color: "#E5A53D" }} className="mx-auto mb-1.5" />
               <p className="text-[9px] font-semibold" style={{ color: "#E5A53D" }}>6 Month Milestone</p>
-              <p className="text-[7px] mt-0.5" style={{ color: "#9C948A" }}>
+              <p className="text-[7px] mt-0.5" style={{ color: "#9CA3AF" }}>
                 This decision shaped your story
               </p>
             </motion.div>

@@ -41,13 +41,13 @@ export function DepthForkDemo() {
   }, [isInView, phase, reset]);
 
   return (
-    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FAF8F5" }}>
+    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
       {/* Status bar area */}
       <div className="h-12 flex-shrink-0" />
 
       {/* Header */}
-      <div className="px-4 pb-3" style={{ borderBottom: "1px solid #EDE8DC" }}>
-        <p className="text-[10px] font-medium tracking-wide uppercase" style={{ color: "#9C948A" }}>Choose Your Path</p>
+      <div className="px-4 pb-3" style={{ borderBottom: "1px solid #E5E7EB" }}>
+        <p className="text-[10px] font-medium tracking-wide uppercase" style={{ color: "#9CA3AF" }}>Choose Your Path</p>
       </div>
 
       <div className="flex-1 flex flex-col px-4 pt-4">
@@ -56,10 +56,10 @@ export function DepthForkDemo() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           className="bg-white rounded-xl p-3 mb-3"
-          style={{ border: "1px solid #EDE8DC" }}
+          style={{ border: "1px solid #E5E7EB" }}
         >
           <p className="text-[8px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#9333EA" }}>Decision</p>
-          <p className="text-[11px] font-medium mb-2" style={{ color: "#2D2926" }}>
+          <p className="text-[11px] font-medium mb-2" style={{ color: "#111111" }}>
             Navigate the move vs. stay decision
           </p>
           <div className="flex gap-1.5">
@@ -81,7 +81,7 @@ export function DepthForkDemo() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="text-[9px] text-center mb-3"
-              style={{ color: "#9C948A" }}
+              style={{ color: "#9CA3AF" }}
             >
               AI has structured your thoughts. Now choose your path.
             </motion.p>
@@ -101,22 +101,22 @@ export function DepthForkDemo() {
           >
             <div
               className="py-3 rounded-xl flex items-center justify-center gap-2"
-              style={{ backgroundColor: "#F5F1EA", border: "1px solid #EDE8DC" }}
+              style={{ backgroundColor: "#F7F7F7", border: "1px solid #E5E7EB" }}
             >
-              <Zap size={12} style={{ color: "#6B635A" }} />
-              <span className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Create Decision</span>
-              <ArrowRight size={10} style={{ color: "#9C948A" }} />
+              <Zap size={12} style={{ color: "#6B7280" }} />
+              <span className="text-[11px] font-medium" style={{ color: "#111111" }}>Create Decision</span>
+              <ArrowRight size={10} style={{ color: "#9CA3AF" }} />
             </div>
-            <p className="text-[8px] text-center mt-1" style={{ color: "#9C948A" }}>
+            <p className="text-[8px] text-center mt-1" style={{ color: "#9CA3AF" }}>
               Quick log — save and move on
             </p>
           </motion.div>
 
           {/* Divider */}
           <div className="flex items-center gap-2">
-            <div className="flex-1 h-px" style={{ backgroundColor: "#EDE8DC" }} />
-            <span className="text-[8px]" style={{ color: "#9C948A" }}>or</span>
-            <div className="flex-1 h-px" style={{ backgroundColor: "#EDE8DC" }} />
+            <div className="flex-1 h-px" style={{ backgroundColor: "#E5E7EB" }} />
+            <span className="text-[8px]" style={{ color: "#9CA3AF" }}>or</span>
+            <div className="flex-1 h-px" style={{ backgroundColor: "#E5E7EB" }} />
           </div>
 
           {/* Path 2: Talk to Orria */}
@@ -136,7 +136,7 @@ export function DepthForkDemo() {
               <MessageCircle size={12} className="text-cyan-600" />
               <span className="text-[11px] font-medium text-cyan-600">Talk it through with Orria</span>
             </div>
-            <p className="text-[8px] text-center mt-1" style={{ color: "#9C948A" }}>
+            <p className="text-[8px] text-center mt-1" style={{ color: "#9CA3AF" }}>
               Deep dive — conversation + roundtable
             </p>
           </motion.div>

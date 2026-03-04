@@ -61,13 +61,13 @@ export function CanvasDemo() {
   const isVoiceActive = phase === "recording" || phase === "dictating";
 
   return (
-    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FAF8F5" }}>
+    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
       {/* Status bar area */}
       <div className="h-12 flex-shrink-0" />
 
       {/* Header */}
-      <div className="px-4 pb-3" style={{ borderBottom: "1px solid #EDE8DC" }}>
-        <p className="text-[10px] font-medium tracking-wide uppercase" style={{ color: "#9C948A" }}>New Decision</p>
+      <div className="px-4 pb-3" style={{ borderBottom: "1px solid #E5E7EB" }}>
+        <p className="text-[10px] font-medium tracking-wide uppercase" style={{ color: "#9CA3AF" }}>New Decision</p>
       </div>
 
       <div className="flex-1 flex flex-col px-4 pt-4">
@@ -81,7 +81,7 @@ export function CanvasDemo() {
               className="flex-1 flex flex-col"
             >
               {/* Guidance text */}
-              <p className="text-[9px] mb-3" style={{ color: "#9C948A" }}>
+              <p className="text-[9px] mb-3" style={{ color: "#9CA3AF" }}>
                 {isVoiceActive ? "Listening..." : "What\u2019s on your mind?"}
               </p>
 
@@ -92,7 +92,7 @@ export function CanvasDemo() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="text-[11px] leading-relaxed"
-                    style={{ color: "#2D2926" }}
+                    style={{ color: "#111111" }}
                   >
                     {SPOKEN_TEXT.slice(0, charIndex)}
                     {phase === "dictating" && charIndex < SPOKEN_TEXT.length && (
@@ -103,7 +103,7 @@ export function CanvasDemo() {
 
                 {phase === "idle" && (
                   <div className="flex items-center justify-center h-full opacity-40">
-                    <p className="text-[10px] text-center" style={{ color: "#9C948A" }}>
+                    <p className="text-[10px] text-center" style={{ color: "#9CA3AF" }}>
                       Tap the mic to start
                     </p>
                   </div>
@@ -115,7 +115,7 @@ export function CanvasDemo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 0.5 }}
                       className="text-[10px]"
-                      style={{ color: "#6B635A" }}
+                      style={{ color: "#6B7280" }}
                     >
                       Speak freely...
                     </motion.p>
@@ -134,11 +134,11 @@ export function CanvasDemo() {
                       ? "bg-cyan-500 text-white"
                       : charIndex >= SPOKEN_TEXT.length
                       ? "bg-cyan-500/15 text-cyan-600 animate-pulse-glow"
-                      : "text-[#9C948A]"
+                      : "text-[#9CA3AF]"
                   }`}
                   style={
                     phase !== "structuring" && charIndex < SPOKEN_TEXT.length
-                      ? { backgroundColor: "#F5F1EA" }
+                      ? { backgroundColor: "#F7F7F7" }
                       : undefined
                   }
                 >
@@ -175,7 +175,7 @@ export function CanvasDemo() {
                     className={`relative w-8 h-8 rounded-full flex items-center justify-center ${
                       isVoiceActive ? "bg-cyan-500" : ""
                     }`}
-                    style={!isVoiceActive ? { backgroundColor: "#EDE8DC" } : undefined}
+                    style={!isVoiceActive ? { backgroundColor: "#E5E7EB" } : undefined}
                     animate={isVoiceActive ? {
                       scale: [1, 1.05, 1],
                       boxShadow: [
@@ -189,7 +189,7 @@ export function CanvasDemo() {
                       repeat: Infinity,
                     } : {}}
                   >
-                    <Mic size={12} className={isVoiceActive ? "text-white" : "text-[#6B635A]"} />
+                    <Mic size={12} className={isVoiceActive ? "text-white" : "text-[#6B7280]"} />
                     {isVoiceActive && (
                       <motion.div
                         className="absolute inset-[-3px] rounded-full border-2 border-cyan-400/30"
@@ -230,9 +230,9 @@ export function CanvasDemo() {
               className="flex-1 flex flex-col gap-2.5"
             >
               {/* Structured result */}
-              <div className="bg-white rounded-xl p-3" style={{ border: "1px solid #EDE8DC" }}>
+              <div className="bg-white rounded-xl p-3" style={{ border: "1px solid #E5E7EB" }}>
                 <p className="text-cyan-600 text-[8px] font-semibold uppercase tracking-wider mb-1">Decision</p>
-                <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Navigate the move vs. stay decision together</p>
+                <p className="text-[11px] font-medium" style={{ color: "#111111" }}>Navigate the move vs. stay decision together</p>
               </div>
 
               <div className="space-y-2">
@@ -245,7 +245,7 @@ export function CanvasDemo() {
                   <div className="w-4 h-4 rounded-full bg-cyan-500/15 flex items-center justify-center">
                     <span className="text-cyan-600 text-[7px] font-bold">1</span>
                   </div>
-                  <p className="text-[10px]" style={{ color: "#2D2926" }}>Move together, find new balance</p>
+                  <p className="text-[10px]" style={{ color: "#111111" }}>Move together, find new balance</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: -8 }}
@@ -253,10 +253,10 @@ export function CanvasDemo() {
                   transition={{ delay: 0.35 }}
                   className="flex items-center gap-2"
                 >
-                  <div className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F5F1EA" }}>
-                    <span className="text-[7px] font-bold" style={{ color: "#6B635A" }}>2</span>
+                  <div className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F7F7F7" }}>
+                    <span className="text-[7px] font-bold" style={{ color: "#6B7280" }}>2</span>
                   </div>
-                  <p className="text-[10px]" style={{ color: "#2D2926" }}>Stay and explore long-distance</p>
+                  <p className="text-[10px]" style={{ color: "#111111" }}>Stay and explore long-distance</p>
                 </motion.div>
               </div>
 
@@ -291,9 +291,9 @@ export function CanvasDemo() {
                   transition={{ delay: 0.7 }}
                   className="flex items-center gap-2"
                 >
-                  <div className="flex-1 h-px" style={{ backgroundColor: "#EDE8DC" }} />
-                  <span className="text-[8px]" style={{ color: "#9C948A" }}>or</span>
-                  <div className="flex-1 h-px" style={{ backgroundColor: "#EDE8DC" }} />
+                  <div className="flex-1 h-px" style={{ backgroundColor: "#E5E7EB" }} />
+                  <span className="text-[8px]" style={{ color: "#9CA3AF" }}>or</span>
+                  <div className="flex-1 h-px" style={{ backgroundColor: "#E5E7EB" }} />
                 </motion.div>
 
                 {/* Pathway 2: Talk to Orria */}

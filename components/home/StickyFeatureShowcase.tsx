@@ -191,7 +191,7 @@ export function StickyFeatureShowcase() {
                 {/* Bar segment */}
                 <div
                   className="h-1 rounded-full transition-all duration-300 overflow-hidden"
-                  style={{ backgroundColor: "#EDE8DC" }}
+                  style={{ backgroundColor: "#E5E7EB" }}
                 >
                   <motion.div
                     className="h-full rounded-full"
@@ -200,7 +200,7 @@ export function StickyFeatureShowcase() {
                       width: i <= activeIndex ? "100%" : "0%",
                     }}
                     transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                    style={{ backgroundColor: i <= activeIndex ? f.color : "#EDE8DC" }}
+                    style={{ backgroundColor: i <= activeIndex ? f.color : "#E5E7EB" }}
                   />
                 </div>
                 {/* Label below */}
@@ -289,9 +289,9 @@ export function StickyFeatureShowcase() {
                 onClick={goPrev}
                 disabled={activeIndex === 0}
                 className="w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-200 disabled:opacity-25 disabled:cursor-not-allowed hover:bg-cream-200"
-                style={{ borderColor: "#EDE8DC" }}
+                style={{ borderColor: "#E5E7EB" }}
               >
-                <ChevronLeft size={18} style={{ color: "#2D2926" }} />
+                <ChevronLeft size={18} style={{ color: "#111111" }} />
               </button>
               <button
                 onClick={goNext}

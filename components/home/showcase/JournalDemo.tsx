@@ -77,13 +77,13 @@ export function JournalDemo() {
   const showCards = phase === "cards";
 
   return (
-    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FAF8F5" }}>
+    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="h-12 flex-shrink-0" />
 
       {/* Header */}
-      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #EDE8DC" }}>
+      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #E5E7EB" }}>
         <BookOpen size={14} className="text-cyan-600" />
-        <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Journal</p>
+        <p className="text-[11px] font-medium" style={{ color: "#111111" }}>Journal</p>
       </div>
 
       <div className="flex-1 px-4 py-3 flex flex-col overflow-hidden">
@@ -95,10 +95,10 @@ export function JournalDemo() {
             transition={{ duration: 0.4 }}
             className="mb-3"
           >
-            <p className="text-[13px] font-medium" style={{ color: "#2D2926", fontFamily: "var(--font-playfair), Playfair Display, serif" }}>
+            <p className="text-[13px] font-medium" style={{ color: "#111111", fontFamily: "var(--font-playfair), Playfair Display, serif" }}>
               Good morning
             </p>
-            <p className="text-[9px] mt-0.5" style={{ color: "#9C948A" }}>3 decisions on your mind</p>
+            <p className="text-[9px] mt-0.5" style={{ color: "#9CA3AF" }}>3 decisions on your mind</p>
           </motion.div>
         )}
 
@@ -109,11 +109,11 @@ export function JournalDemo() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="mb-3 flex items-center gap-2 bg-white rounded-xl px-3 py-2"
-            style={{ border: "1px solid #EDE8DC" }}
+            style={{ border: "1px solid #E5E7EB" }}
           >
-            <span className="text-[9px] flex-1" style={{ color: "#9C948A" }}>What&apos;s on your mind?</span>
-            <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F5F1EA" }}>
-              <Mic size={10} style={{ color: "#6B635A" }} />
+            <span className="text-[9px] flex-1" style={{ color: "#9CA3AF" }}>What&apos;s on your mind?</span>
+            <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F7F7F7" }}>
+              <Mic size={10} style={{ color: "#6B7280" }} />
             </div>
           </motion.div>
         )}
@@ -128,7 +128,7 @@ export function JournalDemo() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.2 }}
                 className="bg-white rounded-xl p-3 flex gap-2.5"
-                style={{ border: "1px solid #EDE8DC" }}
+                style={{ border: "1px solid #E5E7EB" }}
               >
                 {/* Weight accent bar */}
                 <div
@@ -144,9 +144,9 @@ export function JournalDemo() {
                     <span className="text-[7px] uppercase tracking-wider" style={{ color: decision.topicColor }}>
                       {decision.topic}
                     </span>
-                    <span className="ml-auto text-[7px]" style={{ color: "#9C948A" }}>{decision.daysAgo}</span>
+                    <span className="ml-auto text-[7px]" style={{ color: "#9CA3AF" }}>{decision.daysAgo}</span>
                   </div>
-                  <p className="text-[10px] font-medium truncate" style={{ color: "#2D2926" }}>
+                  <p className="text-[10px] font-medium truncate" style={{ color: "#111111" }}>
                     {decision.title}
                   </p>
                   <div className="mt-1">

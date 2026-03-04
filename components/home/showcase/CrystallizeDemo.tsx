@@ -43,16 +43,16 @@ export function CrystallizeDemo() {
   }, [isInView, phase, reset]);
 
   return (
-    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FAF8F5" }}>
+    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
       {/* Status bar area */}
       <div className="h-12 flex-shrink-0" />
 
       {/* Header */}
-      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #EDE8DC" }}>
+      <div className="px-4 pb-3 flex items-center gap-2" style={{ borderBottom: "1px solid #E5E7EB" }}>
         <div className="w-5 h-5 rounded-full bg-cyan-500/15 flex items-center justify-center">
           <span className="text-cyan-600 text-[7px] font-bold">O</span>
         </div>
-        <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>Orria</p>
+        <p className="text-[11px] font-medium" style={{ color: "#111111" }}>Orria</p>
       </div>
 
       <div className="flex-1 px-4 py-4 flex flex-col">
@@ -66,10 +66,10 @@ export function CrystallizeDemo() {
               className="flex-1 flex items-center justify-center"
             >
               <div className="text-center">
-                <div className="w-8 h-8 rounded-full mx-auto mb-2 flex items-center justify-center" style={{ backgroundColor: "#F5F1EA" }}>
-                  <Sparkles size={14} style={{ color: "#9C948A" }} />
+                <div className="w-8 h-8 rounded-full mx-auto mb-2 flex items-center justify-center" style={{ backgroundColor: "#F7F7F7" }}>
+                  <Sparkles size={14} style={{ color: "#9CA3AF" }} />
                 </div>
-                <p className="text-[9px]" style={{ color: "#9C948A" }}>Crystallizing insights...</p>
+                <p className="text-[9px]" style={{ color: "#9CA3AF" }}>Crystallizing insights...</p>
               </div>
             </motion.div>
           )}
@@ -108,7 +108,7 @@ export function CrystallizeDemo() {
                   <Sparkles size={10} className="text-cyan-600" />
                   <p className="text-cyan-600 text-[8px] font-semibold">Here&apos;s what I&apos;m seeing</p>
                 </div>
-                <p className="text-[9px] leading-relaxed" style={{ color: "#2D2926" }}>
+                <p className="text-[9px] leading-relaxed" style={{ color: "#111111" }}>
                   Choosing between two schools for your child. This is about values — structure vs. creativity, proximity vs. fit.
                 </p>
               </div>
@@ -120,7 +120,7 @@ export function CrystallizeDemo() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="text-[8px] font-medium uppercase tracking-wider"
-                    style={{ color: "#9C948A" }}
+                    style={{ color: "#9CA3AF" }}
                   >
                     Your options
                   </motion.p>
@@ -140,7 +140,7 @@ export function CrystallizeDemo() {
                       }`}
                       style={
                         phase !== "decided" || i !== 0
-                          ? { border: "1px solid #EDE8DC" }
+                          ? { border: "1px solid #E5E7EB" }
                           : undefined
                       }
                     >
@@ -150,19 +150,19 @@ export function CrystallizeDemo() {
                         }`}
                         style={
                           phase !== "decided" || i !== 0
-                            ? { backgroundColor: "#F5F1EA" }
+                            ? { backgroundColor: "#F7F7F7" }
                             : undefined
                         }
                       >
                         {phase === "decided" && i === 0 ? (
                           <CheckCircle size={8} className="text-cyan-600" />
                         ) : (
-                          <span className="text-[7px]" style={{ color: "#6B635A" }}>{opt.num}</span>
+                          <span className="text-[7px]" style={{ color: "#6B7280" }}>{opt.num}</span>
                         )}
                       </div>
                       <div>
-                        <p className="text-[10px] font-medium" style={{ color: "#2D2926" }}>{opt.text}</p>
-                        <p className="text-[8px]" style={{ color: "#9C948A" }}>{opt.subtext}</p>
+                        <p className="text-[10px] font-medium" style={{ color: "#111111" }}>{opt.text}</p>
+                        <p className="text-[8px]" style={{ color: "#9CA3AF" }}>{opt.subtext}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -181,7 +181,7 @@ export function CrystallizeDemo() {
                     <CheckCircle size={10} />
                     I&apos;ve decided
                   </div>
-                  <p className="text-center text-[8px] mt-1.5" style={{ color: "#9C948A" }}>Need more time?</p>
+                  <p className="text-center text-[8px] mt-1.5" style={{ color: "#9CA3AF" }}>Need more time?</p>
                 </motion.div>
               )}
             </motion.div>

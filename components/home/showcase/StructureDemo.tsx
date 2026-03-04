@@ -43,13 +43,13 @@ export function StructureDemo() {
   }, [isInView, phase, reset]);
 
   return (
-    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FAF8F5" }}>
+    <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
       {/* Status bar area */}
       <div className="h-12 flex-shrink-0" />
 
       {/* Header */}
-      <div className="px-4 pb-3" style={{ borderBottom: "1px solid #EDE8DC" }}>
-        <p className="text-[10px] font-medium tracking-wide uppercase" style={{ color: "#9C948A" }}>AI Structuring</p>
+      <div className="px-4 pb-3" style={{ borderBottom: "1px solid #E5E7EB" }}>
+        <p className="text-[10px] font-medium tracking-wide uppercase" style={{ color: "#9CA3AF" }}>AI Structuring</p>
       </div>
 
       <div className="flex-1 flex flex-col px-4 pt-4">
@@ -64,16 +64,16 @@ export function StructureDemo() {
               className="flex-1 flex flex-col"
             >
               {/* Raw input label */}
-              <p className="text-[8px] font-semibold uppercase tracking-wider mb-2" style={{ color: "#9C948A" }}>
+              <p className="text-[8px] font-semibold uppercase tracking-wider mb-2" style={{ color: "#9CA3AF" }}>
                 Your words
               </p>
 
               {/* Raw text bubble */}
               <div
                 className="rounded-xl p-3 mb-4"
-                style={{ backgroundColor: "#F5F1EA", border: "1px solid #EDE8DC" }}
+                style={{ backgroundColor: "#F7F7F7", border: "1px solid #E5E7EB" }}
               >
-                <p className="text-[10px] leading-relaxed italic" style={{ color: "#6B635A" }}>
+                <p className="text-[10px] leading-relaxed italic" style={{ color: "#6B7280" }}>
                   &ldquo;{RAW_TEXT}&rdquo;
                 </p>
               </div>
@@ -114,14 +114,14 @@ export function StructureDemo() {
                   <motion.div
                     key={i}
                     className="rounded-md"
-                    style={{ backgroundColor: "#EDE8DC", height: i === 1 ? 10 : 8, width: i === 3 ? "70%" : "100%" }}
+                    style={{ backgroundColor: "#E5E7EB", height: i === 1 ? 10 : 8, width: i === 3 ? "70%" : "100%" }}
                     animate={{ opacity: [0.4, 0.8, 0.4] }}
                     transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.15 }}
                   />
                 ))}
               </div>
 
-              <p className="text-[9px]" style={{ color: "#9C948A" }}>Finding the shape of it...</p>
+              <p className="text-[9px]" style={{ color: "#9CA3AF" }}>Finding the shape of it...</p>
             </motion.div>
           )}
 
@@ -134,9 +134,9 @@ export function StructureDemo() {
               className="flex-1 flex flex-col gap-3"
             >
               {/* Decision title */}
-              <div className="bg-white rounded-xl p-3" style={{ border: "1px solid #EDE8DC" }}>
+              <div className="bg-white rounded-xl p-3" style={{ border: "1px solid #E5E7EB" }}>
                 <p className="text-amber-600 text-[8px] font-semibold uppercase tracking-wider mb-1">Decision</p>
-                <p className="text-[11px] font-medium" style={{ color: "#2D2926" }}>
+                <p className="text-[11px] font-medium" style={{ color: "#111111" }}>
                   Navigate the move vs. stay decision together
                 </p>
               </div>
@@ -152,7 +152,7 @@ export function StructureDemo() {
                   <div className="w-4 h-4 rounded-full bg-amber-500/15 flex items-center justify-center">
                     <span className="text-amber-600 text-[7px] font-bold">1</span>
                   </div>
-                  <p className="text-[10px]" style={{ color: "#2D2926" }}>Move together, find new balance</p>
+                  <p className="text-[10px]" style={{ color: "#111111" }}>Move together, find new balance</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: -8 }}
@@ -160,10 +160,10 @@ export function StructureDemo() {
                   transition={{ delay: 0.35 }}
                   className="flex items-center gap-2"
                 >
-                  <div className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F5F1EA" }}>
-                    <span className="text-[7px] font-bold" style={{ color: "#6B635A" }}>2</span>
+                  <div className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F7F7F7" }}>
+                    <span className="text-[7px] font-bold" style={{ color: "#6B7280" }}>2</span>
                   </div>
-                  <p className="text-[10px]" style={{ color: "#2D2926" }}>Stay and explore long-distance</p>
+                  <p className="text-[10px]" style={{ color: "#111111" }}>Stay and explore long-distance</p>
                 </motion.div>
               </div>
 
@@ -187,13 +187,13 @@ export function StructureDemo() {
                 transition={{ delay: 0.65 }}
                 className="flex items-center gap-2"
               >
-                <p className="text-[8px]" style={{ color: "#9C948A" }}>Weight:</p>
+                <p className="text-[8px]" style={{ color: "#9CA3AF" }}>Weight:</p>
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
                       className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: i <= 3 ? "#E5A53D" : "#EDE8DC" }}
+                      style={{ backgroundColor: i <= 3 ? "#E5A53D" : "#E5E7EB" }}
                     />
                   ))}
                 </div>

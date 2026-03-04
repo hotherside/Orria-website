@@ -34,9 +34,9 @@ export function PhoneMockup({
 }: PhoneMockupProps) {
   const s = sizes[size];
   const isLight = frameTheme === "light";
-  const frameBg = isLight ? "#F5F1EA" : "#121110";
-  const frameBorder = isLight ? "#D4D0C8" : "#1a1918";
-  const notchBg = isLight ? "#C8C4BC" : "#1a1918";
+  const frameBg = isLight ? "#F7F7F7" : "#111111";
+  const frameBorder = isLight ? "#D4D0C8" : "#1A1A1A";
+  const notchBg = isLight ? "#C8C4BC" : "#1A1A1A";
   const defaultGlow = isLight ? "bg-cyan-500/10" : "bg-cyan-500/20";
 
   return (

@@ -11,68 +11,25 @@ import {
 } from "@/lib/animation-variants";
 import { WaitlistForm } from "@/components/shared/WaitlistForm";
 import { FloatingElements } from "@/components/shared/FloatingElements";
-import {
-  MessageCircle,
-  Sparkles,
-  Clock,
-  RefreshCw,
-  Users,
-} from "lucide-react";
 
 const beliefs = [
   {
     title: "Decisions start as thoughts, not forms",
     description:
-      "Every tool asks you to fill in a form. But real crossroads don\u2019t start with structure \u2014 they start with something on your mind. Orria meets you there. You speak or type whatever you\u2019re thinking, and AI helps you discover what you\u2019re actually deciding.",
-  },
-  {
-    title: "Multiple perspectives break echo chambers",
-    description:
-      "We built four distinct AI personalities \u2014 not because one isn\u2019t enough, but because seeing the full picture takes more than one lens. Maya encourages, Liam analyzes, Sara grounds, Rex challenges. And when you want another angle, the Explore feed connects you with real people who\u2019ve navigated similar crossroads.",
+      "Real crossroads don\u2019t start with structure \u2014 they start with something on your mind. Orria meets you there. Speak or type whatever you\u2019re thinking, and AI helps you discover what you\u2019re actually deciding.",
   },
   {
     title: "Closing the loop builds wisdom",
     description:
       "Most decisions disappear the moment you make them. Orria asks you to come back. Record what you chose. Reflect on whether you\u2019d do it again. That\u2019s how scattered choices become lived wisdom.",
   },
-  {
-    title: "Your decisions are your autobiography",
-    description:
-      "The relationship you fought for. The city you almost moved to. The career change that scared you. Whether to rent or buy, which school for the kids, the treatment plan you debated. These crossroads defined who you are \u2014 but most are forgotten. Orria\u2019s journal keeps the story of how you became you.",
-  },
-];
-
-const framework = [
-  {
-    icon: MessageCircle,
-    label: "Canvas",
-    description: "Say what\u2019s on your mind. AI structures your thoughts into clear options.",
-    color: "var(--cyan-500)",
-  },
-  {
-    icon: Sparkles,
-    label: "Clarity",
-    description: "Four AI perspectives show you what you might not see on your own.",
-    color: "var(--agent-liam)",
-  },
-  {
-    icon: Clock,
-    label: "Commit",
-    description: "Set a timeline. Make the call. Move forward with confidence.",
-    color: "var(--terracotta-500)",
-  },
-  {
-    icon: RefreshCw,
-    label: "Close",
-    description: "Record outcomes. Reflect. Learn. Your decisions become your autobiography.",
-    color: "var(--amber-500)",
-  },
 ];
 
 const timeline = [
   { year: "Jan 18", label: "Day zero", detail: "A personal crossroad became a product idea. First commit pushed that same weekend." },
-  { year: "Feb 7", label: "The Design Overhaul", detail: "Complete visual refresh. Ocean on Parchment palette, voice-first canvas, four named AI agent personas (Maya, Liam, Sara, Rex), and a decision weight system." },
-  { year: "Feb 10", label: "The Pivot", detail: "The product shifted from social-first to personal-first. The decision journal became the core \u2014 because people wanted a private space to think, not a public stage. Sharing became a choice, not the default." },
+  { year: "Feb 7", label: "v2.0 Refresh", detail: "Voice-first canvas, four named AI agent personas (Maya, Liam, Sara, Rex), conversational companion flow, and multi-round roundtable debates." },
+  { year: "Feb 10", label: "The Pivot", detail: "The product shifted from social-first to personal-first. The decision journal became the core \u2014 sharing became a choice, not the default." },
+  { year: "Feb 28", label: "Design Overhaul", detail: "Clean white + cyan Notion-like aesthetic. Tab-based decision detail. Insights revamp with personality archetypes and follow-up check-ins." },
   { year: "March 2026", label: "Beta launch", detail: "Closed beta with early adopters. Real decisions. Real feedback. Real iteration." },
   { year: "April 2026", label: "Public launch", detail: "App Store release. The world gets Orria." },
 ];
@@ -124,67 +81,6 @@ function AnimatedQuoteBorder({ children }: { children: React.ReactNode }) {
         {children}
       </motion.div>
     </div>
-  );
-}
-
-/* Animated framework step with hover + scroll effects */
-function FrameworkCard({
-  step,
-  index,
-}: {
-  step: (typeof framework)[0];
-  index: number;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  return (
-    <motion.div
-      ref={ref}
-      variants={staggerItem}
-      className="relative text-center p-6 rounded-2xl bg-white border border-cream-300/50 shadow-soft hover-scan-border group"
-    >
-      {/* Icon container with animated entrance */}
-      <motion.div
-        className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center"
-        style={{
-          backgroundColor: `color-mix(in srgb, ${step.color} 10%, transparent)`,
-        }}
-        initial={{ scale: 0, rotate: -45 }}
-        animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -45 }}
-        transition={{
-          duration: 0.5,
-          delay: 0.2 + index * 0.15,
-          type: "spring",
-          stiffness: 200,
-          damping: 15,
-        }}
-      >
-        <motion.div
-          animate={isInView ? { y: [-1, 1, -1] } : {}}
-          transition={{ duration: 2.5 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <step.icon size={22} style={{ color: step.color }} />
-        </motion.div>
-      </motion.div>
-      <h3 className="text-text-primary font-semibold mb-2">{step.label}</h3>
-      <p className="text-text-secondary text-sm leading-relaxed">
-        {step.description}
-      </p>
-      {/* Connecting arrow between cards */}
-      {index < framework.length - 1 && (
-        <motion.div
-          className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-cyan-500/30"
-          initial={{ opacity: 0, x: -5 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -5 }}
-          transition={{ delay: 0.6 + index * 0.15 }}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
-      )}
-    </motion.div>
   );
 }
 
@@ -353,48 +249,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Origin Story */}
+      {/* Origin Story — Pull Quote + Brief */}
       <section className="py-20 md:py-28 bg-cream-50">
         <div className="max-w-3xl mx-auto px-6">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="mb-16"
-          >
-            <h2
-              className="text-heading text-text-primary mb-8"
-              style={{
-                fontFamily: "var(--font-playfair), Playfair Display, serif",
-              }}
-            >
-              The Story
-            </h2>
-            <div className="space-y-6 text-text-secondary leading-relaxed">
-              <p>
-                Orria started with a moment most people know well:
-                standing at a crossroads and wishing you had a better way to think it through.
-              </p>
-              <p>
-                A career change across continents. Whether to leave a
-                comfortable role to chase something uncertain. A relationship at
-                a turning point. The life choices that don&apos;t fit in a
-                spreadsheet. We all face these moments — and we all handle them
-                the same way: asking friends who are biased, searching the
-                internet for answers that don&apos;t exist, and taking
-                longer than we need to.
-              </p>
-              <p>
-                Every decision tool wanted a form. But real crossroads don&apos;t
-                start with structure — they start with something on your mind. We needed
-                something that could meet us where we are and help us
-                find clarity through conversation.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Animated Pull Quote */}
           <AnimatedQuoteBorder>
             <blockquote>
               <p
@@ -417,21 +274,11 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
-            className="space-y-6 text-text-secondary leading-relaxed"
           >
-            <p>
-              What if there was an AI companion that met you where you are —
-              in the middle of figuring things out — and helped you find clarity through
-              conversation? Not a chatbot that gives you an answer, but a
-              thinking partner that helps you discover your own.
-            </p>
-            <p>
-              That&apos;s Orria. A calm space to think through the decisions
-              that shape your life — from career moves to relationship
-              crossroads, health choices to financial turning points. Get
-              perspectives from AI personalities that show you what you might
-              not see on your own, explore real perspectives from people who&apos;ve been there, and build
-              a journal of the choices that made you who you are.
+            <p className="text-text-secondary leading-relaxed max-w-2xl">
+              Orria started with a moment most people know well: standing at a crossroads
+              and wishing you had a better way to think it through. Not a chatbot that gives
+              you an answer, but a thinking partner that helps you discover your own.
             </p>
           </motion.div>
         </div>
@@ -440,7 +287,7 @@ export default function AboutPage() {
       {/* What We Believe */}
       <section className="relative py-20 md:py-28 bg-cream-100 overflow-hidden">
         <FloatingElements
-          count={10}
+          count={5}
           colors={["#0891B2", "#E5A53D", "#C4704B"]}
           className="opacity-40"
         />
@@ -503,59 +350,6 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* The Framework */}
-      <section className="py-20 md:py-28 bg-cream-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="text-center mb-16"
-          >
-            <p className="text-cyan-500 text-sm font-semibold uppercase tracking-widest mb-4">
-              The Method
-            </p>
-            <h2
-              className="text-heading text-text-primary"
-              style={{
-                fontFamily: "var(--font-playfair), Playfair Display, serif",
-              }}
-            >
-              Four steps to clarity
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-          >
-            {framework.map((step, i) => (
-              <FrameworkCard key={step.label} step={step} index={i} />
-            ))}
-          </motion.div>
-
-          {/* Community callout */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            className="mt-10 text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-500/5 border border-cyan-500/15">
-              <Users size={14} className="text-cyan-500" />
-              <span className="text-text-secondary text-sm">
-                Plus real perspectives from people who&apos;ve navigated similar crossroads
-              </span>
-            </div>
           </motion.div>
         </div>
       </section>

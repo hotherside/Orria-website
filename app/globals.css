@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  /* ═══ Ocean on Parchment — Brand Colors ═══ */
+  /* ═══ Clean White + Cyan — Brand Colors ═══ */
 
-  /* Warm Backgrounds */
-  --cream-50: #FDFCFA;
-  --cream-100: #FAF8F5;
-  --cream-200: #F5F1EA;
-  --cream-300: #EDE8DC;
+  /* Backgrounds (Notion-like clean white) */
+  --cream-50: #FFFFFF;
+  --cream-100: #FFFFFF;
+  --cream-200: #F7F7F7;
+  --cream-300: #E5E7EB;
 
   /* Dark Backgrounds */
-  --dark-900: #121110;
-  --dark-800: #1A1918;
-  --dark-700: #252321;
+  --dark-900: #111111;
+  --dark-800: #1A1A1A;
+  --dark-700: #262626;
 
   /* Text Colors */
-  --text-primary: #2D2926;
-  --text-secondary: #6B635A;
-  --text-muted: #9C948A;
+  --text-primary: #111111;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
 
   /* Brand Accent — Cyan (Primary) */
   --cyan-500: #0891B2;

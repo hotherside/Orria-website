@@ -124,7 +124,7 @@ export function PricingSection() {
                   className="text-4xl md:text-5xl font-bold"
                   style={{
                     fontFamily: "var(--font-playfair), Playfair Display, serif",
-                    color: "#2D2926",
+                    color: "#111111",
                   }}
                 >
                   {tier.price}
@@ -142,7 +142,7 @@ export function PricingSection() {
               {/* Divider */}
               <div
                 className="h-px mb-6"
-                style={{ backgroundColor: tier.highlighted ? "#0891B215" : "#EDE8DC" }}
+                style={{ backgroundColor: tier.highlighted ? "#0891B215" : "#E5E7EB" }}
               />
 
               {/* Features */}

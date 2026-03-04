@@ -369,7 +369,7 @@ function FeatureCarousel() {
         {/* Preview area */}
         <div
           className="relative overflow-hidden"
-          style={{ height: 260, background: "linear-gradient(135deg, #FAF8F5 0%, #F5F1EA 100%)" }}
+          style={{ height: 260, background: "linear-gradient(135deg, #FFFFFF 0%, #F7F7F7 100%)" }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -434,7 +434,7 @@ function FeatureCarousel() {
                 }}
                 className="relative flex-1 h-[3px] rounded-full overflow-hidden cursor-pointer"
                 style={{
-                  backgroundColor: i === activeIndex ? `${activeCard.color}20` : "#EDE8DC",
+                  backgroundColor: i === activeIndex ? `${activeCard.color}20` : "#E5E7EB",
                 }}
                 aria-label={`Go to ${card.label}`}
               >
@@ -668,7 +668,7 @@ export function HeroSection() {
               className="text-base md:text-lg text-text-primary font-medium mb-6 max-w-lg"
               style={{ fontFamily: "var(--font-playfair), Playfair Display, serif" }}
             >
-              Every decision you make — taking that job, moving to that city, saying yes when you almost said no — is part of your story. Orria helps you think it through.
+              Every decision you make — taking that job, moving to that city, saying yes when you almost said no — is part of your story.
             </motion.p>
 
             {/* Waitlist — directly under text */}
