@@ -1,6 +1,6 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { ProblemSection } from "@/components/home/ProblemSection";
-import { CompactFlowShowcase } from "@/components/home/CompactFlowShowcase";
+import { FeatureCarousel } from "@/components/home/FeatureCarousel";
 import { AgentsSection } from "@/components/home/AgentsSection";
 import { CategoriesSection } from "@/components/home/CategoriesSection";
 import { PricingSection } from "@/components/home/PricingSection";
@@ -13,7 +13,7 @@ export default function Home() {
       <FloatingTableOfContents />
       <HeroSection />
       <ProblemSection />
-      <CompactFlowShowcase />
+      <FeatureCarousel />
       <AgentsSection />
       <CategoriesSection />
       <PricingSection />
