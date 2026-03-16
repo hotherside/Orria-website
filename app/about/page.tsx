@@ -178,7 +178,7 @@ export default function AboutPage() {
               {/* Timeline */}
               <div className="relative pl-8">
                 {/* Vertical line */}
-                <div className="absolute left-[11px] top-2 bottom-2 w-[2px] bg-cream-300" />
+                <div className="absolute left-[4px] top-2 bottom-2 w-[2px] bg-cream-300" />
 
                 <div className="space-y-8">
                   {timeline.map((item, i) => {
