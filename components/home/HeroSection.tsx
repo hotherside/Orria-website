@@ -532,12 +532,7 @@ function SocialProofCounter() {
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data.recent) && data.recent.length > 0) {
-            const avatars = data.recent.slice(0, 4).map(
-              (entry: { email: string; name?: string }) => ({
-                initials: getInitials(entry.email, entry.name),
-              })
-            );
-            setRecentAvatars(avatars);
+            setRecentAvatars(data.recent.slice(0, 4));
           }
         }
       } catch {
