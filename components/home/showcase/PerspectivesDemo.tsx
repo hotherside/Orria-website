@@ -45,19 +45,17 @@ export function PerspectivesDemo() {
   const isInView = useInView(ref, { once: false, amount: 0.5 });
   const [phase, setPhase] = useState<Phase>("research");
   const [visibleMessages, setVisibleMessages] = useState(0);
-  const [showTyping, setShowTyping] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const reset = useCallback(() => {
     setPhase("research");
     setVisibleMessages(0);
-    setShowTyping(false);
   }, []);
 
   useEffect(() => {
     if (!isInView) {
       clearTimeout(timeoutRef.current);
-      reset();
+      timeoutRef.current = setTimeout(reset, 0);
       return;
     }
 
@@ -67,9 +65,7 @@ export function PerspectivesDemo() {
       timeoutRef.current = setTimeout(() => setPhase("roundtable"), TIMINGS.sentiments);
     } else if (phase === "roundtable") {
       if (visibleMessages < AGENT_MESSAGES.length) {
-        setShowTyping(true);
         timeoutRef.current = setTimeout(() => {
-          setShowTyping(false);
           setVisibleMessages((c) => c + 1);
         }, 600);
       } else {
@@ -79,6 +75,8 @@ export function PerspectivesDemo() {
 
     return () => clearTimeout(timeoutRef.current);
   }, [isInView, phase, visibleMessages, reset]);
+
+  const showTyping = phase === "roundtable" && visibleMessages < AGENT_MESSAGES.length;
 
   return (
     <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>

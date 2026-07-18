@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Sparkles, Link2, Heart, Loader2, User } from "lucide-react";
@@ -16,20 +16,22 @@ interface WaitlistSuccessModalProps {
 
 export function WaitlistSuccessModal({ isOpen, onClose, count, email }: WaitlistSuccessModalProps) {
   const [copied, setCopied] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [fullName, setFullName] = useState("");
   const [nameStatus, setNameStatus] = useState<"idle" | "loading" | "saved">("idle");
-
-  // Wait for client mount so createPortal has a target
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   // Reset name state when modal opens
   useEffect(() => {
     if (isOpen) {
-      setFullName("");
-      setNameStatus("idle");
+      const resetName = window.setTimeout(() => {
+        setFullName("");
+        setNameStatus("idle");
+      }, 0);
+      return () => window.clearTimeout(resetName);
     }
   }, [isOpen]);
 

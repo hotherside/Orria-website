@@ -21,6 +21,13 @@ interface Particle {
   shape: "circle" | "plus" | "dot";
 }
 
+// A stable pseudo-random sequence keeps the composition organic without making
+// a render produce a different scene (or a hydration mismatch).
+function seededValue(seed: number) {
+  const value = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+  return value - Math.floor(value);
+}
+
 export function FloatingElements({
   count = 8,
   colors = ["#0891B2", "#E5A53D", "#C4704B"],
@@ -29,12 +36,12 @@ export function FloatingElements({
   const particles = useMemo<Particle[]>(() => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: 3 + Math.random() * 5,
-      duration: 4 + Math.random() * 4,
-      delay: Math.random() * 3,
-      opacity: 0.08 + Math.random() * 0.12,
+      x: seededValue(i * 6 + 1) * 100,
+      y: seededValue(i * 6 + 2) * 100,
+      size: 3 + seededValue(i * 6 + 3) * 5,
+      duration: 4 + seededValue(i * 6 + 4) * 4,
+      delay: seededValue(i * 6 + 5) * 3,
+      opacity: 0.08 + seededValue(i * 6 + 6) * 0.12,
       color: colors[i % colors.length],
       shape: (["circle", "plus", "dot"] as const)[i % 3],
     }));

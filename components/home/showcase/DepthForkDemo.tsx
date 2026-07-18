@@ -24,7 +24,7 @@ export function DepthForkDemo() {
   useEffect(() => {
     if (!isInView) {
       clearTimeout(timeoutRef.current);
-      reset();
+      timeoutRef.current = setTimeout(reset, 0);
       return;
     }
 

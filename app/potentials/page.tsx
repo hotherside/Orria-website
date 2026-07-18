@@ -25,17 +25,14 @@ import {
   Check,
   X,
   Rocket,
-  Target,
   Calendar,
   Building2,
   Landmark,
   Shield,
   FileText,
-  BarChart3,
   Eye,
   ArrowRight,
   Zap,
-  Lock,
   BookOpen,
   Briefcase,
 } from "lucide-react";
@@ -61,7 +58,7 @@ const howItWorks = [
     icon: Users,
     step: "02",
     title: "Get Perspectives",
-    description: "Four distinct AI personalities show you what you might not see on your own. Then share with real humans who\u2019ve been there.",
+    description: "Four distinct AI perspectives show you what you might not see on your own, then help you make your own call.",
     color: "#6366F1",
   },
   {
@@ -158,7 +155,7 @@ const b2bUseCases = [
     icon: Landmark,
     title: "Government & Public Sector Transparency",
     accent: "#6366F1",
-    description: "Departments and agencies log policy decisions, budget allocations, and administrative choices \u2014 optionally shared with the public. A verifiable record of how and why decisions were made, building trust at every level of governance.",
+    description: "Departments and agencies could log policy decisions, budget allocations, and administrative choices as a private internal record of how and why decisions were made.",
     features: [
       "Public-facing decision transparency portals",
       "Inter-department decision visibility",
@@ -460,7 +457,7 @@ export default function PotentialsPage() {
               <div>
                 <h4 className="text-text-primary font-semibold mb-2">The Transparency Thesis</h4>
                 <p className="text-text-secondary text-sm leading-relaxed">
-                  Imagine a world where a government department shares its key policy decisions publicly — not just the outcome, but the reasoning, the perspectives considered, and the trade-offs weighed. Where a company&apos;s leadership logs show not just what was decided, but <span className="font-semibold text-text-primary">how they think</span>. Orria makes this possible: structured, searchable, and verifiable decision records that build institutional trust over time.
+                  Imagine a team returning to a private record of its key decisions — not just the outcome, but the reasoning, the perspectives considered, and the trade-offs weighed. Orria can preserve <span className="font-semibold text-text-primary">how they think</span> as a structured, searchable record for the people responsible for the work.
                 </p>
               </div>
             </div>
@@ -794,7 +791,7 @@ export default function PotentialsPage() {
                   Voice-first input that meets you where you are. Four AI personalities that challenge each other in a live roundtable. A decision journal that remembers everything. Real perspectives from people who&apos;ve navigated similar crossroads. And a reflection loop that turns choices into wisdom.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["Voice-first input", "4 AI perspectives", "Decision memory", "Explore perspectives", "Reflection loop"].map((feature) => (
+                  {["Voice-first input", "4 AI perspectives", "Private decision memory", "Personal reflections", "Reflection loop"].map((feature) => (
                     <span key={feature} className="inline-flex items-center gap-1 text-[11px] text-cyan-600 px-2.5 py-1 rounded-full bg-cyan-500/10 font-medium">
                       <Check size={10} />
                       {feature}

@@ -96,10 +96,10 @@ export default function TermsOfService() {
               4. User Content
             </h2>
             <p className="text-text-secondary leading-relaxed mb-4">
-              You retain ownership of the content you create on Orria, including decisions, comments, and reflections. By sharing content publicly on Orria, you grant us a non-exclusive, worldwide license to display that content within the App.
+              You retain ownership of the content you create on Orria, including decisions and reflections. Orria is a private product: your decision records are not displayed to other users through the App.
             </p>
             <p className="text-text-secondary leading-relaxed">
-              You are solely responsible for the content you post. You agree not to post content that is illegal, harmful, threatening, abusive, harassing, defamatory, or otherwise objectionable.
+              You are solely responsible for the content you enter. You agree not to use the App for illegal, harmful, or abusive purposes.
             </p>
           </section>
 
@@ -129,12 +129,8 @@ export default function TermsOfService() {
             </p>
             <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
               <li>Use the App for any illegal purpose</li>
-              <li>Harass, bully, or intimidate other users</li>
-              <li>Post spam, misleading content, or advertisements</li>
               <li>Attempt to gain unauthorized access to the App or its systems</li>
               <li>Interfere with or disrupt the App or its infrastructure</li>
-              <li>Impersonate another person or entity</li>
-              <li>Circumvent any content moderation or security measures</li>
             </ul>
           </section>
 
@@ -147,7 +143,7 @@ export default function TermsOfService() {
               You may delete your account at any time through the Profile tab in the App. Upon deletion, all your personal data, decisions, and associated content will be permanently removed.
             </p>
             <p className="text-text-secondary leading-relaxed">
-              We reserve the right to suspend or terminate your account if you violate these Terms or our Community Guidelines, including but not limited to posting prohibited content or engaging in abusive behavior.
+              We reserve the right to suspend or terminate your account if you violate these Terms, including by using the App unlawfully or attempting to compromise its security.
             </p>
           </section>
 

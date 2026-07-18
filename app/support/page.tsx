@@ -58,7 +58,7 @@ export default function Support() {
                 How do I create an account?
               </h3>
               <p className="text-text-secondary leading-relaxed">
-                Download the Orria app from the App Store, tap "Get Started," and sign up using your email or Sign in with Apple. It takes less than a minute to get started!
+                Download the Orria app from the App Store, tap &quot;Get Started,&quot; and sign up using your email or Sign in with Apple. It takes less than a minute to get started!
               </p>
             </div>
 
@@ -78,7 +78,7 @@ export default function Support() {
                 How does the AI analysis work?
               </h3>
               <p className="text-text-secondary leading-relaxed">
-                Our AI analyzes voting patterns, comments, and decision context to provide data-driven insights. It helps you see different perspectives, potential outcomes, and factors you might not have considered. The AI uses your decision data only to generate insights for you and doesn't share it with other users.
+                Orria&apos;s AI considers your decision context to provide perspectives, trade-offs, and questions you may not have considered. Anthropic&apos;s Claude API is the primary provider; OpenAI may be used as a fallback when needed. Your decision records are not shared with other users.
               </p>
             </div>
 
@@ -88,7 +88,7 @@ export default function Support() {
                 Are my decisions public?
               </h3>
               <p className="text-text-secondary leading-relaxed">
-                You can choose! When creating a decision, you can make it public on the Explore feed for others to see and vote on, or keep it private for your personal use. You have full control over who sees your decisions.
+                No. Orria is private by default: your decisions, options, conversations, reflections, and outcomes are only available in your account. If you choose to share something, it is a separate, user-reviewed export.
               </p>
             </div>
 
@@ -108,27 +108,17 @@ export default function Support() {
                 Can I cancel my subscription?
               </h3>
               <p className="text-text-secondary leading-relaxed">
-                Yes, you can cancel your Orria Pro subscription anytime through your iPhone Settings → [Your Name] → Subscriptions → Orria. You'll retain Pro features until the end of your billing period.
+                Yes, you can cancel your Orria Pro subscription anytime through your iPhone Settings → [Your Name] → Subscriptions → Orria. You&apos;ll retain Pro features until the end of your billing period.
               </p>
             </div>
 
             {/* FAQ Item */}
             <div className="border-t border-cream-300 pt-6">
               <h3 className="text-xl font-semibold text-text-primary mb-2">
-                The app isn't working properly. What should I do?
+                The app isn&apos;t working properly. What should I do?
               </h3>
               <p className="text-text-secondary leading-relaxed">
                 Try these steps: 1) Make sure you have the latest version of the app from the App Store, 2) Close and reopen the app, 3) Restart your device, 4) Check your internet connection. If the problem persists, contact us at hello@orria.app with details about the issue.
-              </p>
-            </div>
-
-            {/* FAQ Item */}
-            <div className="border-t border-cream-300 pt-6">
-              <h3 className="text-xl font-semibold text-text-primary mb-2">
-                How do I report inappropriate content?
-              </h3>
-              <p className="text-text-secondary leading-relaxed">
-                Tap the three dots (•••) on any decision or comment and select "Report." We review all reports within 24 hours and take appropriate action.
               </p>
             </div>
 
@@ -147,7 +137,7 @@ export default function Support() {
         {/* Additional Help */}
         <div className="mt-12 text-center">
           <p className="text-text-muted mb-4">
-            Can't find what you're looking for?
+            Can&apos;t find what you&apos;re looking for?
           </p>
           <a
             href="mailto:hello@orria.app"

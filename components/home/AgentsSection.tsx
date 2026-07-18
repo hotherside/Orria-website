@@ -230,7 +230,6 @@ export function AgentsSection() {
             </p>
           </div>
 
-          {/* Community note */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -238,7 +237,7 @@ export function AgentsSection() {
             transition={{ delay: 0.6 }}
             className="mt-4 text-text-muted text-sm"
           >
-            And when you want another lens — share on the Explore feed and hear from people who&apos;ve been there.
+            Your decisions stay personal to you, with Orria&apos;s AI advisors as your second opinion.
           </motion.p>
         </motion.div>
       </div>

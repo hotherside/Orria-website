@@ -10,7 +10,7 @@ export function BrowserFrame({ children, url, accent = "#0891B2" }: BrowserFrame
   return (
     <div className="w-full max-w-[380px] mx-auto rounded-xl overflow-hidden border border-cream-300/50 shadow-lg">
       {/* Browser chrome */}
-      <div className="h-8 bg-cream-200/80 flex items-center px-3 gap-1.5">
+      <div className="h-8 bg-cream-200/80 flex items-center px-3 gap-1.5" style={{ borderTop: `2px solid ${accent}` }}>
         <div className="flex gap-1.5">
           <div className="w-2 h-2 rounded-full bg-cream-400/60" />
           <div className="w-2 h-2 rounded-full bg-cream-400/60" />

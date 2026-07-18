@@ -39,7 +39,6 @@ const messages = [
   },
 ];
 
-const MESSAGE_INTERVAL = 1200;
 const TYPING_DURATION = 600;
 const RESTART_DELAY = 3000;
 
@@ -48,20 +47,16 @@ export function RoundtableDemo() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: false, amount: 0.5 });
   const [visibleCount, setVisibleCount] = useState(0);
-  const [showTyping, setShowTyping] = useState(false);
-  const [typingAgent, setTypingAgent] = useState<string>("");
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const reset = useCallback(() => {
     setVisibleCount(0);
-    setShowTyping(false);
-    setTypingAgent("");
   }, []);
 
   useEffect(() => {
     if (!isInView) {
       clearTimeout(timeoutRef.current);
-      reset();
+      timeoutRef.current = setTimeout(reset, 0);
       return;
     }
 
@@ -70,12 +65,7 @@ export function RoundtableDemo() {
       return () => clearTimeout(timeoutRef.current);
     }
 
-    const nextMsg = messages[visibleCount];
-    setTypingAgent(nextMsg.name);
-    setShowTyping(true);
-
     timeoutRef.current = setTimeout(() => {
-      setShowTyping(false);
       setVisibleCount((c) => c + 1);
 
       if (scrollRef.current) {
@@ -88,11 +78,8 @@ export function RoundtableDemo() {
     return () => clearTimeout(timeoutRef.current);
   }, [isInView, visibleCount, reset]);
 
-  useEffect(() => {
-    if (!isInView || visibleCount > 0) return;
-    const delay = setTimeout(() => {}, MESSAGE_INTERVAL);
-    return () => clearTimeout(delay);
-  }, [isInView, visibleCount]);
+  const showTyping = isInView && visibleCount < messages.length;
+  const typingAgent = showTyping ? messages[visibleCount].name : "";
 
   return (
     <div ref={ref} className="w-full h-full flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>

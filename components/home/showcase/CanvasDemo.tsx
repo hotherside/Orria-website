@@ -11,6 +11,16 @@ const RECORDING_DURATION = 1200;
 const PAUSE_AFTER_DICTATION = 1000;
 const PAUSE_AFTER_STRUCTURE = 4000;
 const RESTART_DELAY = 1500;
+const LEFT_WAVEFORM = [
+  { firstPeak: 12, secondPeak: 15, duration: 0.58 },
+  { firstPeak: 16, secondPeak: 17, duration: 0.72 },
+  { firstPeak: 14, secondPeak: 16, duration: 0.64 },
+];
+const RIGHT_WAVEFORM = [
+  { firstPeak: 14, secondPeak: 12, duration: 0.64 },
+  { firstPeak: 17, secondPeak: 15, duration: 0.76 },
+  { firstPeak: 15, secondPeak: 14, duration: 0.68 },
+];
 
 type Phase = "idle" | "recording" | "dictating" | "structuring" | "structured";
 
@@ -29,7 +39,7 @@ export function CanvasDemo() {
   useEffect(() => {
     if (!isInView) {
       clearTimeout(timeoutRef.current);
-      reset();
+      timeoutRef.current = setTimeout(reset, 0);
       return;
     }
 
@@ -152,15 +162,15 @@ export function CanvasDemo() {
                 <div className="flex items-center justify-center gap-2.5">
                   {/* Waveform bars — left */}
                   <div className="flex items-center gap-[2px] h-5">
-                    {[0, 1, 2].map((i) => (
+                    {LEFT_WAVEFORM.map(({ firstPeak, secondPeak, duration }, i) => (
                       <motion.div
                         key={`l-${i}`}
                         className="w-[3px] rounded-full bg-cyan-500"
                         animate={isVoiceActive ? {
-                          height: [4, 10 + Math.random() * 8, 6, 14 + Math.random() * 4, 4],
+                          height: [4, firstPeak, 6, secondPeak, 4],
                         } : { height: 4 }}
                         transition={isVoiceActive ? {
-                          duration: 0.5 + Math.random() * 0.3,
+                          duration,
                           repeat: Infinity,
                           repeatType: "reverse" as const,
                           delay: i * 0.1,
@@ -201,15 +211,15 @@ export function CanvasDemo() {
 
                   {/* Waveform bars — right */}
                   <div className="flex items-center gap-[2px] h-5">
-                    {[0, 1, 2].map((i) => (
+                    {RIGHT_WAVEFORM.map(({ firstPeak, secondPeak, duration }, i) => (
                       <motion.div
                         key={`r-${i}`}
                         className="w-[3px] rounded-full bg-cyan-500"
                         animate={isVoiceActive ? {
-                          height: [4, 12 + Math.random() * 6, 5, 10 + Math.random() * 6, 4],
+                          height: [4, firstPeak, 5, secondPeak, 4],
                         } : { height: 4 }}
                         transition={isVoiceActive ? {
-                          duration: 0.6 + Math.random() * 0.2,
+                          duration,
                           repeat: Infinity,
                           repeatType: "reverse" as const,
                           delay: i * 0.12,

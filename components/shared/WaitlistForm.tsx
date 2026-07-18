@@ -36,10 +36,13 @@ export function WaitlistForm({ variant = "section", className, showCounter = tru
   }, []);
 
   useEffect(() => {
-    fetchCount();
+    const initialFetch = window.setTimeout(fetchCount, 0);
     // Refresh count every 30 seconds
     const interval = setInterval(fetchCount, 30000);
-    return () => clearInterval(interval);
+    return () => {
+      window.clearTimeout(initialFetch);
+      clearInterval(interval);
+    };
   }, [fetchCount]);
 
   const handleSubmit = async (e: React.FormEvent) => {

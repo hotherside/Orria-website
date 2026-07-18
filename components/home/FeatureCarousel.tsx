@@ -42,7 +42,7 @@ const features = [
     icon: Users,
     title: "Four minds. One table.",
     description:
-      "Community research shows what people generally think. Then Maya, Liam, Sara, and Rex debate your decision with cross-fire rebuttals \u2014 showing you angles you\u2019d miss alone.",
+      "Maya, Liam, Sara, and Rex debate your decision with cross-fire rebuttals \u2014 showing you angles you\u2019d miss alone.",
     Demo: PerspectivesDemo,
     color: "#6366F1",
   },

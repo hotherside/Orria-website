@@ -50,7 +50,7 @@ const howItWorks = [
     icon: Users,
     step: "02",
     title: "Get Perspectives",
-    description: "Four distinct AI personalities show you what you might not see on your own. Then share with real humans who\u2019ve been there.",
+    description: "Four distinct AI perspectives show you what you might not see on your own, then help you make your own call.",
     color: "#C4704B",
   },
   {
@@ -356,7 +356,7 @@ export default function ResearchPage() {
                   Voice-first input that meets you where you are. Four AI personalities that challenge each other in a live roundtable. A decision journal that remembers everything. Real perspectives from people who&apos;ve navigated similar crossroads. And a reflection loop that turns choices into wisdom.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["Voice-first input", "4 AI perspectives", "Decision memory", "Explore perspectives", "Reflection loop"].map((feature) => (
+                  {["Voice-first input", "4 AI perspectives", "Private decision memory", "Personal reflections", "Reflection loop"].map((feature) => (
                     <span key={feature} className="inline-flex items-center gap-1 text-[11px] text-cyan-600 px-2.5 py-1 rounded-full bg-cyan-500/10 font-medium">
                       <Check size={10} />
                       {feature}

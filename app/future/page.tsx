@@ -43,7 +43,7 @@ const b2bUseCases = [
     icon: Landmark,
     title: "Government & Public Sector Transparency",
     accent: "#C4704B",
-    description: "Departments and agencies log policy decisions, budget allocations, and administrative choices \u2014 optionally shared with the public. A verifiable record of how and why decisions were made, building trust at every level of governance.",
+    description: "Departments and agencies could log policy decisions, budget allocations, and administrative choices as a private internal record of how and why decisions were made.",
     features: [
       "Public-facing decision transparency portals",
       "Inter-department decision visibility",
@@ -253,7 +253,7 @@ export default function FutureStatePage() {
               <div>
                 <h4 className="text-text-primary font-semibold mb-2">The Transparency Thesis</h4>
                 <p className="text-text-secondary text-sm leading-relaxed">
-                  Imagine a world where a government department shares its key policy decisions publicly — not just the outcome, but the reasoning, the perspectives considered, and the trade-offs weighed. Where a company&apos;s leadership logs show not just what was decided, but <span className="font-semibold text-text-primary">how they think</span>. Orria makes this possible: structured, searchable, and verifiable decision records that build institutional trust over time.
+                  Imagine a team returning to a private record of its key decisions — not just the outcome, but the reasoning, the perspectives considered, and the trade-offs weighed. Orria can preserve <span className="font-semibold text-text-primary">how they think</span> as a structured, searchable record for the people responsible for the work.
                 </p>
               </div>
             </div>
