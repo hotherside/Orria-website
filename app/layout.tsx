@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { Geist, Instrument_Serif, Inter, Playfair_Display } from "next/font/google";
+import { SiteChrome } from "@/components/SiteChrome";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,6 +14,20 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   display: "swap",
   weight: ["400", "500", "600", "700"],
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -48,12 +61,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} scroll-smooth`}
+      className={`${inter.variable} ${playfair.variable} ${geist.variable} ${instrumentSerif.variable} scroll-smooth`}
     >
       <body className="antialiased bg-cream-100 text-text-primary">
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
