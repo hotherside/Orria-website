@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="text-lg text-text-muted">
-            Last Updated: February 24, 2026
+            Last Updated: July 18, 2026
           </p>
         </div>
 
@@ -52,15 +52,12 @@ export default function PrivacyPolicy() {
               User Content
             </h3>
             <p className="text-text-secondary leading-relaxed mb-4">
-              We collect the content you create and share on Orria:
+              We collect the content you create in Orria:
             </p>
             <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
               <li>Decisions you create</li>
-              <li>Votes you cast</li>
-              <li>Comments you post</li>
-              <li>Topics and categories you follow</li>
-              <li>Reports you submit for inappropriate content</li>
-              <li>Content moderation actions taken on your account</li>
+              <li>Options, reflections, and outcomes you choose to record</li>
+              <li>Topics and categories you use to organize your decisions</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
@@ -88,15 +85,11 @@ export default function PrivacyPolicy() {
             <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
               <li>Provide, maintain, and improve our services</li>
               <li>Create and manage your account</li>
-              <li>Show you relevant decisions and content</li>
               <li>Generate AI insights and analysis</li>
-              <li>Send you notifications about activity on your decisions</li>
+              <li>Send notifications you choose to enable</li>
               <li>Communicate with you about updates and features</li>
               <li>Analyze usage patterns to improve the app</li>
               <li>Prevent fraud and ensure security</li>
-              <li>Enforce our Community Guidelines and moderate content</li>
-              <li>Process and respond to user reports of inappropriate content</li>
-              <li>Track and manage content moderation actions</li>
               <li>Comply with legal obligations</li>
             </ul>
           </section>
@@ -137,15 +130,15 @@ export default function PrivacyPolicy() {
               Who Processes the Data
             </h3>
             <p className="text-text-secondary leading-relaxed mb-4">
-              Your decision data is processed by <strong>OpenAI</strong> via their API. OpenAI processes this data to generate AI insights, summaries, conversation responses, and agent perspectives within Orria.
+              Your decision data is processed by <strong>Anthropic</strong> via the Claude API to generate AI insights, summaries, conversation responses, and advisor perspectives within Orria. If Anthropic is unavailable, <strong>OpenAI</strong> may process the same data through its API as a fallback so the feature can continue to work.
             </p>
 
             <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
               How the Data is Protected
             </h3>
             <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
-              <li>Data sent to OpenAI is transmitted securely via encrypted HTTPS connections</li>
-              <li>Your data is used solely to generate responses for you and is not used to train AI models (per OpenAI&apos;s API data usage policy)</li>
+              <li>Data sent to Anthropic or OpenAI is transmitted securely via encrypted HTTPS connections</li>
+              <li>Anthropic and OpenAI state that API content is excluded from model training by default unless the API account explicitly opts in</li>
               <li>Your data is not shared with other Orria users through AI processing</li>
               <li>AI-generated content is stored in your Orria account and follows the same data retention policies as your other content</li>
             </ul>
@@ -186,11 +179,8 @@ export default function PrivacyPolicy() {
               We do not sell your personal information. We may share your information in these circumstances:
             </p>
 
-            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
-              Public Content
-            </h3>
             <p className="text-text-secondary leading-relaxed mb-4">
-              Decisions, votes, and comments you create are visible to other Orria users as intended by the app's functionality.
+              Orria is private by default: decisions, options, conversations, reflections, and outcomes are not visible to other Orria users through the product. Sharing, where available, is a separate user-reviewed export that you choose to send outside Orria.
             </p>
 
             <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
@@ -201,7 +191,8 @@ export default function PrivacyPolicy() {
             </p>
             <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
               <li>Supabase (database and authentication)</li>
-              <li>OpenAI (AI insights)</li>
+              <li>Anthropic (primary AI processing)</li>
+              <li>OpenAI (AI processing fallback)</li>
               <li>Apple (payments, subscriptions, and analytics)</li>
             </ul>
 
@@ -236,82 +227,27 @@ export default function PrivacyPolicy() {
           {/* Children's Privacy */}
           <section>
             <h2 className="text-2xl font-bold text-text-primary mb-4">
-              7. Children's Privacy
+              7. Children&apos;s Privacy
             </h2>
             <p className="text-text-secondary leading-relaxed">
               Orria is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us to have it removed.
             </p>
           </section>
 
-          {/* Content Moderation */}
-          <section>
-            <h2 className="text-2xl font-bold text-text-primary mb-4">
-              8. Content Moderation and Safety
-            </h2>
-            <p className="text-text-secondary leading-relaxed mb-4">
-              Orria is committed to maintaining a safe and respectful community. Our content moderation system includes:
-            </p>
-
-            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
-              Automated Content Filtering
-            </h3>
-            <p className="text-text-secondary leading-relaxed mb-4">
-              We use automated systems to detect and prevent:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
-              <li>Explicit or inappropriate content (violence, hate speech, harassment)</li>
-              <li>Personal information exposure (emails, phone numbers)</li>
-              <li>Spam and scam attempts</li>
-              <li>Excessive link sharing</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
-              User Reporting
-            </h3>
-            <p className="text-text-secondary leading-relaxed mb-4">
-              Users can report inappropriate content. When you submit a report:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
-              <li>Your report is stored for moderation review</li>
-              <li>You can view the status of your submitted reports</li>
-              <li>Your identity as a reporter is protected</li>
-              <li>We track report history to prevent abuse</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
-              Moderation Actions
-            </h3>
-            <p className="text-text-secondary leading-relaxed mb-4">
-              If your content violates our Community Guidelines, we may:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
-              <li>Issue a warning</li>
-              <li>Remove the violating content</li>
-              <li>Temporarily suspend your account</li>
-              <li>Permanently ban repeat offenders</li>
-            </ul>
-            <p className="text-text-secondary leading-relaxed mt-4">
-              All moderation actions are logged and you can view your account status in the app. Removed content is archived for 90 days to support the appeals process.
-            </p>
-          </section>
-
           {/* Data Retention */}
           <section>
             <h2 className="text-2xl font-bold text-text-primary mb-4">
-              9. Data Retention
+              8. Data Retention
             </h2>
             <p className="text-text-secondary leading-relaxed mb-4">
               We retain your personal information for as long as your account is active or as needed to provide you services. If you delete your account, we will delete your personal information within 30 days, except where we are required to retain it for legal purposes.
-            </p>
-            <p className="text-text-secondary leading-relaxed">
-              <strong>Moderation Data:</strong> Reports and moderation actions are retained for 90 days after resolution to support appeals and prevent abuse. Deleted content is archived for 90 days before permanent removal.
             </p>
           </section>
 
           {/* International Users */}
           <section>
             <h2 className="text-2xl font-bold text-text-primary mb-4">
-              10. International Data Transfers
+              9. International Data Transfers
             </h2>
             <p className="text-text-secondary leading-relaxed">
               Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data in accordance with this privacy policy.
@@ -321,10 +257,10 @@ export default function PrivacyPolicy() {
           {/* Changes to Privacy Policy */}
           <section>
             <h2 className="text-2xl font-bold text-text-primary mb-4">
-              11. Changes to This Privacy Policy
+              10. Changes to This Privacy Policy
             </h2>
             <p className="text-text-secondary leading-relaxed">
-              We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. We encourage you to review this Privacy Policy periodically.
+              We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last Updated&quot; date. We encourage you to review this Privacy Policy periodically.
             </p>
           </section>
 
@@ -352,7 +288,7 @@ export default function PrivacyPolicy() {
           {/* Effective Date */}
           <section className="text-center pt-8 border-t border-cream-300">
             <p className="text-sm text-text-muted">
-              This Privacy Policy is effective as of February 24, 2026
+              This Privacy Policy is effective as of July 18, 2026
             </p>
           </section>
 

@@ -139,7 +139,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ============================================
 // NAVBAR SCROLL EFFECT
 // ============================================
-let lastScroll = 0;
 const nav = document.querySelector('.nav');
 
 function updateNavOnScroll() {
@@ -153,7 +152,6 @@ function updateNavOnScroll() {
         nav.style.background = 'rgba(255, 255, 255, 0.9)';
     }
 
-    lastScroll = currentScroll;
 }
 
 // ============================================
@@ -165,7 +163,7 @@ const observerOptions = {
 };
 
 const animationObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
             // Stagger animation for feature cards
             const delay = entry.target.dataset.animationDelay || 0;

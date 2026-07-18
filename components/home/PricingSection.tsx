@@ -13,7 +13,7 @@ const tiers = [
     features: [
       "10 AI sessions",
       "Unlimited decisions & journal entries",
-      "Explore feed — real perspectives",
+      "Private decision journal",
       "Decision reflections & anniversaries",
       "Full conversation history",
     ],

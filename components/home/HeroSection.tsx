@@ -16,6 +16,15 @@ import {
 /* ── Feature carousel data ──────────────────────────────── */
 
 const CARD_INTERVAL = 3200; // ms per card
+const VOICE_WAVEFORM = [
+  { peak: 12, duration: 0.58 },
+  { peak: 16, duration: 0.74 },
+  { peak: 14, duration: 0.66 },
+  { peak: 18, duration: 0.82 },
+  { peak: 13, duration: 0.62 },
+  { peak: 17, duration: 0.78 },
+  { peak: 15, duration: 0.7 },
+];
 
 interface FeatureCard {
   id: string;
@@ -80,13 +89,13 @@ function VoicePreview() {
         </p>
         <div className="flex items-center gap-2">
           <div className="flex gap-[2px]">
-            {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+            {VOICE_WAVEFORM.map(({ peak, duration }, i) => (
               <motion.div
                 key={i}
                 className="w-[3px] rounded-full bg-cyan-500"
-                animate={{ height: [3, 10 + Math.random() * 8, 3] }}
+                animate={{ height: [3, peak, 3] }}
                 transition={{
-                  duration: 0.5 + Math.random() * 0.4,
+                  duration,
                   repeat: Infinity,
                   repeatType: "reverse",
                   delay: i * 0.06,
@@ -127,42 +136,6 @@ function StructurePreview() {
             </div>
           ))}
         </div>
-      </div>
-    </div>
-  );
-}
-
-function RoundtablePreview() {
-  return (
-    <div className="flex flex-col items-center justify-center h-full gap-2">
-      <div className="w-full max-w-[260px] space-y-2">
-        {[
-          { initial: "M", name: "Maya", color: "#E5A53D", bgColor: "bg-amber-500/12", text: "Owning a home means roots, stability..." },
-          { initial: "R", name: "Rex", color: "#64748B", bgColor: "bg-slate-500/12", text: "What if the market drops 20%?" },
-          { initial: "L", name: "Liam", color: "#6366F1", bgColor: "bg-indigo-500/12", text: "The data suggests renting is 23% more cost-effective..." },
-        ].map((agent, i) => (
-          <motion.div
-            key={agent.initial}
-            initial={{ opacity: 0, x: -8 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.2, duration: 0.4 }}
-            className="bg-white/80 backdrop-blur-sm rounded-xl p-2.5 flex items-start gap-2.5 shadow-sm border border-cream-300/40"
-          >
-            <div
-              className={`w-6 h-6 rounded-full ${agent.bgColor} flex items-center justify-center flex-shrink-0`}
-            >
-              <span className="text-[8px] font-bold" style={{ color: agent.color }}>
-                {agent.initial}
-              </span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <span className="text-[8px] font-semibold block mb-0.5" style={{ color: agent.color }}>
-                {agent.name}
-              </span>
-              <p className="text-[10px] text-text-secondary leading-snug">{agent.text}</p>
-            </div>
-          </motion.div>
-        ))}
       </div>
     </div>
   );
@@ -487,19 +460,6 @@ const AVATAR_PALETTES = [
 function getAvatarColor(initials: string) {
   const code = (initials.charCodeAt(0) || 0) + (initials.charCodeAt(1) || 0);
   return AVATAR_PALETTES[code % AVATAR_PALETTES.length];
-}
-
-/** Extract 2-letter initials: from name (first+last) or email local part */
-function getInitials(email: string, name?: string): string {
-  if (name) {
-    const parts = name.trim().split(/\s+/);
-    if (parts.length >= 2) {
-      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-    }
-    return name.trim().slice(0, 2).toUpperCase();
-  }
-  const local = email.split("@")[0].replace(/[^a-zA-Z]/g, "");
-  return local.slice(0, 2).toUpperCase() || "??";
 }
 
 const FALLBACK_AVATARS = [

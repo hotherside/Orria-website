@@ -76,9 +76,6 @@ export function Footer() {
             <ul className="space-y-3">
               <FooterLink href="/support">Help Center</FooterLink>
               <FooterLink href="mailto:hello@orria.app">Contact Us</FooterLink>
-              <FooterLink href="/community-guidelines">
-                Community Guidelines
-              </FooterLink>
             </ul>
           </div>
 

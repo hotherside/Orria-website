@@ -26,7 +26,7 @@ export function CrystallizeDemo() {
   useEffect(() => {
     if (!isInView) {
       clearTimeout(timeoutRef.current);
-      reset();
+      timeoutRef.current = setTimeout(reset, 0);
       return;
     }
 
